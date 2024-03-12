@@ -1,17 +1,12 @@
 import React, {useEffect} from 'react';
 import './main.scss';
-
-declare const window: any;
-const tg = window.Telegram.WebApp;
+import {UseTg} from '../../hooks/useTg';
 
 const Main = () => {
+  const {tg, onClose} = UseTg();
   useEffect(() => {
     tg.ready();
   }, []);
-
-  const onClose = () => {
-    tg.close();
-  };
 
   return (
     <div className=''>
