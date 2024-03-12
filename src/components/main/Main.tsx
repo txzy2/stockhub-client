@@ -9,8 +9,10 @@ const Main = () => {
   }, [tg]);
 
   return (
-    <div className=''>
-      <button onClick={onClose}>Закрыть</button>
+    <div className='main'>
+      <button className='main__close' onClick={onClose}>
+        Close
+      </button>
     </div>
   );
 };
