@@ -1,12 +1,10 @@
-
-
 .main {
   &__close {
     cursor: pointer;
     outline: none;
-    background-color: var(--bg);
+    background-color: var(--text);
 
-    color: var(--text); 
+    color: var(--bg);
     padding: 5px 15px;
     border-radius: 10px;
   }
