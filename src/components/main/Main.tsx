@@ -6,7 +6,7 @@ const Main = () => {
   const {tg, onClose} = UseTg();
   useEffect(() => {
     tg.ready();
-  }, []);
+  }, [tg]);
 
   return (
     <div className=''>
