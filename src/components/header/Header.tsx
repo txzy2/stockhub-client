@@ -1,7 +1,6 @@
 import React from 'react';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
-import logo from '../../assets/logo.png';
 import {CircleUser, ShoppingCart} from 'lucide-react';
 
 const Header = () => {
@@ -15,14 +14,6 @@ const Header = () => {
           <span className='header__user_info--name'>{user.first_name}</span>
           {/* <span className='header__user_info--name'>Anton</span> */}
         </div>
-
-        <img
-          src={logo}
-          alt='logo'
-          width={140}
-          height={111}
-          className='header__user--img'
-        />
 
         <div className='header__user_basket'>
           <ShoppingCart size={32} />
