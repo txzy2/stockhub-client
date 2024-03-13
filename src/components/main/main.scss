@@ -10,14 +10,14 @@
   &__search {
     &--input,
     &--filter {
-      background: var(--bg);
+      background: var(--bg-sec);
       color: var(--text);
 
       border: 2px solid var(--text);
       border-radius: 9px;
 
       &_text {
-        background-color: var(--bg);
+        background-color: var(--bg-sec);
       }
     }
   }
