@@ -12,8 +12,8 @@ const Header = () => {
       <div className='header__user'>
         <div className='header__user_info'>
           <CircleUser size={32} />
-          {/* <span className='header__user_info--name'>{user.first_name}</span> */}
-          <span className='header__user_info--name'>Anton</span>
+          <span className='header__user_info--name'>{user.first_name}</span>
+          {/* <span className='header__user_info--name'>Anton</span> */}
         </div>
 
         <img
