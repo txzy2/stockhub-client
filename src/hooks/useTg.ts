@@ -10,9 +10,11 @@ export const UseTg = () =>{
     tg.MainButton.isVisible ? tg.MainButton.hide() : tg.MainButton.show();
   }
 
+  console.log(tg.initDataUnsafe.user); 
+
   return {
     tg,
-    user: tg.initDataUnsafe?.user,
+    user: tg.initDataUnsafe.user,
     onClose,
     onToggleButton
   }
