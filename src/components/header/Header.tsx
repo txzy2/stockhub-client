@@ -1,8 +1,14 @@
 import React from 'react';
 import './header.scss';
+import {UseTg} from '../../hooks/useTg';
 
 const Header = () => {
-  return <h1>Header</h1>;
+  const {tg, user} = UseTg();
+  return (
+    <div className='header'>
+      <div className='header__user'>{user}</div>
+    </div>
+  );
 };
 
 export default Header;
