@@ -12,4 +12,12 @@
     border: var(--text);
     border-radius: 10px;
   }
+
+  &__search {
+    &--input,
+    &--filter {
+      background: var(--text);
+      color: var(--bg);
+    }
+  }
 }
