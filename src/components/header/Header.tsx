@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/logo.png';
 import {CircleUser, ShoppingCart} from 'lucide-react';
 
 const Header = () => {
@@ -18,7 +18,7 @@ const Header = () => {
 
         <img
           src={logo}
-          alt='user_photo'
+          alt='logo'
           width={140}
           height={111}
           className='header__user--img'
