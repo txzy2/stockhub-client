@@ -8,16 +8,16 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='header__user'>
-        <div className='header__user_info'>
+      <div className='flex justify-between mx-4 my-4'>
+        <div className='flex items-center gap-1'>
           <CircleUser size={32} />
-          <span className='header__user_info--name'>{user.first_name}</span>
-          {/* <span className='header__user_info--name'>Anton</span> */}
+          <span className='font-medium italic text-lg'>{user.first_name}</span>
+          {/* <span className='font-medium italic text-lg'>Anton</span> */}
         </div>
 
-        <div className='header__user_basket'>
+        <div className='flex items-center gap-1'>
           <ShoppingCart size={32} />
-          <div className='header__user_basket--count'>2</div>
+          <span className='italic text-xl pt-6'>2</span>
         </div>
       </div>
     </div>
