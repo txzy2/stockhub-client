@@ -1,10 +1,33 @@
 .header {
   &__user {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 3px;
 
-    &--img {
-      border-radius: 20px;
+    margin: 0 10px;
+
+    &_info {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+
+      &--name {
+        font-size: 18px;
+        font-weight: 600;
+        font-style: italic;
+      }
+    }
+
+    &_basket {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+
+      &--count {
+        margin-top: 20px;
+        font-size: 20px;
+      }
     }
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
+import logo from '../../assets/logo.png';
+import {CircleUser, ShoppingCart} from 'lucide-react';
 
 const Header = () => {
   const {user} = UseTg();
@@ -8,15 +10,22 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='header__user'>
-        {/* <img
-          src={user.photo_url}
+        <div className='header__user_info'>
+          <CircleUser size={32} />
+          <span className='header__user_info--name'>{user.first_name}</span>
+        </div>
+
+        <img
+          src={logo}
           alt='user_photo'
-          width={25}
-          height={25}
+          width={220}
+          height={98}
           className='header__user--img'
-        /> */}
-        <div className=''>{user.photo_url}</div>
-        <div className='header__user--name'>{user.first_name}</div>
+        />
+        <div className='header__user_basket'>
+          <ShoppingCart size={32} />
+          <div className='header__user_basket--count'>2</div>
+        </div>
       </div>
     </div>
   );
