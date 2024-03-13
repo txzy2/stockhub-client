@@ -15,7 +15,7 @@ const Header = () => {
           height={25}
           className='header__user--img'
         /> */}
-        <div className=''>{user[user.id]}</div>
+        <div className=''>{user.photo_url}</div>
         <div className='header__user--name'>{user.first_name}</div>
       </div>
     </div>
