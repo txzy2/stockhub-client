@@ -12,6 +12,8 @@
     &--filter {
       background: var(--bg);
       color: var(--text);
+
+      box-shadow: 2px 2px 2px var(--text);
     }
   }
 }

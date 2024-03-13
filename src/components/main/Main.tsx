@@ -12,17 +12,14 @@ const Main = () => {
   return (
     <div className='main'>
       <div className='main__search flex gap-2 justify-center items-center'>
-        <div className='main__search--input flex gap-1.5 p-3.5 rounded-lg shadow-lg'>
+        <div className='main__search--input flex gap-1.5 p-3.5'>
           <Search size={28} />
           <input
             className='main__search--input w-68 text-xl outline-none'
             placeholder='Поиск'
           ></input>
         </div>
-        <a
-          href='none'
-          className='main__search--filter p-3.5 rounded-lg shadow-lg'
-        >
+        <a href='none' className='main__search--filter p-3.5'>
           <SlidersHorizontal size={28} />
         </a>
       </div>
