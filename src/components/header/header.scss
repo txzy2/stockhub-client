@@ -1,0 +1,10 @@
+.header {
+  &__user {
+    display: flex;
+    gap: 3px;
+
+    &--img {
+      border-radius: 20px;
+    }
+  }
+}
