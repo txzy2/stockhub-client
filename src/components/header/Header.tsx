@@ -6,7 +6,7 @@ const Header = () => {
   const {user} = UseTg();
   return (
     <div className='header'>
-      <div className='header__user'>{user}</div>
+      <div className='header__user'>{user.username}</div>
     </div>
   );
 };
