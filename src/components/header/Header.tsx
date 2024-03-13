@@ -3,7 +3,7 @@ import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 
 const Header = () => {
-  const {tg, user} = UseTg();
+  const {user} = UseTg();
   return (
     <div className='header'>
       <div className='header__user'>{user}</div>
