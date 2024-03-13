@@ -15,7 +15,7 @@ const Main = () => {
         <div className='main__search--input flex gap-1.5 p-3.5 rounded-lg shadow-lg'>
           <Search size={28} />
           <input
-            className='w-68 text-xl outline-none'
+            className='main__search--input w-68 text-xl outline-none'
             placeholder='Поиск'
           ></input>
         </div>

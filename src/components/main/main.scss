@@ -2,22 +2,16 @@
   &__close {
     cursor: pointer;
     outline: none;
-    padding: 5px 15px;
 
     font-size: 18px;
-
-    background-color: var(--text);
     color: var(--bg);
-
-    border: var(--text);
-    border-radius: 10px;
   }
 
   &__search {
     &--input,
     &--filter {
-      background: var(--text);
-      color: var(--bg);
+      background: var(--bg);
+      color: var(--text);
     }
   }
 }
