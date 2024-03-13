@@ -1,10 +1,15 @@
 import React, {useEffect} from 'react';
 import './main.scss';
 import {UseTg} from '../../hooks/useTg';
-import {Search, SlidersHorizontal, X} from 'lucide-react';
+import {Search, SlidersHorizontal} from 'lucide-react';
+import {useSelector} from 'react-redux';
 
-const Main = () => {
-  const {tg, onClose} = UseTg();
+const Main = ({product}: {product: any}) => {
+  const {tg} = UseTg();
+
+  const {basket}: any = useSelector(state => state);
+  console.log(basket);
+
   useEffect(() => {
     tg.ready();
     tg.expand();
@@ -25,9 +30,11 @@ const Main = () => {
         </a>
       </div>
 
-      <button className='main__close' onClick={onClose}>
+      {/* <button className='main__close' onClick={onClose}>
         <X size={32} />
-      </button>
+      </button> */}
+
+      <div className=''>{product.name}</div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Header = () => {
         <div className='flex items-center gap-1'>
           <CircleUser size={32} />
           <span className='font-medium italic text-lg'>
-            {user?.first_name !== undefined ? user.first_name : 'Default'}
+            {user?.first_name !== undefined ? user.first_name : 'Undefined'}
           </span>
         </div>
 

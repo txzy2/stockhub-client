@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className='App'>
       <Header />
-      <Main />
+      <Main product={{name: 'Jordan'}} />
     </div>
   );
 };
