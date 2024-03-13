@@ -7,6 +7,7 @@ const Main = () => {
   const {tg, onClose} = UseTg();
   useEffect(() => {
     tg.ready();
+    tg.expand();
   }, [tg]);
 
   return (
