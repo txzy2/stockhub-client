@@ -11,8 +11,8 @@ const Header = () => {
       <div className='flex justify-between mx-4 my-4'>
         <div className='flex items-center gap-1'>
           <CircleUser size={32} />
-          <span className='font-medium italic text-lg'>{user.first_name}</span>
-          {/* <span className='font-medium italic text-lg'>Anton</span> */}
+          {/* <span className='font-medium italic text-lg'>{user.first_name}</span> */}
+          <span className='font-medium italic text-lg'>Anton</span>
         </div>
 
         <div className='flex items-center gap-1'>
