@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import './main.scss';
 import {UseTg} from '../../hooks/useTg';
+import {X} from 'lucide-react';
 
 const Main = () => {
   const {tg, onClose} = UseTg();
@@ -11,7 +12,7 @@ const Main = () => {
   return (
     <div className='main'>
       <button className='main__close' onClick={onClose}>
-        Close
+        <X size={32} />
       </button>
     </div>
   );
