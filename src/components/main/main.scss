@@ -10,10 +10,10 @@
   &__search {
     &--input,
     &--filter {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--btn);
+      color: var(--btn-text);
 
-      box-shadow: 2px 2px 2px var(--text);
+      // box-shadow: 2px 2px 2px var(--text);
       border-radius: 9px;
     }
   }
