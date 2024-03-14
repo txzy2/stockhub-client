@@ -22,5 +22,6 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "typeRoots": ["./*.d.ts", "./node_modules/@types"]
 }
