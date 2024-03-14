@@ -18,9 +18,12 @@ const Main = ({product}: {product: any}) => {
       if (user && user.id !== undefined) {
         const chat_id = `${user.id}`;
         try {
-          const res = await axios.get(`http://localhost:3001/api/user/get`, {
-            params: {chat_id},
-          });
+          const res = await axios.get(
+            `http://94.228.124.88:4200/api/user/get`,
+            {
+              params: {chat_id},
+            }
+          );
           dispatch(setUser(res.data));
         } catch (err) {
           console.log(err);
@@ -46,8 +49,6 @@ const Main = ({product}: {product: any}) => {
           <SlidersHorizontal size={28} />
         </a>
       </div>
-
-      <div className=''>{product.name}</div>
 
       <div className=''>
         {user && user.id !== undefined ? (
