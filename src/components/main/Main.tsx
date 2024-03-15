@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
+import spinner from '../../assets/Loading.svg';
 
 const Main = ({product}: {product: any}) => {
   const {tg, user} = UseTg();
@@ -17,7 +18,8 @@ const Main = ({product}: {product: any}) => {
     tg.expand();
     const userReq = async () => {
       if (user && user.id !== undefined) {
-        const chat_id = `${user.id}`;
+        let chat_id = user.id;
+        chat_id = chat_id.toString();
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
@@ -52,10 +54,11 @@ const Main = ({product}: {product: any}) => {
           <SlidersHorizontal size={28} />
         </a>
       </div>
-      <div className=''>{product.name}</div>
+      {/* <div className=''>{product.name}</div> */}
 
-      <div className='text-black'>
-        {userData && (
+      <div className='text-black gap-2 ps-4 pt-3'>
+        <h2 className='text-xl font-medium'>User stats:</h2>
+        {userData ? (
           <>
             <p>
               Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
@@ -70,18 +73,19 @@ const Main = ({product}: {product: any}) => {
             <p>Bonus: {userData.bonus}</p>
             <p>Orders: {userData.orders}</p>
           </>
+        ) : (
+          <div className='flex items-center'>
+            <img
+              src={spinner}
+              alt='loading'
+              className='animate-spin-slow'
+              width={30}
+              height={30}
+            />{' '}
+            <span className='text-lg'>Loading</span>
+          </div>
         )}
       </div>
-
-      {/* <div className='text-black'>
-        {user && user.id !== undefined ? (
-        <p>Full Name: {userData.fio}</p>
-        <p>Bonus: {userData.bonus}</p>
-        <p>Orders: {userData.orders}</p>
-        ) : (
-          <p>User ID is undefined</p>
-        )}
-      </div> */}
     </div>
   );
 };
