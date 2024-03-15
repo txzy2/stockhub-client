@@ -16,8 +16,8 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user && user?.id !== undefined) {
-        const chat_id = user.id;
+      if (user) {
+        const chat_id = `${user.id}`;
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
@@ -56,7 +56,6 @@ const Main = ({product}: {product: any}) => {
 
       <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
-        {/* <p>from chat: {chat_id !== undefined ? chat_id : 'Undefined'}</p> */}
         <p>from user: {user?.id !== undefined ? user.id : 'Undefined'}</p>
         {userData ? (
           <>
