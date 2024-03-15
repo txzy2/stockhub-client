@@ -13,7 +13,6 @@ export const UseTg = () => {
   return {
     tg,
     user: tg.initDataUnsafe?.user,
-    chat_id: tg.initDataUnsafe?.chat.id,
     onClose,
     onToggleButton,
   };
