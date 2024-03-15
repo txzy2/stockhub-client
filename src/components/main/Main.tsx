@@ -20,13 +20,13 @@ const Main = () => {
         console.log(chat_id, '\n', typeof chat_id);
         try {
           const userFetch = await axios.post(
-            `http://94.228.124.88:4200/api/user/get`,
+            `https://stockhub12.ru:4200/api/user/get`,
             {chat_id},
             {
               headers: {'Content-Type': 'application/json'},
             }
           );
-          // console.log('userFetch data:', userFetch.data);
+          console.log('userFetch data:', userFetch.data);
           dispatch(setUser(userFetch.data));
         } catch (err) {
           console.log(err);
@@ -35,7 +35,6 @@ const Main = () => {
         console.log('skip');
       }
     };
-    console.log(chat_id);
     userReq(chat_id?.toString());
   }, [tg, dispatch, chat_id]);
 
