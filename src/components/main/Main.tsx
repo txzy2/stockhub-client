@@ -17,9 +17,10 @@ const Main = ({product}: {product: any}) => {
     tg.expand();
     const userReq = async () => {
       try {
+        const chat_id = user?.id.toString();
         const userFetch = await axios.post(
           `http://94.228.124.88:4200/api/user/get`,
-          {chat_id: user.id.toString()},
+          {chat_id},
           {
             headers: {'Content-Type': 'application/json'},
           }
