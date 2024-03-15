@@ -14,7 +14,7 @@ const Header = () => {
             <>
               <CircleUser size={32} />
               <span className='font-medium italic text-lg'>
-                user.first_name
+                {user.first_name}
               </span>
             </>
           ) : (

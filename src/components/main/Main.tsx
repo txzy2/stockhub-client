@@ -16,11 +16,12 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user) {
+      if (user && chat_id !== undefined) {
+        const chatId = chat_id.toString();
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
-            {chat_id},
+            {chatId},
             {
               headers: {'Content-Type': 'application/json'},
             }
@@ -31,7 +32,7 @@ const Main = ({product}: {product: any}) => {
           console.log(err);
         }
       } else {
-        console.log('skipping');
+        console.log('skip');
       }
     };
     userReq();
