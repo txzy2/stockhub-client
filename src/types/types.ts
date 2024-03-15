@@ -24,7 +24,8 @@ export type UserReciveDto = {
   email: string;
   fio: string;
   locale: string;
-  bonus: string;
+  bonus: number;
+  orders: number;
 };
 
 export type UserRecive = {

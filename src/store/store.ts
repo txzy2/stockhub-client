@@ -1,10 +1,10 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {reducer as basketReduser} from './basket/basket.slice';
-import {userSlice} from './user/user.slice';
+import {userReducer} from './user/user.slice';
 
 const rootReducer = combineReducers({
   basket: basketReduser,
-  user: userSlice.reducer,
+  user: userReducer,
 });
 
 export const store = configureStore({

@@ -1,4 +1,4 @@
-import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {UserReciveDto} from '../../types/types';
 
 interface UserState {
@@ -9,7 +9,7 @@ const initialState: UserState = {
   user: null,
 };
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -20,4 +20,4 @@ export const userSlice = createSlice({
 });
 
 export const {setUser} = userSlice.actions;
-export default userSlice.reducer;
+export const userReducer = userSlice.reducer;

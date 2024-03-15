@@ -5,11 +5,12 @@ import {Search, SlidersHorizontal} from 'lucide-react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {setUser} from '../../store/user/user.slice';
+import {RootState} from '../../store/store';
 
 const Main = ({product}: {product: any}) => {
   const {tg, user} = UseTg();
   const dispatch = useDispatch();
-  const userData = useSelector((state: any) => state.user);
+  const userData = useSelector((state: RootState) => state.user.user);
 
   useEffect(() => {
     tg.ready();
@@ -18,13 +19,15 @@ const Main = ({product}: {product: any}) => {
       if (user && user.id !== undefined) {
         const chat_id = `${user.id}`;
         try {
-          const res = await axios.get(
+          const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
+            {chat_id},
             {
-              params: {chat_id},
+              headers: {'Content-Type': 'application/json'},
             }
           );
-          dispatch(setUser(res.data));
+          console.log('userFetch data:', userFetch.data);
+          dispatch(setUser(userFetch.data));
         } catch (err) {
           console.log(err);
         }
@@ -49,14 +52,36 @@ const Main = ({product}: {product: any}) => {
           <SlidersHorizontal size={28} />
         </a>
       </div>
+      <div className=''>{product.name}</div>
 
-      <div className=''>
+      <div className='text-black'>
+        {userData && (
+          <>
+            <p>
+              Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
+            </p>
+            <p>
+              Email: {userData.email === 'none' ? 'Нет данных' : userData.email}
+            </p>
+            <p>
+              Locale:{' '}
+              {userData.locale === 'none' ? 'Нет данных' : userData.locale}
+            </p>
+            <p>Bonus: {userData.bonus}</p>
+            <p>Orders: {userData.orders}</p>
+          </>
+        )}
+      </div>
+
+      {/* <div className='text-black'>
         {user && user.id !== undefined ? (
-          <p>{userData.id}</p>
+        <p>Full Name: {userData.fio}</p>
+        <p>Bonus: {userData.bonus}</p>
+        <p>Orders: {userData.orders}</p>
         ) : (
           <p>User ID is undefined</p>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
