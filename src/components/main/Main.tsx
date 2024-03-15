@@ -16,7 +16,7 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user && user.user.id !== undefined) {
+      if (user) {
         const chat_id = `${user?.id}`;
         try {
           const userFetch = await axios.post(
@@ -48,6 +48,7 @@ const Main = ({product}: {product: any}) => {
             placeholder='Поиск'
           ></input>
         </div>
+        {/* TODO: Скорее всего будет button */}
         <a href='none' className='main__search--filter p-3.5'>
           <SlidersHorizontal size={28} />
         </a>
