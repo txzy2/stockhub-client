@@ -15,13 +15,13 @@ const Main = ({product}: {product: any}) => {
   useEffect(() => {
     tg.ready();
     tg.expand();
-    const userReq = async () => {
-      if (user && chat_id !== undefined) {
-        const chatId = chat_id.toString();
+    const userReq = async (chat_id: string) => {
+      if (chat_id !== undefined) {
+        chat_id = '307777256';
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
-            {chatId},
+            {chat_id},
             {
               headers: {'Content-Type': 'application/json'},
             }
@@ -35,7 +35,7 @@ const Main = ({product}: {product: any}) => {
         console.log('skip');
       }
     };
-    userReq();
+    userReq(chat_id);
   }, [tg, user, chat_id, dispatch]);
 
   return (
@@ -67,20 +67,12 @@ const Main = ({product}: {product: any}) => {
           )}
         </p>
         {userData ? (
-          <>
-            <p>
-              Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
+          Object.entries(userData).map(([key, value]) => (
+            <p key={key}>
+              {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
+              {value === 'none' ? 'Нет данных' : value}
             </p>
-            <p>
-              Email: {userData.email === 'none' ? 'Нет данных' : userData.email}
-            </p>
-            <p>
-              Locale:{' '}
-              {userData.locale === 'none' ? 'Нет данных' : userData.locale}
-            </p>
-            <p>Bonus: {userData.bonus}</p>
-            <p>Orders: {userData.orders}</p>
-          </>
+          ))
         ) : (
           <div className='flex items-center'>
             <Loader className='animate-spin-slow spinner' size={32} />
