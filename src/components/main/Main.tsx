@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
-import spinner from '../../assets/Loading.svg';
 
 const Main = ({product}: {product: any}) => {
   const {tg, user} = UseTg();
