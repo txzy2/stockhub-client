@@ -66,7 +66,8 @@ const Main = ({product}: {product: any}) => {
             </>
           )}
         </p>
-        {user?.id && userData ? (
+        <p>{userData?.chat_id}</p>
+        {/* {userData ? (
           <>
             <p>
               Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
@@ -86,7 +87,7 @@ const Main = ({product}: {product: any}) => {
             <Loader className='animate-spin-slow spinner' size={32} />
             <span className='text-lg'>Loading</span>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
