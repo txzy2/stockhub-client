@@ -16,7 +16,7 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user && user?.id !== undefined) {
+      if (user) {
         try {
           const chat_id = user.id.toString();
           const userFetch = await axios.post(
@@ -56,7 +56,16 @@ const Main = ({product}: {product: any}) => {
 
       <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
-        <p>from user: {user?.id !== undefined ? user.id : 'Undefined'}</p>
+        <p className='flex items-center gap-2'>
+          user:{' '}
+          {user?.id !== undefined ? (
+            user.id
+          ) : (
+            <>
+              <Loader className='animate-spin-slow spinner' size={20} />
+            </>
+          )}
+        </p>
         {user?.id && userData ? (
           <>
             <p>
