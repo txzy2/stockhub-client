@@ -16,19 +16,23 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      try {
-        const chat_id = user?.id.toString();
-        const userFetch = await axios.post(
-          `http://94.228.124.88:4200/api/user/get`,
-          {chat_id},
-          {
-            headers: {'Content-Type': 'application/json'},
-          }
-        );
-        // console.log('userFetch data:', userFetch.data);
-        dispatch(setUser(userFetch.data));
-      } catch (err) {
-        console.log(err);
+      if (user && user?.id !== undefined) {
+        try {
+          const chat_id = user.id.toString();
+          const userFetch = await axios.post(
+            `http://94.228.124.88:4200/api/user/get`,
+            {chat_id},
+            {
+              headers: {'Content-Type': 'application/json'},
+            }
+          );
+          // console.log('userFetch data:', userFetch.data);
+          dispatch(setUser(userFetch.data));
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        console.log('skipping');
       }
     };
     userReq();
