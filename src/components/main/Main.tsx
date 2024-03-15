@@ -17,8 +17,8 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user && user.id !== undefined) {
-        let chat_id = user.id;
+      if (user && user.user.id !== undefined) {
+        let chat_id = user.user.id;
         chat_id = chat_id.toString();
         try {
           const userFetch = await axios.post(
@@ -28,7 +28,7 @@ const Main = ({product}: {product: any}) => {
               headers: {'Content-Type': 'application/json'},
             }
           );
-          console.log('userFetch data:', userFetch.data);
+          // console.log('userFetch data:', userFetch.data);
           dispatch(setUser(userFetch.data));
         } catch (err) {
           console.log(err);
@@ -78,7 +78,7 @@ const Main = ({product}: {product: any}) => {
             <img
               src={spinner}
               alt='loading'
-              className='animate-spin-slow'
+              className='animate-spin-slow text-white'
               width={30}
               height={30}
             />{' '}
