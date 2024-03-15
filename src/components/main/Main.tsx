@@ -7,7 +7,7 @@ import axios from 'axios';
 import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
 
-const Main = ({product}: {product: any}) => {
+const Main = () => {
   const {tg, user, chat_id} = UseTg();
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.user.user);
@@ -34,7 +34,7 @@ const Main = ({product}: {product: any}) => {
         console.log('skip');
       }
     };
-    userReq(chat_id);
+    userReq(chat_id?.toString());
   }, [tg, user, chat_id, dispatch]);
 
   return (
