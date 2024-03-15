@@ -56,7 +56,7 @@ const Main = ({product}: {product: any}) => {
       </div>
       {/* <div className=''>{product.name}</div> */}
 
-      <div className='text-black gap-2 ps-4 pt-3'>
+      <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
         {userData ? (
           <>
