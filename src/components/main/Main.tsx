@@ -8,7 +8,7 @@ import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
 
 const Main = () => {
-  const {tg, user, chat_id} = UseTg();
+  const {tg, chat_id} = UseTg();
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.user.user);
 
@@ -35,7 +35,7 @@ const Main = () => {
       }
     };
     userReq(chat_id?.toString());
-  }, [tg, user, chat_id, dispatch]);
+  }, [tg, dispatch, chat_id]);
 
   return (
     <div className='main'>
@@ -69,7 +69,7 @@ const Main = () => {
           Object.entries(userData).map(([key, value]) => (
             <p key={key}>
               {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
-              {value === 'none' ? 'Нет данных' : value}
+              {value === 'none' ? 'Данные не заполнены' : value}
             </p>
           ))
         ) : (
