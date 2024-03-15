@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './main.scss';
 import {UseTg} from '../../hooks/useTg';
-import {Search, SlidersHorizontal} from 'lucide-react';
+import {Loader, Search, SlidersHorizontal} from 'lucide-react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {setUser} from '../../store/user/user.slice';
@@ -18,7 +18,7 @@ const Main = ({product}: {product: any}) => {
     tg.expand();
     const userReq = async () => {
       if (user && user.user.id !== undefined) {
-        const chat_id = user?.id;
+        const chat_id = `${user?.id}`;
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
@@ -53,7 +53,6 @@ const Main = ({product}: {product: any}) => {
           <SlidersHorizontal size={28} />
         </a>
       </div>
-      {/* <div className=''>{product.name}</div> */}
 
       <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
@@ -74,13 +73,7 @@ const Main = ({product}: {product: any}) => {
           </>
         ) : (
           <div className='flex items-center'>
-            <img
-              src={spinner}
-              alt='loading'
-              className='animate-spin-slow text-white'
-              width={30}
-              height={30}
-            />{' '}
+            <Loader className='animate-spin-slow spinner' size={32} />
             <span className='text-lg'>Loading</span>
           </div>
         )}
