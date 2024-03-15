@@ -16,17 +16,20 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      const chat_id = user.id.toString();
       try {
-        const userFetch = await axios.post(
-          `http://94.228.124.88:4200/api/user/get`,
-          {chat_id},
-          {
-            headers: {'Content-Type': 'application/json'},
-          }
-        );
-        // console.log('userFetch data:', userFetch.data);
-        dispatch(setUser(userFetch.data));
+        if (user && user.user.id !== undefined) {
+          const userFetch = await axios.post(
+            `http://94.228.124.88:4200/api/user/get`,
+            {chat_id: user.id.toString()},
+            {
+              headers: {'Content-Type': 'application/json'},
+            }
+          );
+          // console.log('userFetch data:', userFetch.data);
+          dispatch(setUser(userFetch.data));
+        } else {
+          console.log('skipping');
+        }
       } catch (err) {
         console.log(err);
       }
