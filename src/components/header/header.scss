@@ -10,7 +10,8 @@
 .modal {
   z-index: 9999;
   overflow: hidden;
-  background: #fff;
+  background: var(--bg);
+  color: var(--text);
 
   top: 105px;
 

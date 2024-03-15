@@ -1,6 +1,6 @@
 import './main.scss';
 
-import {Loader, Search, SlidersHorizontal} from 'lucide-react';
+import {Search, SlidersHorizontal} from 'lucide-react';
 
 const Main = () => {
   return (
