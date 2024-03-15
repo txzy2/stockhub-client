@@ -16,8 +16,8 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user) {
-        const chat_id = `${user.id}`;
+      if (user && user?.id !== undefined) {
+        const chat_id = user.id.toString();
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
