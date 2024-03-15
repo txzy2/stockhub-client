@@ -22,18 +22,9 @@ const Header = () => {
       <div className='flex justify-between mx-4 my-4'>
         <button className='flex items-center gap-1' onClick={openModal}>
           <CircleUser size={32} />
-          <p className='font-medium italic text-lg'>
-            {user?.first_name ? (
-              user?.first_name
-            ) : (
-              <>
-                {' '}
-                <Loader className='animate-spin-slow spinner' size={32} />
-              </>
-            )}
-          </p>
           {user?.first_name !== undefined ? (
             <>
+              <p className='font-medium italic text-lg'>{user?.first_name}</p>
               <AnimatePresence>
                 {isModalOpen && (
                   <motion.div
