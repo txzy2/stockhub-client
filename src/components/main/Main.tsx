@@ -55,17 +55,7 @@ const Main = () => {
       </div>
 
       <div className='gap-2 ps-4 pt-3'>
-        <h2 className='text-xl font-medium'>User stats:</h2>
-        <p className='flex items-center gap-2'>
-          user:{' '}
-          {chat_id !== undefined ? (
-            chat_id
-          ) : (
-            <>
-              <Loader className='animate-spin-slow spinner' size={20} />
-            </>
-          )}
-        </p>
+        <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>
         {userData ? (
           Object.entries(userData).map(([key, value]) => (
             <p key={key}>
