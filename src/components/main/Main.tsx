@@ -56,8 +56,8 @@ const Main = ({product}: {product: any}) => {
 
       <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
-        <p>from chat: {chat_id}</p>
-        <p>from user: {user.id}</p>
+        <p>from chat: {chat_id !== undefined ? chat_id : 'Undefined'}</p>
+        <p>from user: {user?.id !== undefined ? user.id : 'Undefined'}</p>
         {userData ? (
           <>
             <p>
