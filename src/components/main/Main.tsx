@@ -58,6 +58,7 @@ const Main = ({product}: {product: any}) => {
         <h2 className='text-xl font-medium'>User stats:</h2>
         {userData ? (
           <>
+            <p>{user.id}</p>
             <p>
               Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
             </p>
