@@ -8,7 +8,7 @@ import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
 
 const Main = ({product}: {product: any}) => {
-  const {tg, user} = UseTg();
+  const {tg, user, chat_id} = UseTg();
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.user.user);
 
@@ -58,7 +58,7 @@ const Main = ({product}: {product: any}) => {
         <h2 className='text-xl font-medium'>User stats:</h2>
         {userData ? (
           <>
-            <p>{user.id}</p>
+            <p>{chat_id}</p>
             <p>
               Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
             </p>
