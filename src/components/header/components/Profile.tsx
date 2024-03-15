@@ -42,7 +42,7 @@ const Profile = ({closeModal}: ModalProps) => {
   }, [tg, dispatch, user]);
 
   return (
-    <div className='profile'>
+    <>
       <a href='/'>
         <X
           onClick={closeModal}
@@ -67,7 +67,7 @@ const Profile = ({closeModal}: ModalProps) => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
