@@ -16,23 +16,19 @@ const Main = ({product}: {product: any}) => {
     tg.ready();
     tg.expand();
     const userReq = async () => {
-      if (user && user?.id !== undefined) {
-        const chat_id = user.id.toString();
-        try {
-          const userFetch = await axios.post(
-            `http://94.228.124.88:4200/api/user/get`,
-            {chat_id},
-            {
-              headers: {'Content-Type': 'application/json'},
-            }
-          );
-          // console.log('userFetch data:', userFetch.data);
-          dispatch(setUser(userFetch.data));
-        } catch (err) {
-          console.log(err);
-        }
-      } else {
-        console.log('User ID is undefined, skipping request');
+      const chat_id = user.id.toString();
+      try {
+        const userFetch = await axios.post(
+          `http://94.228.124.88:4200/api/user/get`,
+          {chat_id},
+          {
+            headers: {'Content-Type': 'application/json'},
+          }
+        );
+        // console.log('userFetch data:', userFetch.data);
+        dispatch(setUser(userFetch.data));
+      } catch (err) {
+        console.log(err);
       }
     };
     userReq();
@@ -56,7 +52,6 @@ const Main = ({product}: {product: any}) => {
 
       <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
-        <p>{typeof user.id.toString()}</p>
         <p>from user: {user?.id !== undefined ? user.id : 'Undefined'}</p>
         {userData ? (
           <>
