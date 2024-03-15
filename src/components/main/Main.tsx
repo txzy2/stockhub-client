@@ -8,7 +8,7 @@ import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
 
 const Main = () => {
-  const {tg, chat_id} = UseTg();
+  const {tg, user} = UseTg();
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.user.user);
 
@@ -35,8 +35,8 @@ const Main = () => {
         console.log('skip');
       }
     };
-    userReq(chat_id?.toString());
-  }, [tg, dispatch, chat_id]);
+    userReq(user?.id.toString());
+  }, [tg, dispatch, user]);
 
   return (
     <div className='main'>
