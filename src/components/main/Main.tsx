@@ -8,7 +8,7 @@ import {setUser} from '../../store/user/user.slice';
 import {RootState} from '../../store/store';
 
 const Main = ({product}: {product: any}) => {
-  const {tg, user} = UseTg();
+  const {tg, user, chat_id} = UseTg();
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.user.user);
 
@@ -18,7 +18,6 @@ const Main = ({product}: {product: any}) => {
     const userReq = async () => {
       if (user) {
         try {
-          const chat_id = user.id.toString();
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
             {chat_id},
@@ -36,7 +35,7 @@ const Main = ({product}: {product: any}) => {
       }
     };
     userReq();
-  }, [tg, user, dispatch]);
+  }, [tg, user, chat_id, dispatch]);
 
   return (
     <div className='main'>
@@ -66,8 +65,7 @@ const Main = ({product}: {product: any}) => {
             </>
           )}
         </p>
-        <p>{userData?.chat_id}</p>
-        {/* {userData ? (
+        {userData ? (
           <>
             <p>
               Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
@@ -87,7 +85,7 @@ const Main = ({product}: {product: any}) => {
             <Loader className='animate-spin-slow spinner' size={32} />
             <span className='text-lg'>Loading</span>
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );
