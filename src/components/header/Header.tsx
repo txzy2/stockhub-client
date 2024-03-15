@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
-import {CircleUser, ShoppingCart} from 'lucide-react';
+import {CircleUser, Loader, ShoppingCart} from 'lucide-react';
 
 const Header = () => {
   const {user} = UseTg();
@@ -12,7 +12,13 @@ const Header = () => {
         <div className='flex items-center gap-1'>
           <CircleUser size={32} />
           <span className='font-medium italic text-lg'>
-            {user?.first_name !== undefined ? user.first_name : 'Undefined'}
+            {user?.first_name !== undefined ? (
+              user.first_name
+            ) : (
+              <>
+                <Loader className='animate-spin-slow spinner' size={32} />
+              </>
+            )}
           </span>
         </div>
 

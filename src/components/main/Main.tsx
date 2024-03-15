@@ -53,7 +53,7 @@ const Main = ({product}: {product: any}) => {
       <div className='gap-2 ps-4 pt-3'>
         <h2 className='text-xl font-medium'>User stats:</h2>
         <p>from user: {user?.id !== undefined ? user.id : 'Undefined'}</p>
-        {userData ? (
+        {user?.id && userData ? (
           <>
             <p>
               Full Name: {userData.fio === 'none' ? 'Нет данных' : userData.fio}
