@@ -17,6 +17,7 @@ const Main = () => {
     tg.expand();
     const userReq = async (chat_id: string) => {
       if (chat_id !== undefined) {
+        console.log(chat_id, '\n', typeof chat_id);
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
