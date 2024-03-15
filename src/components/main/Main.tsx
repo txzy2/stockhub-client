@@ -17,7 +17,6 @@ const Main = ({product}: {product: any}) => {
     tg.expand();
     const userReq = async (chat_id: string) => {
       if (chat_id !== undefined) {
-        chat_id = '307777256';
         try {
           const userFetch = await axios.post(
             `http://94.228.124.88:4200/api/user/get`,
@@ -58,8 +57,8 @@ const Main = ({product}: {product: any}) => {
         <h2 className='text-xl font-medium'>User stats:</h2>
         <p className='flex items-center gap-2'>
           user:{' '}
-          {user?.id !== undefined ? (
-            user.id
+          {chat_id !== undefined ? (
+            chat_id
           ) : (
             <>
               <Loader className='animate-spin-slow spinner' size={20} />
