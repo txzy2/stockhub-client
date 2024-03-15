@@ -35,6 +35,7 @@ const Main = () => {
         console.log('skip');
       }
     };
+    console.log(chat_id);
     userReq(chat_id?.toString());
   }, [tg, dispatch, chat_id]);
 
