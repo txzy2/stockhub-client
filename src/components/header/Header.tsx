@@ -29,9 +29,7 @@ const Header = () => {
           {user?.first_name ? (
             <>
               <CircleUser size={32} />
-              <p className='font-medium italic text-lg'>
-                👻 {user?.first_name}
-              </p>
+              <p className='font-medium italic text-lg'>{user?.first_name}</p>
               <AnimatePresence>
                 {isModalOpen && (
                   <motion.div
