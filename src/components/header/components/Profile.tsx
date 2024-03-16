@@ -16,8 +16,6 @@ const Profile = ({closeModal}: ModalProps) => {
   const userData = useSelector((state: RootState) => state.user.user);
 
   useEffect(() => {
-    tg.ready();
-    tg.expand();
     const userReq = async (chat_id: string) => {
       if (chat_id !== undefined) {
         console.log(chat_id, '\n', typeof chat_id);
@@ -43,13 +41,13 @@ const Profile = ({closeModal}: ModalProps) => {
 
   return (
     <>
-      <button onClick={closeModal}>
+      <a href='/' onClick={closeModal}>
         <X
           onClick={closeModal}
           className='absolute top-0 right-0 mt-5 mr-5'
           size={36}
         />
-      </button>
+      </a>
 
       <div className='mt-16'>
         <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>

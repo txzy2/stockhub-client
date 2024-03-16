@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -6,7 +6,7 @@ import {CircleUser, Loader, ShoppingCart} from 'lucide-react';
 import Profile from './components/Profile';
 
 const Header = () => {
-  const {user} = UseTg();
+  const {user, tg} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -16,6 +16,11 @@ const Header = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    tg.ready();
+    tg.expand();
+  }, [tg]);
 
   return (
     <div className='header'>
