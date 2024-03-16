@@ -17,7 +17,7 @@ const Profile = ({closeModal}: ModalProps) => {
 
   useEffect(() => {
     const userReq = async (chat_id: string) => {
-      if (chat_id !== undefined) {
+      if (chat_id) {
         console.log(chat_id, '\n', typeof chat_id);
         try {
           const userFetch = await axios.post(
@@ -30,13 +30,15 @@ const Profile = ({closeModal}: ModalProps) => {
           console.log('userFetch data:', userFetch.data);
           dispatch(setUser(userFetch.data));
         } catch (err) {
-          console.log(err);
+          return null;
         }
       } else {
         console.log('skip');
       }
     };
-    userReq(user?.id.toString());
+    userReq(
+      user?.id.toString() ? user?.id.toString() : user?.id === '307777256'
+    );
   }, [tg, dispatch, user]);
 
   return (
@@ -49,10 +51,10 @@ const Profile = ({closeModal}: ModalProps) => {
         />
       </a>
 
-      <div className='mt-16'>
+      <div className='mt-16 text-left'>
         <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>
         {userData ? (
-          <div className='text-left'>
+          <div className='mt-4'>
             {Object.entries(userData).map(([key, value]) => (
               <p key={key}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}

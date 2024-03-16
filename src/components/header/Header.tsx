@@ -24,12 +24,14 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='flex justify-between mx-4 my-4'>
+      <div className='flex justify-between items-center mx-4 my-4'>
         <button className='flex gap-1' onClick={openModal}>
-          <CircleUser size={32} />
-          {user?.first_name !== undefined ? (
+          {user?.first_name ? (
             <>
-              <p className='font-medium italic text-lg'>{user?.first_name}</p>
+              <CircleUser size={32} />
+              <p className='font-medium italic text-lg'>
+                👻 {user?.first_name}
+              </p>
               <AnimatePresence>
                 {isModalOpen && (
                   <motion.div
@@ -45,9 +47,10 @@ const Header = () => {
               </AnimatePresence>
             </>
           ) : (
-            <>
+            <div className='flex items-center gap-2'>
               <Loader className='animate-spin-slow spinner' size={32} />
-            </>
+              <span className='font-medium text-lg'>💀 Unknown</span>
+            </div>
           )}
         </button>
 

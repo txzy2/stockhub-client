@@ -14,9 +14,9 @@ const Main = () => {
           ></input>
         </div>
         {/* TODO: Скорее всего будет button */}
-        <a href='none' className='main__search--filter p-3.5'>
+        <button className='main__search--filter p-3.5'>
           <SlidersHorizontal size={28} />
-        </a>
+        </button>
       </div>
     </div>
   );
