@@ -52,7 +52,7 @@ const Profile = ({closeModal}: ModalProps) => {
       <div className='mt-16'>
         <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>
         {userData ? (
-          <div className=''>
+          <div className='text-left'>
             {Object.entries(userData).map(([key, value]) => (
               <p key={key}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}

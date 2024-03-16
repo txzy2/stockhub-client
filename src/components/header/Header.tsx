@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='flex justify-between mx-4 my-4'>
-        <button className='flex items-center gap-1' onClick={openModal}>
+        <button className='flex gap-1' onClick={openModal}>
           <CircleUser size={32} />
           {user?.first_name !== undefined ? (
             <>
