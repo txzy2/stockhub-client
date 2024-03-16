@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='flex justify-between items-center mx-4 my-4'>
-        <button className='flex gap-1' onClick={openModal}>
+        <button className='flex gap-2 items-center' onClick={openModal}>
           {user?.first_name ? (
             <>
               <CircleUser size={32} />
