@@ -52,12 +52,14 @@ const Profile = ({closeModal}: ModalProps) => {
       <div className='mt-16'>
         <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>
         {userData ? (
-          Object.entries(userData).map(([key, value]) => (
-            <p key={key}>
-              {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
-              {value === 'none' ? 'Данные не заполнены' : value}
-            </p>
-          ))
+          <div className=''>
+            {Object.entries(userData).map(([key, value]) => (
+              <p key={key}>
+                {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
+                {value === 'none' ? 'Данные не заполнены' : value}
+              </p>
+            ))}
+          </div>
         ) : (
           <div className='flex items-center'>
             <Loader className='animate-spin-slow spinner' size={32} />
