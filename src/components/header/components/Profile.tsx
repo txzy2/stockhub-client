@@ -43,13 +43,13 @@ const Profile = ({closeModal}: ModalProps) => {
 
   return (
     <>
-      <a href='/'>
+      <button onClick={closeModal}>
         <X
           onClick={closeModal}
           className='absolute top-0 right-0 mt-5 mr-5'
           size={36}
         />
-      </a>
+      </button>
 
       <div className='mt-16'>
         <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>
