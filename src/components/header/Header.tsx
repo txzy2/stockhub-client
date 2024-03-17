@@ -3,7 +3,7 @@ import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
 import {CircleUser, Loader, ShoppingCart} from 'lucide-react';
-import {Profile} from './components/Profile';
+import Profile from './components/Profile';
 
 const Header = () => {
   const {user, tg} = UseTg();
