@@ -1,4 +1,4 @@
-import {Loader, X} from 'lucide-react';
+import {Check, CircleUser, Loader, X} from 'lucide-react';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -18,7 +18,7 @@ const Profile = ({closeModal}: ModalProps) => {
   useEffect(() => {
     const userReq = async (chat_id: string) => {
       if (chat_id) {
-        console.log(chat_id, '\n', typeof chat_id);
+        // console.log(chat_id, '\n', typeof chat_id);
         try {
           const userFetch = await axios.post(
             `https://stockhub12.ru:4200/api/user/get`,
@@ -36,7 +36,7 @@ const Profile = ({closeModal}: ModalProps) => {
         console.log('skip');
       }
     };
-    userReq(user?.id ? user?.id.toString() : user?.id === '307777256');
+    userReq(user?.id ? user?.id.toString() : '307777256');
   }, [tg, dispatch, user]);
 
   return (
@@ -51,13 +51,26 @@ const Profile = ({closeModal}: ModalProps) => {
 
       <div className='mt-16 ml-3 '>
         {userData ? (
-          <div className='mt-4 text-left text-xl'>
-            <h2 className='text-xl font-medium text-center'>Твоя стата:</h2>
-            {Object.entries(userData).map(([key, value]) => (
-              <p key={key}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
-                {value === 'none' ? '🚫' : value}
-              </p>
+          <div className='mt-4'>
+            <div className='flex items-center justify-center gap-1'>
+              <CircleUser size={32} />
+              <h2 className='text-xl font-medium '>Твоя стата:</h2>
+            </div>
+
+            {Object.entries(userData).map(([key, value], index) => (
+              <div className='flex mt-2 items-center gap-1' key={index}>
+                <div className='flex items-center text-xl font-medium'>
+                  {value === 'none' ? (
+                    <X className='text-red-400' />
+                  ) : (
+                    <Check className='text-green-500' />
+                  )}
+                  {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
+                </div>
+                <span className='italic text-lg'>
+                  {value === 'none' ? '🚫' : value}
+                </span>
+              </div>
             ))}
           </div>
         ) : (

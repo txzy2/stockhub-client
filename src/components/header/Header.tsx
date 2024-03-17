@@ -3,7 +3,7 @@ import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
 import {CircleUser, Loader, ShoppingCart} from 'lucide-react';
-import Profile from './components/Profile';
+import {Profile} from './components/Profile';
 
 const Header = () => {
   const {user, tg} = UseTg();
@@ -29,7 +29,7 @@ const Header = () => {
           {user?.first_name ? (
             <>
               <CircleUser size={32} />
-              <p className='font-medium italic text-lg'>{user?.first_name}</p>
+              <p className='font-medium italic text-lg'>Anton</p>
               <AnimatePresence>
                 {isModalOpen && (
                   <motion.div
