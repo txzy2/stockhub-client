@@ -31,3 +31,7 @@ export type UserReciveDto = {
 export type UserRecive = {
   user: UserReciveDto[];
 };
+
+export type ModalProps = {
+  closeModal: () => void;
+};

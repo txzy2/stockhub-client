@@ -1,20 +1,45 @@
 .header {
   &__user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 16px;
+  }
+
+  &__user {
+    &--btn {
+      display: flex;
+      align-items: center;
+
+      gap: 6px;
+    }
+
     &--img {
       background: #fff;
       border-radius: 20px;
     }
   }
-}
 
-.modal {
-  z-index: 9999;
-  overflow: hidden;
-  background: var(--bg);
-  color: var(--text);
+  &__load {
+    display: flex;
+    align-items: center;
+    gap: 2px;
 
-  top: 105px;
+    &--emoji {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
 
-  border-top-right-radius: 40px;
-  border-top-left-radius: 40px;
+  &__basket {
+    display: flex;
+    align-items: center;
+
+    &--count {
+      padding-top: 24px;
+      font-style: italic;
+      font-size: 20px;
+    }
+  }
 }

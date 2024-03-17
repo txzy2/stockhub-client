@@ -1,6 +1,5 @@
 import {
   BookCheck,
-  CircleUser,
   Coins,
   Loader,
   Mail,
@@ -8,31 +7,24 @@ import {
   PackageOpen,
   X,
 } from 'lucide-react';
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {setUser} from '../../../store/user/user.slice';
-import {RootState} from '../../../store/store';
 import {UseTg} from '../../../hooks/useTg';
+import {ModalProps} from '../../../types/types';
 
 import './profile.scss';
 
-type ModalProps = {
-  closeModal: () => void;
-};
-
 const iconMap: Record<string, React.ReactElement> = {
-  locale: <MapPin size={32} />,
-  email: <Mail size={32} />,
-  fio: <BookCheck size={32} />,
-  bonus: <Coins size={32} />,
-  orders: <PackageOpen size={32} />,
+  locale: <MapPin size={32} strokeWidth={1} />,
+  email: <Mail size={32} strokeWidth={1} />,
+  fio: <BookCheck size={32} strokeWidth={1} />,
+  bonus: <Coins size={32} strokeWidth={1} />,
+  orders: <PackageOpen size={32} strokeWidth={1} />,
 };
 
 const Profile = ({closeModal}: ModalProps) => {
   const {tg, user} = UseTg();
-  const dispatch = useDispatch();
-  const userData = useSelector((state: RootState) => state.user.user);
+  const [userData, setUserData] = useState<any>(null);
 
   useEffect(() => {
     const userReq = async (chat_id: string) => {
@@ -45,52 +37,46 @@ const Profile = ({closeModal}: ModalProps) => {
               headers: {'Content-Type': 'application/json'},
             }
           );
-          console.log('userFetch data:', userFetch.data);
-          dispatch(setUser(userFetch.data));
+          setUserData(userFetch.data);
         } catch (err) {
-          return null;
+          setUserData(null);
         }
       } else {
         console.log('skip');
       }
     };
     userReq(user?.id ? user?.id.toString() : '307777256');
-  }, [tg, dispatch, user]);
+  }, [tg, user]);
 
   return (
     <>
-      <a href='/' onClick={closeModal}>
-        <X
-          onClick={closeModal}
-          className='absolute top-0 right-0 mt-5 mr-5'
-          size={30}
-        />
-      </a>
+      <button type='button' onClick={closeModal}>
+        <X className='exit' size={30} />
+      </button>
 
-      <div className='mt-16 ml-3 profile'>
-        {userData ? (
-          <div className='mt-4 space-y-4'>
-            <div className='flex items-center space-x-2'>
-              <CircleUser size={35} />
-              <h2 className='text-xl font-medium'>
-                {user?.first_name ? user.first_name : 'Anton'}
-              </h2>
-            </div>
+      <div className='profile'>
+        {userData !== null ? (
+          <>
+            <h2 className='profile__username'>
+              {user?.first_name ? user.first_name : 'Anton'}
+            </h2>
 
             {Object.entries(userData).map(([key, value], index) => (
-              <div className='flex items-center space-x-2' key={index}>
-                <div className='flex items-center text-xl font-medium'>
-                  <div className='me-2 profile__icon'>{iconMap[key]}</div>
+              <div className='profile__info' key={index}>
+                <div className='profile__info--icon'>
+                  {iconMap[key]}
                   <span className='capitalize'>{key}:</span>
                 </div>
-                <span className='italic text-lg'>
-                  {value === 'none' ? '🚫' : value}
+                <span>
+                  {value === 'none'
+                    ? '🚫'
+                    : ('✅' + value ?? 'Unknown').toString()}
                 </span>
               </div>
             ))}
-          </div>
+          </>
         ) : (
-          <div className='inline-block'>
+          <div className='profile__load'>
             <Loader className='animate-spin-slow spinner' size={40} />
           </div>
         )}

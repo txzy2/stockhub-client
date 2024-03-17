@@ -8,15 +8,127 @@
   }
 
   &__search {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    &--input {
+      display: flex;
+      gap: 5px;
+
+      &_text {
+        width: 300px;
+        font-style: italic;
+        font-size: 16px;
+        outline: none;
+
+        background-color: var(--bg);
+      }
+    }
+
     &--input,
     &--filter {
       background: var(--bg);
       color: var(--text);
 
-      border-radius: 9px;
+      padding: 10px;
 
-      &_text {
-        background-color: var(--bg);
+      border-radius: 9px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+
+    &-item {
+      width: 187px;
+      height: 47px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 12px;
+      border-radius: 8px;
+
+      background-color: var(--bg);
+    }
+  }
+
+  &__carousel {
+    max-width: 410px;
+    height: 250px;
+
+    display: flex;
+    margin: 15px auto;
+    align-items: center;
+
+    background-color: var(--bg);
+
+    align-items: center;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 60px;
+
+    &--item {
+      max-width: 280px;
+
+      margin-top: -40px;
+    }
+  }
+
+  &__product {
+    width: 410px;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0 auto;
+    padding: 12px 8px;
+    gap: 8px;
+
+    border-radius: 12px;
+    background-color: var(--bg);
+
+    &_carousel {
+      max-width: 197px;
+      height: 170px;
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+
+      text-align: justify;
+      gap: 10px;
+
+      &--title {
+        text-align: left;
+
+        font-weight: 500;
+        font-size: 20px;
+      }
+
+      &--sizes {
+        display: flex;
+      }
+    }
+
+    &_price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &--value {
+        font-weight: 500;
+        font-style: italic;
+        font-size: 20px;
       }
     }
   }

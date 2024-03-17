@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 * {
   margin: 0;
@@ -15,12 +16,67 @@
 }
 
 body {
+  position: relative;
   background: var(--bg-sec);
   color: var(--text);
 
   font-family: 'Rubik', sans-serif;
 }
 
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
+}
+
+.circle {
+  position: absolute;
+  background-color: var(--text);
+  border-radius: 50%;
+  animation: move linear infinite;
+  z-index: -1000;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50vw);
+  }
+}
+
+.control-dots,
+.control-arrow,
+.carousel-status {
+  visibility: hidden;
+}
+
 .spinner {
   color: var(--text);
+}
+
+.modal {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  overflow: hidden;
+
+  top: 105px;
+
+  background: var(--bg);
+  color: var(--text);
+
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px 20px 0 0;
 }
