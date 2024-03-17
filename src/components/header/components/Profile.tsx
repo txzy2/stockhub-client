@@ -1,4 +1,15 @@
-import {Check, CircleUser, Loader, X} from 'lucide-react';
+import {
+  BookCheck,
+  Check,
+  CircleUser,
+  Coins,
+  ConciergeBell,
+  Loader,
+  Mail,
+  MapPin,
+  PackageOpen,
+  X,
+} from 'lucide-react';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -10,6 +21,14 @@ type ModalProps = {
   closeModal: () => void;
 };
 
+const iconMap: Record<string, React.ReactElement> = {
+  locale: <MapPin size={32} />,
+  email: <Mail size={32} />,
+  fio: <BookCheck size={32} />,
+  bonus: <Coins size={32} />,
+  orders: <PackageOpen size={32} />,
+};
+
 const Profile = ({closeModal}: ModalProps) => {
   const {tg, user} = UseTg();
   const dispatch = useDispatch();
@@ -18,7 +37,6 @@ const Profile = ({closeModal}: ModalProps) => {
   useEffect(() => {
     const userReq = async (chat_id: string) => {
       if (chat_id) {
-        // console.log(chat_id, '\n', typeof chat_id);
         try {
           const userFetch = await axios.post(
             `https://stockhub12.ru:4200/api/user/get`,
@@ -49,23 +67,25 @@ const Profile = ({closeModal}: ModalProps) => {
         />
       </a>
 
-      <div className='mt-16 ml-3 '>
+      <div className='mt-16 ml-3'>
         {userData ? (
-          <div className='mt-4'>
-            <div className='flex items-center justify-center gap-1'>
-              <CircleUser size={32} />
-              <h2 className='text-xl font-medium '>Твоя стата:</h2>
+          <div className='mt-4 space-y-4'>
+            <div className='flex items-center space-x-2'>
+              <CircleUser size={35} />
+              <h2 className='text-xl font-medium'>
+                {user?.first_name ? user.first_name : 'Anton'}
+              </h2>
             </div>
 
             {Object.entries(userData).map(([key, value], index) => (
-              <div className='flex mt-2 items-center gap-1' key={index}>
+              <div className='flex items-center space-x-2' key={index}>
                 <div className='flex items-center text-xl font-medium'>
                   {value === 'none' ? (
-                    <X className='text-red-400' />
+                    <X className='text-red-400' size={32} />
                   ) : (
-                    <Check className='text-green-500' />
+                    <div className='me-2'>{iconMap[key]}</div>
                   )}
-                  {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
+                  <span className='capitalize'>{key}:</span>
                 </div>
                 <span className='italic text-lg'>
                   {value === 'none' ? '🚫' : value}
@@ -74,7 +94,7 @@ const Profile = ({closeModal}: ModalProps) => {
             ))}
           </div>
         ) : (
-          <div className='inline-block align-text-bottom'>
+          <div className='inline-block'>
             <Loader className='animate-spin-slow spinner' size={40} />
           </div>
         )}
