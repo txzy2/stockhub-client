@@ -67,7 +67,7 @@ const Profile = ({closeModal}: ModalProps) => {
         />
       </a>
 
-      <div className='mt-16 ml-3'>
+      <div className='mt-16 ml-3 profile'>
         {userData ? (
           <div className='mt-4 space-y-4'>
             <div className='flex items-center space-x-2'>
