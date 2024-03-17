@@ -80,7 +80,7 @@ const Profile = ({closeModal}: ModalProps) => {
             {Object.entries(userData).map(([key, value], index) => (
               <div className='flex items-center space-x-2' key={index}>
                 <div className='flex items-center text-xl font-medium'>
-                  <div className='me-2'>{iconMap[key]}</div>
+                  <div className='me-2 profile__icon'>{iconMap[key]}</div>
                   <span className='capitalize'>{key}:</span>
                 </div>
                 <span className='italic text-lg'>

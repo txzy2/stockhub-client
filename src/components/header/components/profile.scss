@@ -1,3 +1,8 @@
-// .profile {
-//   color: var(--bg);
-// }
+.profile {
+  &__icon {
+    background: var(--bg);
+    color: var(--text);
+
+    border-radius: 9px;
+  }
+}
