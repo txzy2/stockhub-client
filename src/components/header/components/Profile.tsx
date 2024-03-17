@@ -36,9 +36,7 @@ const Profile = ({closeModal}: ModalProps) => {
         console.log('skip');
       }
     };
-    userReq(
-      user?.id.toString() ? user?.id.toString() : user?.id === '307777256'
-    );
+    userReq(user?.id ? user?.id.toString() : user?.id === '307777256');
   }, [tg, dispatch, user]);
 
   return (
@@ -47,25 +45,24 @@ const Profile = ({closeModal}: ModalProps) => {
         <X
           onClick={closeModal}
           className='absolute top-0 right-0 mt-5 mr-5'
-          size={36}
+          size={30}
         />
       </a>
 
-      <div className='mt-16 text-left'>
-        <h2 className='text-xl font-medium'>Твоя стата (тест):</h2>
+      <div className='mt-16 ml-3 '>
         {userData ? (
-          <div className='mt-4'>
+          <div className='mt-4 text-left text-xl'>
+            <h2 className='text-xl font-medium text-center'>Твоя стата:</h2>
             {Object.entries(userData).map(([key, value]) => (
               <p key={key}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}:{' '}
-                {value === 'none' ? 'Данные не заполнены' : value}
+                {value === 'none' ? '🚫' : value}
               </p>
             ))}
           </div>
         ) : (
-          <div className='flex items-center'>
-            <Loader className='animate-spin-slow spinner' size={32} />
-            <span className='text-lg'>Loading</span>
+          <div className='inline-block align-text-bottom'>
+            <Loader className='animate-spin-slow spinner' size={40} />
           </div>
         )}
       </div>

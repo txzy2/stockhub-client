@@ -45,9 +45,9 @@ const Header = () => {
               </AnimatePresence>
             </>
           ) : (
-            <div className='flex items-center gap-2'>
-              <Loader className='animate-spin-slow spinner' size={32} />
-              <span className='font-medium text-lg'>💀 Unknown</span>
+            <div className='flex items-center gap-1'>
+              <Loader className='animate-spin-slow spinner' size={34} />
+              <span className='font-medium text-2xl'>💀</span>
             </div>
           )}
         </button>
