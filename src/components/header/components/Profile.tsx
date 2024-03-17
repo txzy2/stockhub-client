@@ -1,9 +1,7 @@
 import {
   BookCheck,
-  Check,
   CircleUser,
   Coins,
-  ConciergeBell,
   Loader,
   Mail,
   MapPin,
@@ -16,6 +14,8 @@ import axios from 'axios';
 import {setUser} from '../../../store/user/user.slice';
 import {RootState} from '../../../store/store';
 import {UseTg} from '../../../hooks/useTg';
+
+import './profile.scss';
 
 type ModalProps = {
   closeModal: () => void;
