@@ -58,10 +58,6 @@ const Header = () => {
           </div>
         )}
 
-        <div className=''>
-          <img src={images.logo} alt='logo' />
-        </div>
-
         <div className='header__basket' onClick={openBasket}>
           <PackageOpen size={32} strokeWidth={1} />
           <span className='header__basket--count'>
