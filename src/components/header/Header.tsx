@@ -6,6 +6,7 @@ import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
 import {userReq} from '../../hooks/fetchUser';
+import {images} from '../../assets/imagesAssets';
 
 const Header = () => {
   const {user, tg} = UseTg();
@@ -56,6 +57,10 @@ const Header = () => {
             <span className='header__load--emoji'>💀</span>
           </div>
         )}
+
+        <div className=''>
+          <img src={images.logo} alt='logo' />
+        </div>
 
         <div className='header__basket' onClick={openBasket}>
           <PackageOpen size={32} strokeWidth={1} />
