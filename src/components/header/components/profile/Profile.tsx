@@ -45,15 +45,19 @@ const Profile = ({closeModal}: ModalProps) => {
 
             {Object.entries(userData).map(([key, value], index) => (
               <div className='profile__info' key={index}>
-                <div className='profile__info--icon'>
-                  {iconMap[key]}
-                  <span className='capitalize'>{key}:</span>
-                </div>
-                <span>
-                  {value === 'none'
-                    ? '🚫'
-                    : ('✅' + value ?? 'Unknown').toString()}
-                </span>
+                {key !== 'basket' && (
+                  <>
+                    <div className='profile__info--icon'>
+                      {iconMap[key]}
+                      <span className='capitalize'>{key + ': '}</span>
+                    </div>
+                    <span>
+                      {value === 'none'
+                        ? '🚫'
+                        : (value ?? 'Unknown').toString()}
+                    </span>
+                  </>
+                )}
               </div>
             ))}
           </>

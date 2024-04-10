@@ -16,11 +16,11 @@
     gap: 8px;
 
     &--input {
+      width: 85%;
       display: flex;
       gap: 5px;
 
       &_text {
-        width: 300px;
         font-style: italic;
         font-size: 16px;
         outline: none;
