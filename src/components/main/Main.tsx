@@ -19,24 +19,28 @@ import Filter from './components/Filter/Filter';
 
 const Main = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
-  const [isFilterOpen, setIsBasketOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const toggleCard = () => {
-    setIsCardOpen(!isCardOpen);
-    toggleModalBodyClass(!isCardOpen);
+  const openCard = () => {
+    setIsCardOpen(true);
+    setIsFilterOpen(false);
+    document.body.classList.add('modal-open');
   };
 
-  const toggleFilter = () => {
-    setIsBasketOpen(!isFilterOpen);
-    toggleModalBodyClass(!isFilterOpen);
+  const closeCard = () => {
+    setIsCardOpen(false);
+    document.body.classList.remove('modal-open');
   };
 
-  const toggleModalBodyClass = (isOpen: boolean) => {
-    if (isOpen) {
-      document.body.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-    }
+  const openFilter = () => {
+    setIsFilterOpen(true);
+    setIsCardOpen(false);
+    document.body.classList.add('modal-open');
+  };
+
+  const closeClose = () => {
+    setIsFilterOpen(false);
+    document.body.classList.remove('modal-open');
   };
 
   const items = Array.from({length: 3}).map((_, index) => (
@@ -55,7 +59,7 @@ const Main = () => {
             placeholder='Поиск'
           ></input>
         </div>
-        <button className='main__search--filter' onClick={toggleFilter}>
+        <button className='main__search--filter' onClick={openFilter}>
           <SlidersHorizontal size={28} />
         </button>
       </section>
@@ -86,7 +90,7 @@ const Main = () => {
       </section>
 
       <div className='mt-3'>
-        <div className='main__product' onClick={toggleCard}>
+        <div className='main__product' onClick={openCard}>
           <div className='main__product_carousel'>
             <Carousel
               infiniteLoop={true}
@@ -128,7 +132,7 @@ const Main = () => {
       </div>
 
       <div className='mt-3'>
-        <div className='main__product' onClick={toggleCard}>
+        <div className='main__product' onClick={openCard}>
           <div className='main__product_carousel'>
             <Carousel
               infiniteLoop={true}
@@ -170,7 +174,7 @@ const Main = () => {
       </div>
 
       <div className='mt-3'>
-        <div className='main__product' onClick={toggleCard}>
+        <div className='main__product' onClick={openCard}>
           <div className='main__product_carousel'>
             <Carousel
               infiniteLoop={true}
@@ -212,7 +216,7 @@ const Main = () => {
       </div>
 
       <AnimatePresence>
-        {(isCardOpen || isFilterOpen) && (
+        {isCardOpen && (
           <motion.div
             initial={{opacity: 0, y: 1000}}
             animate={{opacity: 1, y: 0}}
@@ -220,8 +224,21 @@ const Main = () => {
             transition={{duration: 0.5}}
             className='modal'
           >
-            {isCardOpen && <Card closeModal={toggleCard} />}
-            {isFilterOpen && <Filter closeModal={toggleFilter} />}
+            <Card closeModal={closeCard} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isFilterOpen && (
+          <motion.div
+            initial={{opacity: 0, y: 1000}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 1000}}
+            transition={{duration: 0.5}}
+            className='modal'
+          >
+            <Filter closeModal={closeClose} />
           </motion.div>
         )}
       </AnimatePresence>
