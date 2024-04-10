@@ -63,7 +63,9 @@
       &:focus,
       &.active {
         transform: scale(1.05);
+
         background-color: var(--text);
+        color: var(--bg);
       }
     }
   }
