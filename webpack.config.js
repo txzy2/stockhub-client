@@ -1,8 +1,12 @@
+// webpack.config.js or wherever your webpack configuration is defined
 module.exports = {
-  resolve: {
-    fallback: {
-      os: false,
-      crypto: false,
-    },
+  // other webpack configuration options
+  module: {
+    rules: [
+      {
+        test: /dotenv/,
+        use: 'ignore-loader',
+      },
+    ],
   },
 };

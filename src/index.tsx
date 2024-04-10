@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import 'dotenv/config';
 
 import './index.scss';
 import App from './App';
