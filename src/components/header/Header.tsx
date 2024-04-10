@@ -3,11 +3,21 @@ import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
 import {CircleUser, Loader, PackageOpen} from 'lucide-react';
-import Profile from './components/Profile';
+import Profile from './components/profile/Profile';
+import Basket from './components/basket/Basket';
 
 const Header = () => {
   const {user, tg} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBasketOpen, setBasket] = useState(false);
+
+  const openBasket = () => {
+    setBasket(true);
+  };
+
+  const closeBasket = () => {
+    setBasket(false);
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -37,7 +47,7 @@ const Header = () => {
           </div>
         )}
 
-        <div className='header__basket'>
+        <div className='header__basket' onClick={openBasket}>
           <PackageOpen size={32} strokeWidth={1} />
           <span className='header__basket--count'>2</span>
         </div>
@@ -53,6 +63,20 @@ const Header = () => {
             className='modal'
           >
             <Profile closeModal={closeModal} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isBasketOpen && (
+          <motion.div
+            initial={{opacity: 0, y: 1000}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 1000}}
+            transition={{duration: 0.5}}
+            className='modal'
+          >
+            <Basket closeModal={closeBasket} />
           </motion.div>
         )}
       </AnimatePresence>

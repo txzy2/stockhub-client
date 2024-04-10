@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {UseTg} from '../../../hooks/useTg';
-import {ModalProps} from '../../../types/types';
+import {UseTg} from '../../../../hooks/useTg';
+import {ModalProps} from '../../../../types/types';
 
 import './profile.scss';
 

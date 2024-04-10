@@ -73,42 +73,86 @@ const Main = () => {
         </div>
       </section>
 
-      <div className='main__product' onClick={openModal}>
-        <div className='main__product_carousel'>
-          <Carousel
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={3000}
-            showThumbs={false}
-          >
-            <div>
-              <img src={images.product} alt='product' />
+      <div className='mt-3'>
+        <div className='main__product' onClick={openModal}>
+          <div className='main__product_carousel'>
+            <Carousel
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={3000}
+              showThumbs={false}
+            >
+              <div>
+                <img src={images.product} alt='product' />
+              </div>
+              <div>
+                <img src={images.product} alt='product' />
+              </div>
+              <div>
+                <img src={images.product} alt='product' />
+              </div>
+            </Carousel>
+          </div>
+          <div className='main__product_info'>
+            <p className='main__product_info--title'>
+              Jordan 4 Retro SE Craft Photon Dust
+            </p>
+            <div className=''>
+              <p className='font-medium'>Размеры: </p>
+              <div className='main__product_info--sizes'>
+                <p className=''>8, </p>
+                <p className=''>8.5, </p>
+                <p className=''>9, </p>
+                <p className=''>9.5</p>
+              </div>
             </div>
-            <div>
-              <img src={images.product} alt='product' />
-            </div>
-            <div>
-              <img src={images.product} alt='product' />
-            </div>
-          </Carousel>
-        </div>
-        <div className='main__product_info'>
-          <p className='main__product_info--title'>
-            Jordan 4 Retro SE Craft Photon Dust
-          </p>
-          <div className=''>
-            <p className='font-medium'>Размеры: </p>
-            <div className='main__product_info--sizes'>
-              <p className=''>8, </p>
-              <p className=''>8.5, </p>
-              <p className=''>9, </p>
-              <p className=''>9.5</p>
+
+            <div className='main__product_price'>
+              <p className='main__product_price--value'>23 457₽</p>
+              <ArrowBigUpDash size={30} />
             </div>
           </div>
+        </div>
+      </div>
 
-          <div className='main__product_price'>
-            <p className='main__product_price--value'>23 457₽</p>
-            <ArrowBigUpDash size={30} />
+      <div className='mt-3'>
+        <div className='main__product' onClick={openModal}>
+          <div className='main__product_carousel'>
+            <Carousel
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={3000}
+              showThumbs={false}
+            >
+              <div>
+                <img src={images.product} alt='product' />
+              </div>
+              <div>
+                <img src={images.product} alt='product' />
+              </div>
+              <div>
+                <img src={images.product} alt='product' />
+              </div>
+            </Carousel>
+          </div>
+          <div className='main__product_info'>
+            <p className='main__product_info--title'>
+              Jordan 4 Retro SE Craft Photon Dust
+            </p>
+            <div className=''>
+              <p className='font-medium'>Размеры: </p>
+              <div className='main__product_info--sizes'>
+                <p className=''>8, </p>
+                <p className=''>8.5, </p>
+                <p className=''>9, </p>
+                <p className=''>9.5</p>
+              </div>
+            </div>
+
+            <div className='main__product_price'>
+              <p className='main__product_price--value'>23 457₽</p>
+              <ArrowBigUpDash size={30} />
+            </div>
           </div>
         </div>
       </div>
