@@ -21,10 +21,12 @@ const Main = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
+    document.body.classList.add('modal-open');
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    document.body.classList.remove('modal-open');
   };
 
   const items = Array.from({length: 3}).map((_, index) => (
