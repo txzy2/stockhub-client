@@ -41,18 +41,17 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='header__user'>
-        {/* {user?.first_name ? ( */}
-        <button className='header__user--btn' onClick={openModal}>
-          <CircleUser strokeWidth={1} size={32} />
-          {/* {user?.first_name} */}
-          Fnton
-        </button>
-        {/* ) : (
+        {user?.first_name ? (
+          <button className='header__user--btn' onClick={openModal}>
+            <CircleUser strokeWidth={1} size={32} />
+            {user?.first_name}
+          </button>
+        ) : (
           <div className='header__load'>
             <Loader className='animate-spin-slow spinner' size={34} />
             <span className='header__load--emoji'>💀</span>
           </div>
-        )} */}
+        )}
 
         <div className='header__basket' onClick={openBasket}>
           <PackageOpen size={32} strokeWidth={1} />
