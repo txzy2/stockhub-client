@@ -13,6 +13,7 @@ import {UseTg} from '../../../../hooks/useTg';
 import {ModalProps} from '../../../../types/types';
 
 import './profile.scss';
+import {userReq} from '../../../../hooks/fetchUser';
 
 const iconMap: Record<string, React.ReactElement> = {
   locale: <MapPin size={32} strokeWidth={1} />,
@@ -27,25 +28,7 @@ const Profile = ({closeModal}: ModalProps) => {
   const [userData, setUserData] = useState<any>(null);
 
   useEffect(() => {
-    const userReq = async (chat_id: string) => {
-      if (chat_id) {
-        try {
-          const userFetch = await axios.post(
-            `https://stockhub12.ru:4200/api/user/get`,
-            {chat_id},
-            {
-              headers: {'Content-Type': 'application/json'},
-            }
-          );
-          setUserData(userFetch.data);
-        } catch (err) {
-          setUserData(null);
-        }
-      } else {
-        console.log('skip');
-      }
-    };
-    userReq(user?.id ? user?.id.toString() : '307777256');
+    userReq(user?.id ? user?.id.toString() : '307777256', setUserData);
   }, [tg, user]);
 
   return (
