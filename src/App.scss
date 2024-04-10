@@ -63,7 +63,6 @@ body {
   position: fixed;
   z-index: 9999;
   inset: 0;
-  overflow: hidden;
 
   top: 105px;
 
@@ -72,6 +71,10 @@ body {
 
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 .exit {

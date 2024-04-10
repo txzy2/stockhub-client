@@ -13,18 +13,22 @@ const Header = () => {
 
   const openBasket = () => {
     setBasket(true);
+    document.body.classList.add('modal-open');
   };
 
   const closeBasket = () => {
     setBasket(false);
+    document.body.classList.remove('modal-open');
   };
 
   const openModal = () => {
     setIsModalOpen(true);
+    document.body.classList.add('modal-open');
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    document.body.classList.remove('modal-open');
   };
 
   useEffect(() => {
