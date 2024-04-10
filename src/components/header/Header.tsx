@@ -13,7 +13,7 @@ const Header = () => {
 
   const openBasket = () => {
     setBasket(true);
-    setIsModalOpen(false); // Скрыть профиль при открытии корзины
+    setIsModalOpen(false);
     document.body.classList.add('modal-open');
   };
 
@@ -24,7 +24,7 @@ const Header = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
-    setBasket(false); // Скрыть корзину при открытии профиля
+    setBasket(false);
     document.body.classList.add('modal-open');
   };
 

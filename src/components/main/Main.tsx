@@ -1,10 +1,4 @@
-import {
-  ArrowBigUpDash,
-  Footprints,
-  Search,
-  Shirt,
-  SlidersHorizontal,
-} from 'lucide-react';
+import {Footprints, Search, Shirt, SlidersHorizontal} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -14,27 +8,17 @@ import {AnimatePresence, motion} from 'framer-motion';
 import './main.scss';
 
 import {images} from '../../assets/imagesAssets';
-import Card from './components/Card/Card';
 import Filter from './components/Filter/Filter';
+import Shooes from './components/ShooesComponent/Shoes';
+import Cloth from './components/ClothComponent/Cloth';
 
 const Main = () => {
-  const [isCardOpen, setIsCardOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const openCard = () => {
-    setIsCardOpen(true);
-    setIsFilterOpen(false);
-    document.body.classList.add('modal-open');
-  };
-
-  const closeCard = () => {
-    setIsCardOpen(false);
-    document.body.classList.remove('modal-open');
-  };
+  const [selectedButton, setSelectedButton] = useState<string | null>('shoes');
 
   const openFilter = () => {
     setIsFilterOpen(true);
-    setIsCardOpen(false);
     document.body.classList.add('modal-open');
   };
 
@@ -65,14 +49,24 @@ const Main = () => {
       </section>
 
       <div className='main__btn'>
-        <button className='main__btn-item'>
+        <button
+          className={`main__btn-item ${
+            selectedButton === 'clothing' ? 'active' : ''
+          }`}
+          onClick={() => setSelectedButton('clothing')}
+        >
           <Shirt size={30} />
-          <p>Одежда</p>
+          Одежда
         </button>
 
-        <button className='main__btn-item'>
+        <button
+          className={`main__btn-item ${
+            selectedButton === 'shoes' ? 'active' : ''
+          }`}
+          onClick={() => setSelectedButton('shoes')}
+        >
           <Footprints />
-          <p>Обувь</p>
+          Обувь
         </button>
       </div>
 
@@ -89,145 +83,9 @@ const Main = () => {
         </div>
       </section>
 
-      <div className='mt-3'>
-        <div className='main__product' onClick={openCard}>
-          <div className='main__product_carousel'>
-            <Carousel
-              infiniteLoop={true}
-              autoPlay={true}
-              interval={3000}
-              showThumbs={false}
-            >
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-            </Carousel>
-          </div>
-          <div className='main__product_info'>
-            <p className='main__product_info--title'>
-              Jordan 4 Retro SE Craft Photon Dust
-            </p>
-            <div className=''>
-              <p className='font-medium'>Размеры: </p>
-              <div className='main__product_info--sizes'>
-                <p className=''>8, </p>
-                <p className=''>8.5, </p>
-                <p className=''>9, </p>
-                <p className=''>9.5</p>
-              </div>
-            </div>
+      {selectedButton === 'clothing' && <Cloth />}
 
-            <div className='main__product_price'>
-              <p className='main__product_price--value'>23 457₽</p>
-              <ArrowBigUpDash size={30} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='mt-3'>
-        <div className='main__product' onClick={openCard}>
-          <div className='main__product_carousel'>
-            <Carousel
-              infiniteLoop={true}
-              autoPlay={true}
-              interval={3000}
-              showThumbs={false}
-            >
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-            </Carousel>
-          </div>
-          <div className='main__product_info'>
-            <p className='main__product_info--title'>
-              Jordan 4 Retro SE Craft Photon Dust
-            </p>
-            <div className=''>
-              <p className='font-medium'>Размеры: </p>
-              <div className='main__product_info--sizes'>
-                <p className=''>8, </p>
-                <p className=''>8.5, </p>
-                <p className=''>9, </p>
-                <p className=''>9.5</p>
-              </div>
-            </div>
-
-            <div className='main__product_price'>
-              <p className='main__product_price--value'>23 457₽</p>
-              <ArrowBigUpDash size={30} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='mt-3'>
-        <div className='main__product' onClick={openCard}>
-          <div className='main__product_carousel'>
-            <Carousel
-              infiniteLoop={true}
-              autoPlay={true}
-              interval={3000}
-              showThumbs={false}
-            >
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-              <div>
-                <img src={images.product} alt='product' />
-              </div>
-            </Carousel>
-          </div>
-          <div className='main__product_info'>
-            <p className='main__product_info--title'>
-              Jordan 4 Retro SE Craft Photon Dust
-            </p>
-            <div className=''>
-              <p className='font-medium'>Размеры: </p>
-              <div className='main__product_info--sizes'>
-                <p className=''>8, </p>
-                <p className=''>8.5, </p>
-                <p className=''>9, </p>
-                <p className=''>9.5</p>
-              </div>
-            </div>
-
-            <div className='main__product_price'>
-              <p className='main__product_price--value'>23 457₽</p>
-              <ArrowBigUpDash size={30} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {isCardOpen && (
-          <motion.div
-            initial={{opacity: 0, y: 1000}}
-            animate={{opacity: 1, y: 0}}
-            exit={{opacity: 0, y: 1000}}
-            transition={{duration: 0.5}}
-            className='modal'
-          >
-            <Card closeModal={closeCard} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {selectedButton === 'shoes' && <Shooes />}
 
       <AnimatePresence>
         {isFilterOpen && (
