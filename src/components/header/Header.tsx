@@ -53,8 +53,8 @@ const Header = () => {
           </button>
         ) : (
           <div className='header__load'>
-            <Loader className='animate-spin-slow spinner' size={34} />
             <span className='header__load--emoji'>💀</span>
+            <Loader className='animate-spin-slow spinner' size={34} />
           </div>
         )}
 
