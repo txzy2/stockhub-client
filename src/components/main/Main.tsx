@@ -1,10 +1,4 @@
-import {
-  Footprints,
-  Loader,
-  Search,
-  Shirt,
-  SlidersHorizontal,
-} from 'lucide-react';
+import {Footprints, Search, Shirt, SlidersHorizontal} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -114,8 +108,14 @@ const Main = () => {
       ) : (
         <>
           <div className='main__load'>
-            {/* <Loader className='animate-spin-slow spinner' size={50} /> */}
-            <img src={images.qr} alt='qr' width={560} height={560} />
+            <a
+              className='main__load--link'
+              href='https://t.me/yokross_bot'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src={images.qr} alt='qr' width={560} height={560} />
+            </a>
             <p>💀 Данная версия доступна только в телеграме</p>
           </div>
         </>
