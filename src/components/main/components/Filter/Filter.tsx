@@ -2,10 +2,15 @@ import {X} from 'lucide-react';
 import {ModalProps} from '../../../../types/types';
 
 import './filter.scss';
+import Circles from '../../../ui/Circles';
 
 const Filter = ({closeModal}: ModalProps) => {
   return (
     <div className='filter'>
+      <div className='background'>
+        <Circles />
+      </div>
+
       <button type='button' onClick={closeModal}>
         <X className='exit' size={30} />
       </button>
