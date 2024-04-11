@@ -114,8 +114,9 @@ const Main = () => {
       ) : (
         <>
           <div className=' main__load'>
-            <Loader className='animate-spin-slow spinner' size={50} />
-            <p>Данная версия доступна только при использовании телеграма</p>
+            {/* <Loader className='animate-spin-slow spinner' size={50} /> */}
+            <img src={images.qr} alt='qr' />
+            <p>Данная версия доступна только в телеграме</p>
           </div>
         </>
       )}
