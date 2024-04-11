@@ -1,12 +1,14 @@
 .filter {
-  &__options {
-    margin: 50px 30px;
+  display: grid;
+  gap: 20px;
 
+  margin: 50px 30px;
+  &__options {
     font-size: 20px;
     color: var(--text);
 
     &--select {
-      width: 80%;
+      width: 90%;
       padding: 10px 0;
       border-radius: 9px;
       background: var(--text);
