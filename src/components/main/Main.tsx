@@ -37,74 +37,74 @@ const Main = () => {
 
   return (
     <div className='main'>
-      {/* {user?.id ? (
-        <> */}
-      <section className='main__search'>
-        <div className='main__search--input'>
-          <Search size={28} />
-          <input
-            className='main__search--input_text'
-            placeholder='Поиск'
-          ></input>
-        </div>
-        <button className='main__search--filter' onClick={openFilter}>
-          <SlidersHorizontal size={28} />
-        </button>
-      </section>
+      {user?.id ? (
+        <>
+          <section className='main__search'>
+            <div className='main__search--input'>
+              <Search size={28} />
+              <input
+                className='main__search--input_text'
+                placeholder='Поиск'
+              ></input>
+            </div>
+            <button className='main__search--filter' onClick={openFilter}>
+              <SlidersHorizontal size={28} />
+            </button>
+          </section>
 
-      <div className='main__btn'>
-        <button
-          className={`main__btn-item ${
-            selectedButton === 'clothing' ? 'active' : ''
-          }`}
-          onClick={() => setSelectedButton('clothing')}
-        >
-          <Shirt size={30} />
-          Одежда
-        </button>
+          <div className='main__btn'>
+            <button
+              className={`main__btn-item ${
+                selectedButton === 'clothing' ? 'active' : ''
+              }`}
+              onClick={() => setSelectedButton('clothing')}
+            >
+              <Shirt size={30} />
+              Одежда
+            </button>
 
-        <button
-          className={`main__btn-item ${
-            selectedButton === 'shoes' ? 'active' : ''
-          }`}
-          onClick={() => setSelectedButton('shoes')}
-        >
-          <Footprints />
-          Обувь
-        </button>
-      </div>
+            <button
+              className={`main__btn-item ${
+                selectedButton === 'shoes' ? 'active' : ''
+              }`}
+              onClick={() => setSelectedButton('shoes')}
+            >
+              <Footprints />
+              Обувь
+            </button>
+          </div>
 
-      <section className='main__sections'>
-        <div className='main__carousel'>
-          <Carousel
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={5000}
-            showThumbs={false}
-          >
-            {items}
-          </Carousel>
-        </div>
-      </section>
+          <section className='main__sections'>
+            <div className='main__carousel'>
+              <Carousel
+                infiniteLoop={true}
+                autoPlay={true}
+                interval={5000}
+                showThumbs={false}
+              >
+                {items}
+              </Carousel>
+            </div>
+          </section>
 
-      {selectedButton === 'clothing' && <Cloth />}
+          {selectedButton === 'clothing' && <Cloth />}
 
-      {selectedButton === 'shoes' && <Shooes />}
+          {selectedButton === 'shoes' && <Shooes />}
 
-      <AnimatePresence>
-        {isFilterOpen && (
-          <motion.div
-            initial={{opacity: 0, y: 1000}}
-            animate={{opacity: 1, y: 0}}
-            exit={{opacity: 0, y: 1000}}
-            transition={{duration: 0.5}}
-            className='modal'
-          >
-            <Filter closeModal={closeClose} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      {/* </>
+          <AnimatePresence>
+            {isFilterOpen && (
+              <motion.div
+                initial={{opacity: 0, y: 1000}}
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0, y: 1000}}
+                transition={{duration: 0.5}}
+                className='modal'
+              >
+                <Filter closeModal={closeClose} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
       ) : (
         <>
           <div className='main__load'>
@@ -119,7 +119,7 @@ const Main = () => {
             <p>💀 Данная версия доступна только в телеграме</p>
           </div>
         </>
-      )} */}
+      )}
     </div>
   );
 };
