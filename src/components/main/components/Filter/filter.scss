@@ -9,10 +9,10 @@
 
     &--select {
       width: 90%;
-      padding: 10px 0;
+      padding: 10px 10px;
       border-radius: 9px;
-      background: var(--text);
-      color: var(--bg);
+      background: var(--bg-sec);
+      color: var(--text);
 
       appearance: none;
     }
