@@ -6,10 +6,9 @@ import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
 import {userReq} from '../../hooks/fetchUser';
-import {images} from '../../assets/imagesAssets';
 
 const Header = () => {
-  const {user, tg} = UseTg();
+  const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBasketOpen, setBasket] = useState(false);
 
@@ -37,11 +36,11 @@ const Header = () => {
     document.body.classList.remove('modal-open');
   };
 
+  // TODO: Перенести tg в App.tsx
+
   useEffect(() => {
-    tg.ready();
-    tg.expand();
     userReq(user?.id ? user?.id.toString() : '', setUserData);
-  }, [tg, user]);
+  }, [user]);
 
   return (
     <div className='header'>
