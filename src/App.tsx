@@ -15,14 +15,14 @@ const App = () => {
 
   return (
     <div className='App'>
-      {user?.id ? (
-        <>
-          <div className='background'>
-            <Circles />
-          </div>
-          <Header />
-          <Main />
-        </>
+      {/* {user?.id ? ( */}
+      {/* <> */}
+      <div className='background'>
+        <Circles />
+      </div>
+      <Header />
+      <Main />
+      {/* </>
       ) : (
         <>
           <div className='main__load'>
@@ -37,7 +37,7 @@ const App = () => {
             <p>💀 Данная версия доступна только в телеграме</p>
           </div>
         </>
-      )}
+      )} */}
     </div>
   );
 };
