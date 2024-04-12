@@ -11,10 +11,8 @@ import {images} from '../../assets/imagesAssets';
 import Filter from './components/Filter/Filter';
 import Shooes from './components/ShooesComponent/Shoes';
 import Cloth from './components/ClothComponent/Cloth';
-import {UseTg} from '../../hooks/useTg';
 
 const Main = () => {
-  const {user} = UseTg();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const [selectedButton, setSelectedButton] = useState<string | null>('shoes');
@@ -37,8 +35,6 @@ const Main = () => {
 
   return (
     <div className='main'>
-      {/* {user?.id ? ( */}
-      {/* <> */}
       <section className='main__search'>
         <div className='main__search--input'>
           <Search size={28} />
@@ -104,22 +100,6 @@ const Main = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* </> */}
-      {/* ) : (
-        <>
-          <div className='main__load'>
-            <a
-              className='main__load--link'
-              href='https://t.me/yokross_bot'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <img src={images.qr} alt='qr' width={560} height={560} />
-            </a>
-            <p>💀 Данная версия доступна только в телеграме</p>
-          </div>
-        </>
-      )} */}
     </div>
   );
 };
