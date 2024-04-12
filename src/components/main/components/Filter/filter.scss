@@ -5,13 +5,13 @@
   margin: 50px 30px;
   &__options {
     font-size: 20px;
-    color: #c0c0c0;
+    color: var(--text);
 
     &--select {
       width: 90%;
       padding: 10px 10px;
       border-radius: 9px;
-      background: #c0c0c0;
+      border: 1px solid #c0c0c0;
       color: var(--text);
 
       appearance: none;
