@@ -19,7 +19,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
       {label}
       <select className='filter__options--select'>
         {options.map((option: string, index: number) => (
-          <option key={index} value={option.toLowerCase()}>
+          <option key={index} value={option}>
             {option}
           </option>
         ))}
@@ -53,6 +53,10 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
             placeholder='До'
           />
         </div>
+
+        <button className='filter__btn' type='submit'>
+          Применить фильтры
+        </button>
       </form>
     </div>
   );
