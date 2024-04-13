@@ -39,10 +39,10 @@
 
   &__btn {
     padding: 10px 5px;
-    background: var(--bg);
-    color: var(--text);
+    background: #c0c0c0;
+    color: var(--bg-sec);
 
-    border: 1px solid #c0c0c0;
+    border: 1px solid var(--text);
 
     border-radius: 8px;
   }
