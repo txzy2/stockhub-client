@@ -36,8 +36,6 @@ const Header = () => {
     document.body.classList.remove('modal-open');
   };
 
-  // TODO: Перенести tg в App.tsx
-
   useEffect(() => {
     userReq(user?.id ? user?.id.toString() : '', setUserData);
   }, [user]);
