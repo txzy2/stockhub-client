@@ -25,16 +25,25 @@ const App = () => {
         </>
       ) : (
         <>
+          <div className='background'>
+            <Circles />
+          </div>
+
           <div className='main__load'>
             <a
-              className='main__load--link'
               href='https://t.me/yokross_bot'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src={images.qr} alt='qr' width={560} height={560} />
+              <img
+                className='qr'
+                src={images.qr}
+                alt='qr'
+                width={300}
+                height={300}
+              />
             </a>
-            <p>💀 Данная версия доступна только в телеграме</p>
+            <p className='error'>Используй Telegram ;)</p>
           </div>
         </>
       )}

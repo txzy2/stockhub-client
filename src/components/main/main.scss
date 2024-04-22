@@ -13,14 +13,6 @@
     text-align: center;
 
     font-size: 32px;
-
-    &--link {
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
   }
 
   &__close {
@@ -114,14 +106,6 @@
       max-width: 280px;
 
       margin-top: -40px;
-    }
-  }
-}
-
-@media (max-width: 992px) {
-  .main {
-    &__load {
-      font-size: 20px;
     }
   }
 }

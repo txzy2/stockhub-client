@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {UseTg} from '../../hooks/useTg';
 
 interface Circle {
   size: number;
@@ -22,7 +23,9 @@ const generateRandomCircleData = (numCircles: number): Circle[] => {
 };
 
 const Circles = () => {
-  const [numCircles, setNumCircles] = useState(30);
+  const {user} = UseTg();
+  const circles: number = user?.id ? 50 : 30;
+  const [numCircles, setNumCircles] = useState(circles);
   const [circleData, setCircleData] = useState<Circle[]>([]);
 
   useEffect(() => {
@@ -30,11 +33,11 @@ const Circles = () => {
   }, [numCircles]);
 
   return (
-    <div className='background'>
+    <div className={user?.id ? 'background' : 'backround-desk'}>
       {circleData.map((circle, index) => (
         <div
           key={index}
-          className='circle'
+          className={user?.id ? 'circle' : 'circle-desk'}
           style={{
             width: `${circle.size}px`,
             height: `${circle.size}px`,
