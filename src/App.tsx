@@ -30,6 +30,7 @@ const App = () => {
           </div>
 
           <div className='main__load'>
+            <p className='error bold'>StockHub12</p>
             <a
               href='https://t.me/yokross_bot'
               target='_blank'
@@ -43,7 +44,7 @@ const App = () => {
                 height={300}
               />
             </a>
-            <p className='error'>Используй Telegram ;)</p>
+            <p className='error'>Эксклюзиво только в Telegram</p>
           </div>
         </>
       )}
