@@ -114,6 +114,21 @@ body {
   border-top-left-radius: 40px;
 }
 
+.modal-right {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+
+  display: flex;
+
+  // background: var(--bg);
+  background: #e5e5e5;
+  color: var(--text);
+
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
 body.modal-open {
   overflow: hidden;
 }
