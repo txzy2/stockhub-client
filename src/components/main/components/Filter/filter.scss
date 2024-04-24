@@ -15,6 +15,12 @@
       color: #000;
     }
 
+    &--select,
+    &_price--input {
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))
+        drop-shadow(0 2px 6px rgba(0, 0, 0, 0.07));
+    }
+
     &--select {
       cursor: pointer;
 
@@ -26,9 +32,6 @@
       font-weight: 400;
 
       background: #c0c0c0;
-      // box-shadow:
-      //   0 4px 8px rgba(0, 0, 0, 0.1),
-      //   0 6px 20px rgba(0, 0, 0, 0.07);
     }
 
     &_price {
@@ -46,9 +49,6 @@
 
         color: #000;
         background: #c0c0c0;
-        // box-shadow:
-        //   0 4px 8px rgba(0, 0, 0, 0.1),
-        //   0 6px 20px rgba(0, 0, 0, 0.07);
       }
     }
   }
@@ -67,10 +67,9 @@
     border: 1px solid #c0c0c0;
     border-radius: 8px;
 
-    // box-shadow:
-    //   0 4px 8px rgba(0, 0, 0, 0.1),
-    //   0 6px 20px rgba(0, 0, 0, 0.07);
-    //
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))
+      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.07));
+
     transition: transform 0.3s ease;
 
     &:hover {
