@@ -32,7 +32,7 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
   return (
     <>
       <button type='button' onClick={closeModal}>
-        <X className='exit' size={30} color='black' />
+        <X className='exit' size={30} />
       </button>
 
       <div className='filter'>
@@ -56,7 +56,7 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
           </div>
 
           <button className='filter__btn' type='submit'>
-            <ArrowRight size={32} />
+            <ArrowRight size={32} color='black' />
           </button>
         </form>
       </div>
