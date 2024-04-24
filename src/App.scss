@@ -99,21 +99,7 @@ body {
   color: var(--text);
 }
 
-.modal {
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-
-  display: flex;
-
-  background: var(--bg);
-  // background: #e5e5e5;
-  color: var(--text);
-
-  border-top-right-radius: 40px;
-  border-top-left-radius: 40px;
-}
-
+.modal,
 .modal-right {
   position: fixed;
   z-index: 9999;
@@ -121,12 +107,16 @@ body {
 
   display: flex;
 
-  // background: var(--bg);
   background: #e5e5e5;
   color: var(--text);
 
-  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
   border-top-left-radius: 40px;
+}
+
+.modal-right {
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 0;
 }
 
 body.modal-open {
