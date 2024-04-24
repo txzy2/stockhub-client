@@ -15,11 +15,12 @@
   --btn-text: var(--tg-theme-button-text-color);
   --section-bg: var(--tg-theme-section-bg-color);
   --accent: var(--tg-theme-accent-text-color);
+  --header: var(--tg-theme-header-bg-color);
 }
 
 body {
   position: relative;
-  background: var(--accent);
+  background: var(--header);
   color: var(--text);
 
   font-family: 'Rubik', sans-serif;
