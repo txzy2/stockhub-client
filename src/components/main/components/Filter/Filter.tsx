@@ -35,7 +35,7 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
         <X className='exit' size={30} />
       </button>
 
-      <form action=''>
+      <form action='filter__form'>
         <FilterSelect label='Одежда / Обувь' options={options.clothes} />
         <FilterSelect label='Цвет' options={options.colors} />
         <FilterSelect label='Бренд' options={options.brands} />

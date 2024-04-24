@@ -1,22 +1,43 @@
 .filter {
   width: 90%;
-  display: flex;
-  flex-direction: column;
   gap: 20px;
 
   margin: 50px auto;
+
   &__options {
     font-size: 20px;
     color: var(--text);
 
     &--select {
-      padding: 10px 10px;
+      position: relative;
+
+      padding: 10px 30px 10px 10px;
       border-radius: 9px;
       border: 1px solid #c0c0c0;
-      background: none;
+      background: #c0c0c0;
       color: var(--text);
 
-      appearance: none;
+      box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 6px 20px rgba(0, 0, 0, 0.07);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        /* позиционирование стрелочки */
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid var(--text);
+        /* цвет стрелочки */
+        background: #c0c0c0;
+        /* фон стрелочки */
+        transform: translateY(-50%);
+        /* центрирование стрелочки по вертикали */
+      }
     }
 
     &_price {
@@ -32,18 +53,38 @@
         border: 1px solid #c0c0c0;
         border-radius: 9px;
 
-        background: none;
+        background: #c0c0c0;
+
+        box-shadow:
+          0 4px 8px rgba(0, 0, 0, 0.1),
+          0 6px 20px rgba(0, 0, 0, 0.07);
       }
     }
   }
 
   &__btn {
-    padding: 10px 5px;
+    cursor: pointer;
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 30px;
+
+    padding: 10px 10px;
     background: #c0c0c0;
     color: var(--bg-sec);
 
-    border: 1px solid var(--text);
-
+    border: 1px solid #c0c0c0;
     border-radius: 8px;
+
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      0 6px 20px rgba(0, 0, 0, 0.07);
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
