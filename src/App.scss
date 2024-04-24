@@ -18,7 +18,7 @@
 
 body {
   position: relative;
-  background: var(--section-bg);
+  background: var(--bg-sec);
   color: var(--text);
 
   font-family: 'Rubik', sans-serif;
@@ -108,7 +108,7 @@ body {
 
   display: flex;
 
-  background: var(--bg-sec);
+  background: var(--section-bg);
   color: var(--text);
 
   border-top-right-radius: 40px;
