@@ -14,11 +14,12 @@
   --btn: var(--tg-theme-button-color);
   --btn-text: var(--tg-theme-button-text-color);
   --section-bg: var(--tg-theme-section-bg-color);
+  --accent: var(--tg-theme-accent-text-color);
 }
 
 body {
   position: relative;
-  background: var(--bg-sec);
+  background: var(--accent);
   color: var(--text);
 
   font-family: 'Rubik', sans-serif;
