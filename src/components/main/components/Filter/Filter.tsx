@@ -15,7 +15,7 @@ interface FilterSelectProps {
 
 const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
   <div className='filter__options'>
-    <label className='grid text-black'>
+    <label className='filter__options--lable'>
       {label}
       <select className='filter__options--select'>
         {options.map((option: string, index: number) => (

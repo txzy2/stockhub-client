@@ -10,6 +10,12 @@
 
     margin-bottom: 20px;
 
+    &--lable {
+      display: grid;
+
+      color: var(--text);
+    }
+
     &--select {
       cursor: pointer;
 
