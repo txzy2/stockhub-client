@@ -30,35 +30,37 @@ const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
 
 const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
   return (
-    <div className='filter'>
+    <>
       <button type='button' onClick={closeModal}>
         <X className='exit' size={30} />
       </button>
 
-      <form action='filter__form'>
-        <FilterSelect label='Одежда / Обувь' options={options.clothes} />
-        <FilterSelect label='Цвет' options={options.colors} />
-        <FilterSelect label='Бренд' options={options.brands} />
-        <FilterSelect label='Откуда' options={options.locations} />
+      <div className='filter'>
+        <form action='filter__form'>
+          <FilterSelect label='Одежда / Обувь' options={options.clothes} />
+          <FilterSelect label='Цвет' options={options.colors} />
+          <FilterSelect label='Бренд' options={options.brands} />
+          <FilterSelect label='Откуда' options={options.locations} />
 
-        <div className='filter__options_price'>
-          <input
-            className='filter__options_price--input'
-            type='number'
-            placeholder='От'
-          />
-          <input
-            className='filter__options_price--input'
-            type='number'
-            placeholder='До'
-          />
-        </div>
+          <div className='filter__options_price'>
+            <input
+              className='filter__options_price--input'
+              type='number'
+              placeholder='От'
+            />
+            <input
+              className='filter__options_price--input'
+              type='number'
+              placeholder='До'
+            />
+          </div>
 
-        <button className='filter__btn' type='submit'>
-          <ArrowRight size={32} />
-        </button>
-      </form>
-    </div>
+          <button className='filter__btn' type='submit'>
+            <ArrowRight size={32} />
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
