@@ -1,4 +1,4 @@
-import {X} from 'lucide-react';
+import {ArrowRight, X} from 'lucide-react';
 import './filter.scss';
 
 const options = {
@@ -15,7 +15,7 @@ interface FilterSelectProps {
 
 const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
   <div className='filter__options'>
-    <label className='grid'>
+    <label className='grid text-black'>
       {label}
       <select className='filter__options--select'>
         {options.map((option: string, index: number) => (
@@ -55,7 +55,7 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
         </div>
 
         <button className='filter__btn' type='submit'>
-          Применить фильтры
+          <ArrowRight size={32} />
         </button>
       </form>
     </div>

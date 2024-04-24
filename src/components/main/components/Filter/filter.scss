@@ -1,4 +1,5 @@
 .filter {
+  position: relative;
   width: 90%;
   gap: 20px;
 
@@ -9,34 +10,23 @@
     color: var(--text);
 
     &--select {
-      position: relative;
+      cursor: pointer;
 
       padding: 10px 30px 10px 10px;
+
       border-radius: 9px;
       border: 1px solid #c0c0c0;
-      background: #c0c0c0;
-      color: var(--text);
 
+      background: #c0c0c0;
+      color: #000;
       box-shadow:
         0 4px 8px rgba(0, 0, 0, 0.1),
         0 6px 20px rgba(0, 0, 0, 0.07);
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        /* позиционирование стрелочки */
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid var(--text);
-        /* цвет стрелочки */
-        background: #c0c0c0;
-        /* фон стрелочки */
-        transform: translateY(-50%);
-        /* центрирование стрелочки по вертикали */
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
       }
     }
 
@@ -53,11 +43,17 @@
         border: 1px solid #c0c0c0;
         border-radius: 9px;
 
+        color: #000;
         background: #c0c0c0;
-
         box-shadow:
           0 4px 8px rgba(0, 0, 0, 0.1),
           0 6px 20px rgba(0, 0, 0, 0.07);
+
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }
@@ -66,13 +62,12 @@
     cursor: pointer;
 
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 0;
     bottom: 30px;
 
-    padding: 10px 10px;
+    padding: 8px 8px;
     background: #c0c0c0;
-    color: var(--bg-sec);
+    color: #000;
 
     border: 1px solid #c0c0c0;
     border-radius: 8px;
@@ -84,7 +79,7 @@
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 }
