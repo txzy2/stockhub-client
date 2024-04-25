@@ -1,14 +1,13 @@
 .shooes {
   width: 95%;
-  display: flex;
-  flex-direction: column;
-  margin: 0px auto;
-
+  display: gird;
+  margin: 0 auto;
   gap: 10px;
 
   &__product {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     padding: 12px 8px;
     gap: 8px;
