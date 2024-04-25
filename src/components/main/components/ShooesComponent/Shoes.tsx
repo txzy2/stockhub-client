@@ -21,7 +21,7 @@ const Shooes = () => {
   };
 
   return (
-    <div className='mt-3'>
+    <div className='shooes mt-3'>
       <div className='shooes__product' onClick={openCard}>
         <div className='shooes__product_carousel'>
           <Carousel
