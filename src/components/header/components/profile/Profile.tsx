@@ -28,6 +28,7 @@ const Profile = ({closeModal}: ModalProps) => {
 
   useEffect(() => {
     userReq(user?.id ? user?.id.toString() : '', setUserData);
+    // userReq('307777256', setUserData);
   }, [tg, user]);
 
   return (

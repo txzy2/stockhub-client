@@ -17,6 +17,8 @@ const Card = ({closeModal}: ModalProps) => {
     </div>
   ));
 
+  // TODO:Начать делать стили
+
   return (
     <div className='card'>
       <button type='button' onClick={closeModal}>

@@ -1,9 +1,10 @@
 .profile {
-  display: grid;
-  text-align: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
 
-  margin-top: 60px;
+  gap: 20px;
+
+  margin: 50px 20px;
 
   &__username {
     font-style: italic;
@@ -23,17 +24,16 @@
 
   &__info {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 5px;
 
-    font-family: 'Roboto Mono', sans-serif;
+    font-family: 'Rubik', sans-serif;
 
     &--icon {
       display: flex;
       align-items: center;
 
       gap: 4px;
-      margin-top: 30px;
 
       font-weight: 600;
     }
