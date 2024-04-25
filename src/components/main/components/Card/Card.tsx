@@ -40,11 +40,6 @@ const Card = ({closeModal}: ModalProps) => {
           <h3 className='card__info--text_title'>
             Jordan 4 Retro SE Craft Photon Dust
           </h3>
-          <p className='card__info--text_subtitle'>
-            Кроссовки Air Jordan 4 Retro SE "Craft Photon Dust" Основа пары
-            выполнена из премиальной гладкой кожи пыльно-серого цвета, а также
-            натуральной замши в том же оттенке.
-          </p>
           <p className='card__info--text__price'>23456₽</p>
         </div>
 
@@ -63,6 +58,12 @@ const Card = ({closeModal}: ModalProps) => {
             Заказать <ChevronRight />
           </a>
         </div>
+
+        <p className='card__info__subtitle'>
+          Кроссовки Air Jordan 4 Retro SE "Craft Photon Dust" Основа пары
+          выполнена из премиальной гладкой кожи пыльно-серого цвета, а также
+          натуральной замши в том же оттенке.
+        </p>
       </div>
     </div>
   );

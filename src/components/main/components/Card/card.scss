@@ -10,7 +10,7 @@
 
     &--carusel {
       max-width: 80%;
-      height: 250px;
+      height: auto;
 
       display: flex;
       margin: 15px auto;
@@ -18,7 +18,6 @@
 
       background-color: var(--bg);
 
-      align-items: center;
       border-top-left-radius: 60px;
       border-top-right-radius: 25px;
       border-bottom-left-radius: 25px;
@@ -28,14 +27,11 @@
     &--text {
       width: 80%;
       margin: 20px auto;
+      text-align: center;
 
       &_title {
         font-weight: 500;
-        font-size: 30px;
-      }
-
-      &_subtitle {
-        font-size: 16px;
+        font-size: 28px;
       }
 
       &__price {
@@ -84,6 +80,15 @@
       &_order {
         background: #47a76a;
       }
+    }
+
+    &__subtitle {
+      width: 80%;
+
+      margin: 0 auto;
+      padding: 10px 10px;
+
+      background: var(--bg);
     }
   }
 }
