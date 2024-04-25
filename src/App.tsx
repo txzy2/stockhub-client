@@ -1,42 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.scss';
 
 import {Header, Main} from './components';
 import Circles from './components/ui/Circles';
 import {UseTg} from './hooks/useTg';
 import {images} from './assets/imagesAssets';
-import {Loader} from 'lucide-react';
 
 const App = () => {
   const {tg, user} = UseTg();
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    const loadResources = async () => {
-      try {
-        await tg.ready(); // Предполагая, что tg.ready() возвращает промис
-        tg.expand();
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Ошибка загрузки ресурсов:', error);
-        setIsLoading(false);
-      }
-    };
-
-    loadResources();
+    tg.ready();
+    tg.expand();
   }, [tg, user]);
-
-  if (isLoading) {
-    return (
-      <div className='App'>
-        <div className='background'>
-          <Circles />
-        </div>
-
-        <Loader className='animate-spin-slow spinner' size={20} />
-      </div>
-    );
-  }
 
   return (
     <div className='App'>
