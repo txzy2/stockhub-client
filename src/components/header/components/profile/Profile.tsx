@@ -23,9 +23,17 @@ const iconMap: Record<string, React.ReactElement> = {
   orders: <PackageOpen size={32} strokeWidth={1} />,
 };
 
+type UserResponse = {
+  locale: string;
+  email: string;
+  fio: string;
+  orders: number;
+  bonus: number;
+};
+
 const Profile = ({closeModal}: ModalProps) => {
   const {tg, user} = UseTg();
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState<UserResponse | null>(null);
 
   useEffect(() => {
     userReq(user?.id ? user?.id.toString() : '', setUserData);
@@ -76,21 +84,21 @@ const Profile = ({closeModal}: ModalProps) => {
                 <div className='profile__details--user_container'>
                   <span>{iconMap.fio}</span>
                   <span>
-                    {userData.fio === 'none' ? userData.fio : 'Пусто'}
+                    {userData.fio !== 'none' ? userData.fio : 'Пусто'}
                   </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.email}</span>
                   <span className='border_bottom'>
-                    {userData.email === 'none' ? userData.email : 'Пусто'}
+                    {userData.email !== 'none' ? userData.email : 'Пусто'}
                   </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.locale}</span>
                   <span>
-                    {userData.locale === 'none' ? userData.locale : 'Пусто'}
+                    {userData.locale !== 'none' ? userData.locale : 'Пусто'}
                   </span>
                 </div>
               </div>
