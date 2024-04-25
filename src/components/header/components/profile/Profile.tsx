@@ -44,28 +44,29 @@ const Profile = ({closeModal}: ModalProps) => {
               {user?.first_name ? user.first_name : 'Anton'}
             </h2>
 
-            {Object.entries(userData).map(([key, value], index) => (
-              <div className='profile__info' key={index}>
-                {key !== 'basket' && (
-                  <>
-                    <div className='profile__info--icon'>
-                      {iconMap[key]}
-                      <span className='capitalize'>{key + ': '}</span>
+            <div className='profile__details'>
+              {Object.entries(userData).map(
+                ([key, value], index) =>
+                  key !== 'basket' && (
+                    <div className='profile__info' key={index}>
+                      <div className='profile__info--icon'>
+                        {iconMap[key]}
+                        <span className='profile__info--label'>
+                          {key + ':'}
+                        </span>
+                      </div>
+                      <span className='profile__info--value'>
+                        {value === 'none'
+                          ? '🚫'
+                          : (value ?? 'Unknown').toString()}
+                      </span>
                     </div>
-                    <span>
-                      {value === 'none'
-                        ? '🚫'
-                        : (value ?? 'Unknown').toString()}
-                    </span>
-                  </>
-                )}
-              </div>
-            ))}
+                  ),
+              )}
+            </div>
           </>
         ) : (
-          <div className='profile__load'>
-            <Loader className='animate-spin-slow spinner' size={40} />
-          </div>
+          <Loader className='animate-spin-slow spinner' size={20} />
         )}
       </div>
     </>
