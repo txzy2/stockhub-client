@@ -76,7 +76,7 @@ const Header = () => {
             animate={{opacity: 1, x: 0}}
             exit={{opacity: 0, x: -1000}}
             transition={{duration: 0.5}}
-            className='modal'
+            className='modal-left'
           >
             <Profile closeModal={closeModal} />
           </motion.div>
