@@ -28,8 +28,8 @@ const Profile = ({closeModal}: ModalProps) => {
   const [userData, setUserData] = useState<any>(null);
 
   useEffect(() => {
-    // userReq(user?.id ? user?.id.toString() : '', setUserData);
-    userReq('307777256', setUserData);
+    userReq(user?.id ? user?.id.toString() : '', setUserData);
+    // userReq('307777256', setUserData);
   }, [tg, user]);
 
   return (

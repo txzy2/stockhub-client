@@ -73,7 +73,7 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
           {/* TODO: Пофиксить баг с перепрыгиванием кнопки */}
 
           <button className='filter__btn' type='submit'>
-            <ArrowRight size={32} />
+            Применить
           </button>
         </form>
       </div>
