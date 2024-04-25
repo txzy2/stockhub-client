@@ -1,6 +1,83 @@
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  color: var(--text);
 
-  margin-top: 100px;
+  margin: 100px auto;
+
+  &__info {
+    display: grid;
+    gap: 10px;
+
+    &--carusel {
+      max-width: 410px;
+      height: 250px;
+
+      display: flex;
+      margin: 15px auto;
+      align-items: center;
+
+      background-color: var(--bg);
+
+      align-items: center;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 25px;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 60px;
+
+      &__item {
+        max-width: 340px;
+      }
+    }
+
+    &--text {
+      width: 80%;
+      margin: 0 auto;
+
+      &_title {
+        font-weight: 500;
+        font-size: 30px;
+      }
+
+      &_subtitle {
+        font-size: 16px;
+      }
+    }
+
+    &--sizes {
+      width: 80%;
+      margin: 0 auto;
+
+      border-radius: 8px;
+    }
+
+    &--btns {
+      display: flex;
+      width: 80%;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin: 0 auto;
+
+      &_basket,
+      &_order {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+
+        border-radius: 8px;
+      }
+
+      &_basket {
+        background: #ffb02e;
+      }
+
+      &_order {
+        background: #47a76a;
+      }
+    }
+  }
 }

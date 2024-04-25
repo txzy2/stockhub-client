@@ -10,7 +10,7 @@ const Card = ({closeModal}: ModalProps) => {
   const items = Array.from({length: 3}).map((_, index) => (
     <div key={index}>
       <img
-        className='main__carousel--item'
+        className='card__info--carusel__item'
         src={images.product}
         alt='product'
       />
@@ -25,9 +25,9 @@ const Card = ({closeModal}: ModalProps) => {
         <X className='exit' size={30} />
       </button>
 
-      <div className=''>
+      <div className='card__info'>
         <Carousel
-          className=''
+          className='card__info--carusel'
           infiniteLoop={true}
           autoPlay={true}
           interval={3000}
@@ -36,27 +36,29 @@ const Card = ({closeModal}: ModalProps) => {
           {items}
         </Carousel>
 
-        <div className=''>
-          <h3 className=''>Jordan 4 Retro SE Craft Photon Dust</h3>
-          <p>
+        <div className='card__info--text'>
+          <h3 className='card__info--text_title'>
+            Jordan 4 Retro SE Craft Photon Dust
+          </h3>
+          <p className='card__info--text_subtitle'>
             Кроссовки Air Jordan 4 Retro SE "Craft Photon Dust" Основа пары
             выполнена из премиальной гладкой кожи пыльно-серого цвета, а также
             натуральной замши в том же оттенке.
           </p>
         </div>
 
-        <select className='' name='size'>
+        <select className='card__info--sizes' name='size'>
           <option hidden>Выбери размер</option>
           <option value='8'>8 us</option>
           <option value='8.5'>8.5 us</option>
           <option value='9'>9 us</option>
         </select>
 
-        <div className=''>
-          <a className='' href='/'>
+        <div className='card__info--btns'>
+          <a className='card__info--btns_basket' href='/'>
             <ChevronLeft />В корзину
           </a>
-          <a className='' href='/'>
+          <a className='card__info--btns_order' href='/'>
             Заказать <ChevronRight />
           </a>
         </div>
