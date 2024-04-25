@@ -1,4 +1,5 @@
 import {ArrowRight, X} from 'lucide-react';
+import {useEffect} from 'react';
 import './filter.scss';
 
 const options = {
@@ -29,6 +30,20 @@ const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
 );
 
 const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
+  useEffect(() => {
+    const handleResize = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <button type='button' onClick={closeModal}>
