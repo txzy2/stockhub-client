@@ -53,7 +53,7 @@ const Profile = ({closeModal}: ModalProps) => {
                   </label>
                   <div className='profile__details--stat_container-info'>
                     <span>{iconMap.orders}</span>
-                    <span>{userData.orders}</span>
+                    <span>{userData?.orders}</span>
                   </div>
                 </div>
 
@@ -63,7 +63,7 @@ const Profile = ({closeModal}: ModalProps) => {
                   </label>
                   <div className='profile__details--stat_container-info'>
                     <span>{iconMap.bonus}</span>
-                    <span>{userData.bonus}</span>
+                    <span>{userData?.bonus}</span>
                   </div>
                 </div>
               </div>
@@ -75,17 +75,19 @@ const Profile = ({closeModal}: ModalProps) => {
               <div className='profile__details--user'>
                 <div className='profile__details--user_container'>
                   <span>{iconMap.fio}</span>
-                  <span>{userData.fio}</span>
+                  <span>{userData?.fio ? userData.fio : 'Пусто'}</span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.email}</span>
-                  <span className='border_bottom'>{userData.email}</span>
+                  <span className='border_bottom'>
+                    {userData?.email ? userData.email : 'Пусто'}
+                  </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.locale}</span>
-                  <span>{userData.locale}</span>
+                  <span>{userData?.locale ? userData.locale : 'Пусто'}</span>
                 </div>
               </div>
             </div>
