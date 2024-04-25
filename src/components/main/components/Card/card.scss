@@ -9,7 +9,7 @@
     gap: 10px;
 
     &--carusel {
-      max-width: 410px;
+      max-width: 80%;
       height: 250px;
 
       display: flex;
@@ -23,15 +23,11 @@
       border-top-right-radius: 25px;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 60px;
-
-      &__item {
-        max-width: 340px;
-      }
     }
 
     &--text {
       width: 80%;
-      margin: 0 auto;
+      margin: 20px auto;
 
       &_title {
         font-weight: 500;
@@ -41,11 +37,18 @@
       &_subtitle {
         font-size: 16px;
       }
+
+      &__price {
+        font-size: 24px;
+        font-weight: 600;
+        font-style: italic;
+      }
     }
 
     &--sizes {
       width: 80%;
       margin: 0 auto;
+      padding: 10px 0;
 
       border-radius: 8px;
     }

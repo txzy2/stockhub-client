@@ -45,6 +45,7 @@ const Card = ({closeModal}: ModalProps) => {
             выполнена из премиальной гладкой кожи пыльно-серого цвета, а также
             натуральной замши в том же оттенке.
           </p>
+          <p className='card__info--text__price'>23456₽</p>
         </div>
 
         <select className='card__info--sizes' name='size'>
