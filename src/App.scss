@@ -102,7 +102,8 @@ body {
 }
 
 .modal,
-.modal-right {
+.modal-right,
+.modal-left {
   position: fixed;
   overflow-y: auto;
   max-height: 100%;
@@ -113,14 +114,21 @@ body {
 
   background: var(--section-bg);
   color: var(--text);
+}
 
+.modal {
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
 }
 
 .modal-right {
   border-bottom-left-radius: 40px;
-  border-top-right-radius: 0;
+  border-top-left-radius: 40px;
+}
+
+.modal-left {
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
 }
 
 body.modal-open {
