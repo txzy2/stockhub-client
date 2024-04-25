@@ -22,6 +22,14 @@ const iconMap: Record<string, React.ReactElement> = {
   orders: <PackageOpen size={32} strokeWidth={1} />,
 };
 
+const localizedLabels: {[key: string]: string} = {
+  locale: 'Адрес:',
+  email: 'Email:',
+  fio: 'ФИО:',
+  bonus: 'Бонусы:',
+  orders: 'Заказы:',
+};
+
 const Profile = ({closeModal}: ModalProps) => {
   const {tg, user} = UseTg();
   const [userData, setUserData] = useState<any>(null);
@@ -52,7 +60,7 @@ const Profile = ({closeModal}: ModalProps) => {
                       <div className='profile__info--icon'>
                         {iconMap[key]}
                         <span className='profile__info--label'>
-                          {key + ':'}
+                          {localizedLabels[key] || key + ':'}
                         </span>
                       </div>
                       <span className='profile__info--value'>
@@ -66,7 +74,9 @@ const Profile = ({closeModal}: ModalProps) => {
             </div>
           </>
         ) : (
-          <Loader className='animate-spin-slow spinner' size={20} />
+          <div className='profile__load'>
+            <Loader className='animate-spin-slow spinner' size={40} />
+          </div>
         )}
       </div>
     </>
