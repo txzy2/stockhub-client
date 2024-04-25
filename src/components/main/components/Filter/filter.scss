@@ -21,11 +21,10 @@
       padding: 10px 30px 10px 10px;
 
       border-radius: 9px;
-      border: 1px solid #c0c0c0;
 
       font-weight: 400;
 
-      background: var(--bg);
+      background: var(--bg-sec);
     }
 
     &_price {
@@ -38,11 +37,10 @@
         padding: 10px 5px;
 
         outline: none;
-        border: 1px solid #c0c0c0;
         border-radius: 9px;
 
         color: var(--text);
-        background: #dadada;
+        background: var(--bg-sec);
       }
     }
   }
@@ -55,10 +53,9 @@
     bottom: 30px;
 
     padding: 8px 8px;
-    background: #dadada;
+    background: var(--bg-sec);
     color: var(--text);
 
-    border: 1px solid #c0c0c0;
     border-radius: 8px;
 
     transition: transform 0.3s ease;
