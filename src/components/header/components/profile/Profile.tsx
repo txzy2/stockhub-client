@@ -75,19 +75,23 @@ const Profile = ({closeModal}: ModalProps) => {
               <div className='profile__details--user'>
                 <div className='profile__details--user_container'>
                   <span>{iconMap.fio}</span>
-                  <span>{userData?.fio ? userData.fio : 'Пусто'}</span>
+                  <span>
+                    {userData.fio === 'none' ? userData.fio : 'Пусто'}
+                  </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.email}</span>
                   <span className='border_bottom'>
-                    {userData?.email ? userData.email : 'Пусто'}
+                    {userData.email === 'none' ? userData.email : 'Пусто'}
                   </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.locale}</span>
-                  <span>{userData?.locale ? userData.locale : 'Пусто'}</span>
+                  <span>
+                    {userData.locale === 'none' ? userData.locale : 'Пусто'}
+                  </span>
                 </div>
               </div>
             </div>
