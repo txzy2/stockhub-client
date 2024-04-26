@@ -1,21 +1,23 @@
-export type sizes = {
-  id: number;
-  size: string;
-};
-
-export type ProductReciveDto = {
-  id: number;
-  name: string;
-  brand: string;
-  material: string;
+export type Variant = {
+  size: string[];
   color: string;
-  size: sizes[];
-  photo: string;
 };
 
-export type ProductRecive = {
-  product: ProductReciveDto[];
+export type Product = {
+  article: string;
+  brand: string;
+  createdAt: string;
+  id: number;
+  material: string;
+  model: string;
+  name: string;
+  photos: string[];
+  updatedAt: string;
+  var: string;
+  variants: Variant[];
 };
+
+export type ProductReceive = Product[];
 
 export type UserReciveDto = {
   id: number;

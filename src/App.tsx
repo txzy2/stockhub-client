@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 
-import {Header, Main} from './components';
+import { Header, Main } from './components';
 import Circles from './components/ui/Circles';
-import {UseTg} from './hooks/useTg';
-import {images} from './assets/imagesAssets';
+import { UseTg } from './hooks/useTg';
+import { images } from './assets/imagesAssets';
 
 const App = () => {
-  const {tg, user} = UseTg();
+  const { tg, user } = UseTg();
   useEffect(() => {
     tg.ready();
     tg.expand();

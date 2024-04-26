@@ -1,13 +1,13 @@
-import {ChevronLeft, ChevronRight, X} from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
-import {Carousel} from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel';
 
 import './card.scss';
-import {images} from '../../../../assets/imagesAssets';
-import {ModalProps} from '../../../../types/types';
+import { images } from '../../../../assets/imagesAssets';
+import { ModalProps } from '../../../../types/types';
 
-const Card = ({closeModal}: ModalProps) => {
-  const items = Array.from({length: 3}).map((_, index) => (
+const Card = ({ closeModal }: ModalProps) => {
+  const items = Array.from({ length: 3 }).map((_, index) => (
     <div key={index}>
       <img
         className='card__info--carusel__item'
