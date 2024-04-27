@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Typewriter from 'react-ts-typewriter';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -54,6 +55,20 @@ const Header = () => {
             <Loader className='animate-spin-slow spinner' size={34} />
           </div>
         )}
+
+        <div className='header__logo'>
+          <Typewriter
+            text='Stockhub12'
+            speed={150}
+            onFinished={() => {
+              (
+                document.getElementsByClassName(
+                  'Typewriter_cursor__8D1ip',
+                )[0] as HTMLElement
+              ).style.display = 'none';
+            }}
+          />
+        </div>
 
         <div className='header__basket' onClick={openBasket}>
           <PackageOpen size={32} strokeWidth={1} />

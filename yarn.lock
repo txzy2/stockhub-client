@@ -8546,6 +8546,14 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-ts-typewriter@^0.1.8-b:
+  version "0.1.8-b"
+  resolved "https://registry.yarnpkg.com/react-ts-typewriter/-/react-ts-typewriter-0.1.8-b.tgz#40ba4bd8bcb06b08e8672c19099574c66aef9c1e"
+  integrity sha512-vCXRMvF6J9ihrl+NZfpgTmgxj3nG2f6l+YqS2Up8SkwWbraPLRU0H32cPg7F76Y8tn311Cgaro2nLFja5/tGWA==
+  dependencies:
+    react "^18.2.0"
+    react-dom "^18.2.0"
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

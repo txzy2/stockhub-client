@@ -5,19 +5,26 @@
     align-items: center;
 
     margin: 14px 9px;
-  }
 
-  &__user {
     &--btn {
       display: flex;
       align-items: center;
 
       gap: 6px;
     }
+  }
 
-    &--img {
-      background: #fff;
-      border-radius: 20px;
+  &__logo {
+    font-size: 22px;
+    font-weight: 400;
+
+    color: var(--text);
+    box-shadow: 0 0 120px var(--text);
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--bg);
     }
   }
 
