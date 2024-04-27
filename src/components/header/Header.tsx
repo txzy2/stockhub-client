@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Typewriter from 'react-ts-typewriter';
+import Typewriter from 'typewriter-effect';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -45,43 +45,58 @@ const Header = () => {
     <div className='header'>
       <div className='header__user'>
         {user?.first_name ? (
-          <button className='header__user--btn' onClick={openModal}>
-            <CircleUser strokeWidth={1} size={32} />
-            {user?.first_name}
-          </button>
+          <motion.div
+            whileHover={{scale: 1.1}}
+            transition={{type: 'spring', stiffness: 400, damping: 10}}
+            id='main'
+          >
+            <button className='header__user--btn' onClick={openModal}>
+              <CircleUser strokeWidth={1} size={32} />
+              {user?.first_name}
+            </button>
+          </motion.div>
         ) : (
           <div className='header__load'>
             <span className='header__load--emoji'>💀</span>
-            <Loader className='animate-spin-slow spinner' size={34} />
+            <Loader className='animate-spin-slow spinner' size={30} />
           </div>
         )}
 
         <div className='header__logo'>
           <Typewriter
-            text='Stockhub12'
-            speed={150}
-            onFinished={() => {
-              (
-                document.getElementsByClassName(
-                  'Typewriter_cursor__8D1ip',
-                )[0] as HTMLElement
-              ).style.display = 'none';
+            onInit={typewriter => {
+              typewriter
+                .typeString('StockHub12')
+                .start()
+                .callFunction(() => {
+                  (
+                    document.getElementsByClassName(
+                      'Typewriter__cursor',
+                    )[0] as HTMLElement
+                  ).style.display = 'none';
+                });
             }}
           />
         </div>
 
-        <div className='header__basket' onClick={openBasket}>
-          <PackageOpen size={32} strokeWidth={1} />
-          <span className='header__basket--count'>
-            {userData !== null ? (
-              userData?.basket
-            ) : (
-              <div className='header__load'>
-                <Loader className='animate-spin-slow spinner' size={20} />
-              </div>
-            )}
-          </span>
-        </div>
+        <motion.div
+          whileHover={{scale: 1.1}}
+          transition={{type: 'spring', stiffness: 400, damping: 10}}
+          id='main'
+        >
+          <div className='header__basket' onClick={openBasket}>
+            <PackageOpen size={32} strokeWidth={1} />
+            <span className='header__basket--count'>
+              {userData !== null ? (
+                userData?.basket
+              ) : (
+                <div className='header__load'>
+                  <Loader className='animate-spin-slow spinner' size={20} />
+                </div>
+              )}
+            </span>
+          </div>
+        </motion.div>
       </div>
 
       <AnimatePresence>
