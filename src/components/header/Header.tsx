@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -62,22 +62,24 @@ const Header = () => {
           </div>
         )}
 
-        <div className='header__logo'>
-          <Typewriter
-            onInit={typewriter => {
-              typewriter
-                .typeString('StockHub12')
-                .start()
-                .callFunction(() => {
-                  (
-                    document.getElementsByClassName(
-                      'Typewriter__cursor',
-                    )[0] as HTMLElement
-                  ).style.display = 'none';
-                });
-            }}
-          />
-        </div>
+        {/* TODO: Подумать надо лого */}
+
+        {/* <div className='header__logo'> */}
+        {/*   <Typewriter */}
+        {/*     onInit={typewriter => { */}
+        {/*       typewriter */}
+        {/*         .typeString('StockHub12') */}
+        {/*         .start() */}
+        {/*         .callFunction(() => { */}
+        {/*           ( */}
+        {/*             document.getElementsByClassName( */}
+        {/*               'Typewriter__cursor', */}
+        {/*             )[0] as HTMLElement */}
+        {/*           ).style.display = 'none'; */}
+        {/*         }); */}
+        {/*     }} */}
+        {/*   /> */}
+        {/* </div> */}
 
         <motion.div
           whileHover={{scale: 1.1}}

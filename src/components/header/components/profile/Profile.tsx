@@ -8,6 +8,7 @@ import {
   User,
   X,
 } from 'lucide-react';
+import Typewriter from 'typewriter-effect';
 import React, {useEffect, useState} from 'react';
 import {UseTg} from '../../../../hooks/useTg';
 import {ModalProps} from '../../../../types/types';
@@ -50,7 +51,20 @@ const Profile = ({closeModal}: ModalProps) => {
         {userData !== null ? (
           <>
             <h2 className='profile__username'>
-              {user?.first_name ? user.first_name : 'Anton'}
+              <Typewriter
+                onInit={typewriter => {
+                  typewriter
+                    .typeString(`${user?.first_name}`)
+                    .start()
+                    .callFunction(() => {
+                      (
+                        document.getElementsByClassName(
+                          'Typewriter__cursor',
+                        )[0] as HTMLElement
+                      ).style.display = 'none';
+                    });
+                }}
+              />
             </h2>
 
             <div className='profile__details'>
