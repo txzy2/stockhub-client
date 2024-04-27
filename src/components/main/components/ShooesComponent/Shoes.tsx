@@ -1,12 +1,12 @@
-import { Carousel } from 'react-responsive-carousel';
-import { ArrowBigUpDash, Loader } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import {Carousel} from 'react-responsive-carousel';
+import {ArrowBigUpDash, Loader} from 'lucide-react';
+import {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
 import './shooes.scss';
-import { fetchShoes } from '../../../../hooks/fetchShoes';
-import { ProductReceive } from '../../../../types/types';
-import { images } from '../../../../assets/imagesAssets';
+import {fetchShoes} from '../../../../hooks/fetchShoes';
+import {ProductReceive} from '../../../../types/types';
+import {images} from '../../../../assets/imagesAssets';
 
 const Shooes = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -91,6 +91,7 @@ const Shooes = () => {
                   </div>
                 </div>
 
+                {/* TODO: ДОбавть получение прайса */}
                 <div className='shooes__product_price'>
                   <p className='shooes__product_price--value'>23 457₽</p>
                   <ArrowBigUpDash size={30} />
@@ -103,10 +104,10 @@ const Shooes = () => {
         <AnimatePresence>
           {isCardOpen && (
             <motion.div
-              initial={{ opacity: 0, y: 1000 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 1000 }}
-              transition={{ duration: 0.5 }}
+              initial={{opacity: 0, y: 1000}}
+              animate={{opacity: 1, y: 0}}
+              exit={{opacity: 0, y: 1000}}
+              transition={{duration: 0.5}}
               className='modal'
             >
               <Card closeModal={closeCard} />

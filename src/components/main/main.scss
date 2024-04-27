@@ -16,6 +16,7 @@
   }
 
   &__close {
+    width: 95%;
     cursor: pointer;
     outline: none;
 
@@ -24,15 +25,19 @@
   }
 
   &__search {
-    display: flex;
+    position: relative;
+    width: 95%;
 
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    margin: 0 auto;
 
     gap: 8px;
 
+    border: 2px solid var(--text);
+    border-radius: 8px;
+
     &--input {
-      width: 85%;
+      width: calc(100% - 70px);
       display: flex;
       gap: 5px;
 
@@ -53,6 +58,12 @@
       padding: 10px;
 
       border-radius: 9px;
+    }
+
+    &:has(input:focus) {
+      border: 2px solid #000;
+
+      box-shadow: 0 0 120px rgba(200, 200, 200, 0.5);
     }
   }
 
