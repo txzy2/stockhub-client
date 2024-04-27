@@ -8,12 +8,12 @@ import {
   User,
   X,
 } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
-import { UseTg } from '../../../../hooks/useTg';
-import { ModalProps } from '../../../../types/types';
+import React, {useEffect, useState} from 'react';
+import {UseTg} from '../../../../hooks/useTg';
+import {ModalProps} from '../../../../types/types';
 
 import './profile.scss';
-import { userReq } from '../../../../hooks/fetchUser';
+import {userReq} from '../../../../hooks/fetchUser';
 
 const iconMap: Record<string, React.ReactElement> = {
   locale: <MapPin size={32} strokeWidth={1} />,
@@ -31,8 +31,8 @@ type UserResponse = {
   bonus: number;
 };
 
-const Profile = ({ closeModal }: ModalProps) => {
-  const { user } = UseTg();
+const Profile = ({closeModal}: ModalProps) => {
+  const {user} = UseTg();
   const [userData, setUserData] = useState<UserResponse | null>(null);
 
   useEffect(() => {

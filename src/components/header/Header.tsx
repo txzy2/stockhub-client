@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './header.scss';
-import { UseTg } from '../../hooks/useTg';
-import { AnimatePresence, motion } from 'framer-motion';
-import { CircleUser, Loader, PackageOpen } from 'lucide-react';
+import {UseTg} from '../../hooks/useTg';
+import {AnimatePresence, motion} from 'framer-motion';
+import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
-import { userReq } from '../../hooks/fetchUser';
+import {userReq} from '../../hooks/fetchUser';
 
 const Header = () => {
-  const { user } = UseTg();
+  const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBasketOpen, setBasket] = useState(false);
 
@@ -72,10 +72,10 @@ const Header = () => {
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
-            initial={{ opacity: 0, x: -1000 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -1000 }}
-            transition={{ duration: 0.5 }}
+            initial={{opacity: 0, x: -1000}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: -1000}}
+            transition={{duration: 0.5}}
             className='modal-left'
           >
             <Profile closeModal={closeModal} />
@@ -86,10 +86,10 @@ const Header = () => {
       <AnimatePresence>
         {isBasketOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 1000 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 1000 }}
-            transition={{ duration: 0.5 }}
+            initial={{opacity: 0, y: 1000}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 1000}}
+            transition={{duration: 0.5}}
             className='modal'
           >
             <Basket closeModal={closeBasket} />
