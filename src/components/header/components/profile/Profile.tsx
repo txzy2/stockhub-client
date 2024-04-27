@@ -8,7 +8,6 @@ import {
   User,
   X,
 } from 'lucide-react';
-import Typewriter from 'typewriter-effect';
 import React, {useEffect, useState} from 'react';
 import {UseTg} from '../../../../hooks/useTg';
 import {ModalProps} from '../../../../types/types';
@@ -32,25 +31,6 @@ type UserResponse = {
   bonus: number;
 };
 
-const type = (value: string) => {
-  return (
-    <Typewriter
-      onInit={typewriter => {
-        typewriter
-          .typeString(`${value}`)
-          .start()
-          .callFunction(() => {
-            (
-              document.getElementsByClassName(
-                'Typewriter__cursor',
-              )[0] as HTMLElement
-            ).style.display = 'none';
-          });
-      }}
-    />
-  );
-};
-
 const Profile = ({closeModal}: ModalProps) => {
   const {user} = UseTg();
   const [userData, setUserData] = useState<UserResponse | null>(null);
@@ -69,7 +49,9 @@ const Profile = ({closeModal}: ModalProps) => {
       <div className='profile'>
         {userData !== null ? (
           <>
-            <h2 className='profile__username'>{type(`${user?.first_name}`)}</h2>
+            <h2 className='profile__username'>
+              {user?.first_name ? user.first_name : 'Anton'}
+            </h2>
 
             <div className='profile__details'>
               <div className='profile__details--stat'>
