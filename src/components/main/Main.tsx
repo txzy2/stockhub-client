@@ -73,6 +73,7 @@ const Main = () => {
       <section className='main__sections'>
         <div className='main__carousel'>
           <Carousel
+            centerMode={true}
             infiniteLoop={true}
             autoPlay={true}
             interval={5000}

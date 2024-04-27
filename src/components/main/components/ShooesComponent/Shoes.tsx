@@ -46,9 +46,10 @@ const Shooes = () => {
             <div className='shooes__product' key={index} onClick={openCard}>
               <div className='shooes__product_carousel'>
                 <Carousel
+                  animationHandler={'fade'}
                   infiniteLoop={true}
                   autoPlay={true}
-                  interval={3000}
+                  interval={5000}
                   showThumbs={false}
                 >
                   {product.photos.map((photo, photoIndex) => (
