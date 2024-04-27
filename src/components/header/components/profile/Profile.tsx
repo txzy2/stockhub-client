@@ -32,6 +32,25 @@ type UserResponse = {
   bonus: number;
 };
 
+const type = (value: string) => {
+  return (
+    <Typewriter
+      onInit={typewriter => {
+        typewriter
+          .typeString(`${value}`)
+          .start()
+          .callFunction(() => {
+            (
+              document.getElementsByClassName(
+                'Typewriter__cursor',
+              )[0] as HTMLElement
+            ).style.display = 'none';
+          });
+      }}
+    />
+  );
+};
+
 const Profile = ({closeModal}: ModalProps) => {
   const {user} = UseTg();
   const [userData, setUserData] = useState<UserResponse | null>(null);
@@ -50,22 +69,7 @@ const Profile = ({closeModal}: ModalProps) => {
       <div className='profile'>
         {userData !== null ? (
           <>
-            <h2 className='profile__username'>
-              <Typewriter
-                onInit={typewriter => {
-                  typewriter
-                    .typeString(`${user?.first_name}`)
-                    .start()
-                    .callFunction(() => {
-                      (
-                        document.getElementsByClassName(
-                          'Typewriter__cursor',
-                        )[0] as HTMLElement
-                      ).style.display = 'none';
-                    });
-                }}
-              />
-            </h2>
+            <h2 className='profile__username'>{type(`${user?.first_name}`)}</h2>
 
             <div className='profile__details'>
               <div className='profile__details--stat'>
@@ -98,14 +102,18 @@ const Profile = ({closeModal}: ModalProps) => {
                 <div className='profile__details--user_container'>
                   <span>{iconMap.fio}</span>
                   <span>
-                    {userData.fio !== 'none' ? userData.fio : 'Пусто'}
+                    {type(
+                      `${userData.fio !== 'none' ? userData.fio : 'Пусто'}`,
+                    )}
                   </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.email}</span>
                   <span className='border_bottom'>
-                    {userData.email !== 'none' ? userData.email : 'Пусто'}
+                    {type(
+                      `${userData.email !== 'none' ? userData.email : 'Пусто'}`,
+                    )}
                   </span>
                 </div>
 
