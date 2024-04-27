@@ -1,16 +1,17 @@
 .shooes {
-  width: 95%;
-  display: gird;
+  display: flex;
+  flex-direction: column;
+
   margin: 0 auto;
 
   &__product {
+    width: 95%;
     display: flex;
     align-items: center;
-    justify-content: center;
 
-    margin-top: 10px;
+    margin: 10px auto;
     padding: 12px 8px;
-    gap: 8px;
+    gap: 15px;
 
     border-radius: 12px;
     background-color: var(--bg);
