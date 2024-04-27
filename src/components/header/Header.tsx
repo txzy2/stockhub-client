@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-// import Typewriter from 'typewriter-effect';
+import Typewriter from 'typewriter-effect';
 import './header.scss';
 import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -52,7 +52,20 @@ const Header = () => {
           >
             <button className='header__user--btn' onClick={openModal}>
               <CircleUser strokeWidth={1} size={32} />
-              {user?.first_name}
+              <Typewriter
+                onInit={typewriter => {
+                  typewriter
+                    .typeString(`${user?.first_name}`)
+                    .start()
+                    .callFunction(() => {
+                      (
+                        document.getElementsByClassName(
+                          'Typewriter__cursor',
+                        )[0] as HTMLElement
+                      ).style.display = 'none';
+                    });
+                }}
+              />
             </button>
           </motion.div>
         ) : (
