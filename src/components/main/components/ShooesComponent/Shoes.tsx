@@ -46,7 +46,6 @@ const Shooes = () => {
             <div className='shooes__product' key={index} onClick={openCard}>
               <div className='shooes__product_carousel'>
                 <Carousel
-                  animationHandler={'fade'}
                   infiniteLoop={true}
                   autoPlay={true}
                   interval={5000}
