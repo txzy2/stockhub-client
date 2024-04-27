@@ -1,10 +1,11 @@
 .header {
+  width: 95%;
+  margin: 15px auto;
+
   &__user {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin: 14px 9px;
 
     &--btn {
       display: flex;
