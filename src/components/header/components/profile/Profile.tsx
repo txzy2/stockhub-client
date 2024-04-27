@@ -102,18 +102,14 @@ const Profile = ({closeModal}: ModalProps) => {
                 <div className='profile__details--user_container'>
                   <span>{iconMap.fio}</span>
                   <span>
-                    {type(
-                      `${userData.fio !== 'none' ? userData.fio : 'Пусто'}`,
-                    )}
+                    {userData.fio !== 'none' ? userData.fio : 'Пусто'}
                   </span>
                 </div>
 
                 <div className='profile__details--user_container'>
                   <span>{iconMap.email}</span>
                   <span className='border_bottom'>
-                    {type(
-                      `${userData.email !== 'none' ? userData.email : 'Пусто'}`,
-                    )}
+                    {userData.email !== 'none' ? userData.email : 'Пусто'}
                   </span>
                 </div>
 
