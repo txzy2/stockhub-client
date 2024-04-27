@@ -1,5 +1,5 @@
 import {Carousel} from 'react-responsive-carousel';
-import {ArrowBigUpDash, Loader} from 'lucide-react';
+import {Loader} from 'lucide-react';
 import {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
@@ -86,7 +86,7 @@ const Shooes = () => {
                   <p className='font-medium'>Размеры: </p>
                   <div className='shooes__product_info--sizes'>
                     {product.variants.map((variant, variantIndex) => (
-                      <p key={variantIndex}>{variant.size.join(', ')}</p>
+                      <p key={variantIndex}>{variant.size.join(' us, ')}</p>
                     ))}
                   </div>
                 </div>
@@ -116,7 +116,6 @@ const Shooes = () => {
   } else {
     return (
       <div className='load'>
-        {/* Если данные не загрузились или пусты, можно отображать сообщение о том, что нет данных */}
         <p>No data available</p>
       </div>
     );
