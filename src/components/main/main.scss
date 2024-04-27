@@ -65,22 +65,25 @@
   }
 
   &__btn {
+    width: 95%;
     display: flex;
-    justify-content: space-around;
-    margin-top: 12px;
+    margin: 12px auto;
+    gap: 20px;
 
     &-item {
-      width: 187px;
-      height: 47px;
+      width: 50%;
 
       display: flex;
       justify-content: center;
       align-items: center;
 
+      padding: 5px 0;
+
       gap: 12px;
       border-radius: 8px;
 
       background-color: var(--bg);
+      // background-color: #fff;
 
       transition: transform 0.3s ease;
 
