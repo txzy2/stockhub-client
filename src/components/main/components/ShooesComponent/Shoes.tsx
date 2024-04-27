@@ -45,36 +45,21 @@ const Shooes = () => {
           {shoeData.map((product, index) => (
             <div className='shooes__product' key={index} onClick={openCard}>
               <div className='shooes__product_carousel'>
-                {/* <Carousel */}
-                {/*   infiniteLoop={true} */}
-                {/*   autoPlay={true} */}
-                {/*   interval={3000} */}
-                {/*   showThumbs={false} */}
-                {/* > */}
-                {/*   {product.photos.map((photo, photoIndex) => ( */}
-                {/*     <div key={photoIndex}> */}
-                {/*       <img */}
-                {/*         src={`https://stockhub12.ru:4200/uploads/${photo}`} */}
-                {/*         alt={`Product ${index + 1}`} */}
-                {/*       /> */}
-                {/*     </div> */}
-                {/*   ))} */}
-                {/* </Carousel> */}
                 <Carousel
                   infiniteLoop={true}
                   autoPlay={true}
                   interval={3000}
                   showThumbs={false}
                 >
-                  <div>
-                    <img src={images.product} alt='product' />
-                  </div>
-                  <div>
-                    <img src={images.product} alt='product' />
-                  </div>
-                  <div>
-                    <img src={images.product} alt='product' />
-                  </div>
+                  {product.photos.map((photo, photoIndex) => (
+                    <div key={photoIndex}>
+                      <img
+                        className='shooes__product_carousel--img'
+                        src={`${photo}`}
+                        alt={`Product ${index + 1}`}
+                      />
+                    </div>
+                  ))}
                 </Carousel>
               </div>
 

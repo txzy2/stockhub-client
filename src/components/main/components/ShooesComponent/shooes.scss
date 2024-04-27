@@ -20,6 +20,12 @@
     &_carousel {
       max-width: 197px;
       height: 170px;
+
+      &--img {
+        height: 170px;
+
+        border-radius: 12px;
+      }
     }
 
     &_info {
