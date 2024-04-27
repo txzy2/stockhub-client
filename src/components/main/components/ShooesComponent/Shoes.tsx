@@ -86,7 +86,14 @@ const Shooes = () => {
                   <p className='font-medium'>Размеры: </p>
                   <div className='shooes__product_info--sizes'>
                     {product.variants.map((variant, variantIndex) => (
-                      <p key={variantIndex}>{variant.size.join(' us, ')}</p>
+                      <p key={variantIndex}>
+                        {variant.size.map((size, index) => (
+                          <span key={index}>
+                            {size}us
+                            {index !== variant.size.length - 1 ? ', ' : ''}
+                          </span>
+                        ))}
+                      </p>
                     ))}
                   </div>
                 </div>
