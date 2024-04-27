@@ -92,10 +92,7 @@ const Shooes = () => {
                 </div>
 
                 {/* TODO: ДОбавть получение прайса */}
-                <div className='shooes__product_price'>
-                  <p className='shooes__product_price--value'>23 457₽</p>
-                  <ArrowBigUpDash size={30} />
-                </div>
+                <p className='shooes__product_price'>23 457₽</p>
               </div>
             </div>
           ))}

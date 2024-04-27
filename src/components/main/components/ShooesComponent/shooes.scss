@@ -2,19 +2,21 @@
   display: flex;
   flex-direction: column;
 
-  margin: 0 auto;
+  gap: 15px;
 
   &__product {
     width: 95%;
     display: flex;
     align-items: center;
 
-    margin: 10px auto;
-    padding: 12px 8px;
+    padding: 12px 15px;
+    margin: 0 auto;
+
     gap: 15px;
 
     border-radius: 12px;
-    background-color: var(--bg);
+    // background-color: var(--bg);
+    background: #c5c5c5;
 
     &_carousel {
       max-width: 197px;
@@ -32,7 +34,7 @@
         text-align: left;
 
         font-weight: 500;
-        font-size: 20px;
+        font-size: 24px;
       }
 
       &--sizes {
@@ -41,15 +43,9 @@
     }
 
     &_price {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      &--value {
-        font-weight: 500;
-        font-style: italic;
-        font-size: 20px;
-      }
+      font-weight: 500;
+      font-style: italic;
+      font-size: 20px;
     }
   }
 }
