@@ -16,8 +16,11 @@
   --accent: var(--tg-theme-accent-text-color);
 }
 
+html,
 body {
   position: relative;
+  height: 100%;
+
   background: var(--bg-sec);
   color: var(--text);
 
