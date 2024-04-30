@@ -46,7 +46,7 @@
     &--sizes {
       width: 90%;
       margin: 0 auto;
-      padding: 10px 30px;
+      padding: 10px 15px;
 
       color: var(--text);
       background: var(--bg);
@@ -54,7 +54,7 @@
       border-radius: 8px;
     }
 
-    f &--btns {
+    &--btns {
       display: flex;
       width: 90%;
       align-items: center;
