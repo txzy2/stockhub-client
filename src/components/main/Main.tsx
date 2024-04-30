@@ -84,7 +84,6 @@ const Main = () => {
       </section>
 
       {selectedButton === 'clothing' && <Cloth />}
-
       {selectedButton === 'shoes' && <Shooes />}
 
       <AnimatePresence>

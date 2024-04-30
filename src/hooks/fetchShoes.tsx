@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Product} from '../types/types';
 
 export const fetchShoes = async (
   shoe: string,
@@ -8,12 +9,11 @@ export const fetchShoes = async (
     try {
       const res = await axios.post(
         `https://stockhub12.ru:4200/api/product/getAll`,
-        { var: shoe },
+        {var: shoe},
         {
-          headers: { 'Content-Type': 'application/json' },
+          headers: {'Content-Type': 'application/json'},
         },
       );
-      console.log('Response data:', res.data);
       setShoeData(res.data);
     } catch (err) {
       setShoeData(null);
