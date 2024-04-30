@@ -64,7 +64,9 @@ const Shooes = () => {
 
               <div className='shooes__product_info'>
                 <p className='shooes__product_info--title'>
-                  {product.brand} {product.model}
+                  {product.brand}
+                  <br />
+                  {product.model}
                 </p>
 
                 <p>
