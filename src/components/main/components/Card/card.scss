@@ -1,35 +1,39 @@
 .card {
-  display: grid;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
   color: var(--text);
 
-  margin: 50px auto;
+  margin: 70px auto;
 
   &__info {
-    display: grid;
-    gap: 10px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
 
     &--carusel {
-      max-width: 80%;
+      width: 95%;
       height: auto;
 
       display: flex;
-      margin: 15px auto;
+      margin: 0 auto;
       align-items: center;
 
-      background-color: var(--bg-sec);
-
-      border-top-left-radius: 60px;
-      border-top-right-radius: 25px;
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 60px;
-
       &__item {
-        border-radius: 18px;
+        padding: 10px 15px;
+        background-color: var(--bg);
+
+        border-top-left-radius: 60px;
+        border-top-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 60px;
       }
     }
 
     &--text {
-      width: 80%;
+      width: 95%;
       margin: 20px auto;
       text-align: center;
 
@@ -87,7 +91,8 @@
     }
 
     &__subtitle {
-      width: 80%;
+      width: 90%;
+      text-align: center;
 
       margin: 0 auto;
       padding: 10px 10px;
