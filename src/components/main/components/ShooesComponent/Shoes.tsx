@@ -87,7 +87,6 @@ const Shooes = () => {
                   </div>
                 </div>
 
-                {/* TODO: ДОбавть получение прайса */}
                 <p className='shooes__product_price'>
                   {product.variants.map(item => item.price)}₽
                 </p>
@@ -114,7 +113,7 @@ const Shooes = () => {
   } else {
     return (
       <div className='load'>
-        <p>No data available</p>
+        <p>Доступных таваров не найдено</p>
       </div>
     );
   }

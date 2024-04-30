@@ -46,9 +46,9 @@ const App = () => {
       {/*       </a> */}
       {/*       <p className='error'>Эксклюзиво только в Telegram</p> */}
       {/*     </div> */}
+      {/*     <Footer /> */}
       {/*   </> */}
       {/* )} */}
-      <Footer />
     </div>
   );
 };
