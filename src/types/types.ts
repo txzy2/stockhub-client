@@ -1,6 +1,7 @@
 export type Variant = {
   size: string[];
   color: string;
+  price: string;
 };
 
 export type Product = {

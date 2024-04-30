@@ -6,7 +6,6 @@ import Card from '../Card/Card';
 import './shooes.scss';
 import {fetchShoes} from '../../../../hooks/fetchShoes';
 import {ProductReceive} from '../../../../types/types';
-import {images} from '../../../../assets/imagesAssets';
 
 const Shooes = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -26,7 +25,7 @@ const Shooes = () => {
   useEffect(() => {
     fetchShoes('shoe', data => {
       setShoeData(data);
-      setIsLoading(false); // Установка isLoading в false после получения данных
+      setIsLoading(false);
     });
   }, []);
 
@@ -55,7 +54,7 @@ const Shooes = () => {
                     <div key={photoIndex}>
                       <img
                         className='shooes__product_carousel--img'
-                        src={`${photo}`}
+                        src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
                         alt={`Product ${index + 1}`}
                       />
                     </div>
@@ -65,7 +64,12 @@ const Shooes = () => {
 
               <div className='shooes__product_info'>
                 <p className='shooes__product_info--title'>
-                  {product.brand} {product.model}
+                  {product.name} {product.brand} {product.model}
+                </p>
+
+                <p>
+                  <span className='font-medium '>Цвет: </span>{' '}
+                  {product.variants.map(item => item.color)}
                 </p>
                 <div className=''>
                   <p className='font-medium'>Размеры: </p>
@@ -84,7 +88,9 @@ const Shooes = () => {
                 </div>
 
                 {/* TODO: ДОбавть получение прайса */}
-                <p className='shooes__product_price'>23 457₽</p>
+                <p className='shooes__product_price'>
+                  {product.variants.map(item => item.price)}₽
+                </p>
               </div>
             </div>
           ))}

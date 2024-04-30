@@ -16,6 +16,7 @@
 
     border-radius: 12px;
     background-color: var(--bg);
+    // background: #c5c5c5;
 
     &_carousel {
       max-width: 197px;
@@ -23,7 +24,6 @@
 
       &--img {
         height: 170px;
-
         border-radius: 12px;
       }
     }
@@ -33,13 +33,15 @@
       flex-direction: column;
 
       text-align: justify;
-      gap: 10px;
+      gap: 5px;
 
       &--title {
         text-align: left;
 
         font-weight: 500;
         font-size: 24px;
+
+        line-height: 24px;
       }
 
       &--sizes {

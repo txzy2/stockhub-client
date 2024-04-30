@@ -1,4 +1,4 @@
-import {ArrowRight, X} from 'lucide-react';
+import {X} from 'lucide-react';
 import {useEffect} from 'react';
 import './filter.scss';
 

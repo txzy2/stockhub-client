@@ -1,13 +1,4 @@
-import {
-  BookCheck,
-  Coins,
-  Loader,
-  Mail,
-  MapPin,
-  PackageOpen,
-  User,
-  X,
-} from 'lucide-react';
+import {Coins, Loader, Mail, MapPin, PackageOpen, User, X} from 'lucide-react';
 import React, {useEffect, useState} from 'react';
 import {UseTg} from '../../../../hooks/useTg';
 import {ModalProps} from '../../../../types/types';
