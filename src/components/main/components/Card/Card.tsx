@@ -1,12 +1,15 @@
-import {ChevronLeft, ChevronRight, X} from 'lucide-react';
+import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
 
 import {Carousel} from 'react-responsive-carousel';
 
 import './card.scss';
 import {images} from '../../../../assets/imagesAssets';
-import {ModalProps} from '../../../../types/types';
+import {ModalProps, ProductReceive} from '../../../../types/types';
 
-const Card = ({closeModal}: ModalProps) => {
+const Card = ({
+  closeModal,
+  product,
+}: ModalProps & {product: ProductReceive | null}) => {
   const items = Array.from({length: 3}).map((_, index) => (
     <div key={index}>
       <img
@@ -16,8 +19,17 @@ const Card = ({closeModal}: ModalProps) => {
       />
     </div>
   ));
+  console.log(product);
 
   // TODO:Сделать динамический вывод
+
+  if (!product || product.length === 0) {
+    return (
+      <div className='load'>
+        <Loader className='animate-spin-slow spinner' size={40} />
+      </div>
+    );
+  }
 
   return (
     <div className='card'>
@@ -25,46 +37,59 @@ const Card = ({closeModal}: ModalProps) => {
         <X className='exit' size={30} />
       </button>
 
-      <div className='card__info'>
-        <Carousel
-          className='card__info--carusel'
-          infiniteLoop={true}
-          autoPlay={true}
-          interval={3000}
-          showThumbs={false}
-        >
-          {items}
-        </Carousel>
+      {product.map((item, index) => (
+        <div className='card__info' key={index}>
+          <Carousel
+            className='card__info--carusel'
+            infiniteLoop={true}
+            autoPlay={true}
+            interval={3000}
+            showThumbs={false}
+          >
+            {item.photos.map((photo, photoIndex) => (
+              <div key={photoIndex}>
+                <img
+                  className='card__info--carusel__item'
+                  src={`https://stockhub12.ru/uploads/${item.article}/${photo}`}
+                  alt={`${photoIndex}`}
+                />
+              </div>
+            ))}
+          </Carousel>
 
-        <div className='card__info--text'>
-          <h3 className='card__info--text_title'>
-            Jordan 4 Retro SE Craft Photon Dust
-          </h3>
-          <p className='card__info--text__price'>23456₽</p>
+          <div className='card__info--text'>
+            <h3 className='card__info--text_title'>
+              {item.name} {item.brand} {item.model}
+            </h3>
+            <p className='card__info--text__price'>
+              {item.variants.map(value => value.price)}₽
+            </p>
+          </div>
+
+          <select className='card__info--sizes' name='size'>
+            <option hidden>Выбери размер</option>
+            {item.variants[0].size.map((size, sizeIndex) => (
+              <option key={sizeIndex} value={size}>
+                {size} us
+              </option>
+            ))}
+          </select>
+
+          <div className='card__info--btns'>
+            <a className='card__info--btns_basket' href='/'>
+              <ChevronLeft />В корзину
+            </a>
+            <a className='card__info--btns_order' href='/'>
+              Заказать <ChevronRight />
+            </a>
+          </div>
+
+          <p className='card__info__subtitle'>
+            {item.name} {item.model} {item.brand} Основа пары выполнена из{' '}
+            {item.material} в {item.variants[0].color} цвете.
+          </p>
         </div>
-
-        <select className='card__info--sizes' name='size'>
-          <option hidden>Выбери размер</option>
-          <option value='8'>8 us</option>
-          <option value='8.5'>8.5 us</option>
-          <option value='9'>9 us</option>
-        </select>
-
-        <div className='card__info--btns'>
-          <a className='card__info--btns_basket' href='/'>
-            <ChevronLeft />В корзину
-          </a>
-          <a className='card__info--btns_order' href='/'>
-            Заказать <ChevronRight />
-          </a>
-        </div>
-
-        <p className='card__info__subtitle'>
-          Кроссовки Air Jordan 4 Retro SE "Craft Photon Dust" Основа пары
-          выполнена из премиальной гладкой кожи пыльно-серого цвета, а также
-          натуральной замши в том же оттенке.
-        </p>
-      </div>
+      ))}
     </div>
   );
 };

@@ -17,14 +17,12 @@
 
     &--select {
       cursor: pointer;
-
       padding: 10px 30px 10px 10px;
-
-      border-radius: 9px;
 
       font-weight: 400;
 
       background: var(--bg-sec);
+      border-radius: 9px;
     }
 
     &_price {
@@ -49,11 +47,13 @@
     cursor: pointer;
     position: absolute;
     bottom: 0;
+    right: 0;
 
     padding: 8px 8px;
     background: var(--bg-sec);
     color: var(--text);
     border-radius: 8px;
+
     transition: transform 0.3s ease;
 
     &:hover {

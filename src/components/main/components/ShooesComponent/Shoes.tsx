@@ -5,14 +5,18 @@ import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
 import './shooes.scss';
 import {fetchShoes} from '../../../../hooks/fetchShoes';
-import {ProductReceive} from '../../../../types/types';
+import {Product, ProductReceive} from '../../../../types/types';
 
 const Shooes = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [shoeData, setShoeData] = useState<ProductReceive | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<ProductReceive | null>(
+    null,
+  );
   const [isLoading, setIsLoading] = useState(true);
 
-  const openCard = () => {
+  const openCard = (product: Product) => {
+    setSelectedProduct([product]);
     setIsCardOpen(true);
     document.body.classList.add('modal-open');
   };
@@ -42,7 +46,11 @@ const Shooes = () => {
       <div className='shooes mt-3'>
         <div className='shooes'>
           {shoeData.map((product, index) => (
-            <div className='shooes__product' key={index} onClick={openCard}>
+            <div
+              className='shooes__product'
+              key={index}
+              onClick={() => openCard(product)}
+            >
               <div className='shooes__product_carousel'>
                 <Carousel
                   infiniteLoop={true}
@@ -104,7 +112,7 @@ const Shooes = () => {
               transition={{duration: 0.5}}
               className='modal'
             >
-              <Card closeModal={closeCard} />
+              <Card closeModal={closeCard} product={selectedProduct} />
             </motion.div>
           )}
         </AnimatePresence>
