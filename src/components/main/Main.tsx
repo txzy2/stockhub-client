@@ -1,17 +1,17 @@
-import {Footprints, Search, Shirt, SlidersHorizontal, X} from 'lucide-react';
-import {Carousel} from 'react-responsive-carousel';
+import { Footprints, Search, Shirt, SlidersHorizontal, X } from 'lucide-react';
+import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import './main.scss';
 
-import {images} from '../../assets/imagesAssets';
+import { images } from '../../assets/imagesAssets';
 import Filter from './components/Filter/Filter';
 import Shooes from './components/ShooesComponent/Shoes';
 import Cloth from './components/ClothComponent/Cloth';
-import {Filters} from '../../types/types';
+import { Filters } from '../../types/types';
 
 const Main = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -29,7 +29,7 @@ const Main = () => {
     document.body.classList.remove('modal-open');
   };
 
-  const items = Array.from({length: 3}).map((_, index) => (
+  const items = Array.from({ length: 3 }).map((_, index) => (
     <div key={index}>
       <img className='main__carousel--item' src={images.slide} alt='product' />
     </div>
@@ -41,7 +41,7 @@ const Main = () => {
 
   const removeFilter = (keyToRemove: keyof Filters) => {
     if (!appliedFilters) return;
-    const updatedFilters = {...appliedFilters};
+    const updatedFilters = { ...appliedFilters };
     delete updatedFilters[keyToRemove];
     setAppliedFilters(updatedFilters);
   };
@@ -74,20 +74,18 @@ const Main = () => {
             <div className='main__search_filters'>
               {Object.entries(appliedFilters).map(
                 ([key, value]) =>
-                  key !== 'priceRange' && (
+                  key !== 'priceRange' &&
+                  value !== undefined &&
+                  value !== '' && (
                     <div key={key} className='main__search_filters--item'>
-                      {value && (
-                        <>
-                          <span>{String(value)} </span>
-                          <button
-                            onClick={() => removeFilter(key as keyof Filters)}
-                          >
-                            <X size={18} />
-                          </button>
-                        </>
-                      )}
+                      <span>{String(value)} </span>
+                      <button
+                        onClick={() => removeFilter(key as keyof Filters)}
+                      >
+                        <X size={20} />
+                      </button>
                     </div>
-                  )
+                  ),
               )}
             </div>
           )}
@@ -96,9 +94,8 @@ const Main = () => {
 
       <div className='main__btn'>
         <button
-          className={`main__btn-item ${
-            selectedButton === 'clothing' ? 'active' : ''
-          }`}
+          className={`main__btn-item ${selectedButton === 'clothing' ? 'active' : ''
+            }`}
           onClick={() => setSelectedButton('clothing')}
         >
           <Shirt size={30} />
@@ -106,9 +103,8 @@ const Main = () => {
         </button>
 
         <button
-          className={`main__btn-item ${
-            selectedButton === 'shoes' ? 'active' : ''
-          }`}
+          className={`main__btn-item ${selectedButton === 'shoes' ? 'active' : ''
+            }`}
           onClick={() => setSelectedButton('shoes')}
         >
           <Footprints />
@@ -135,10 +131,10 @@ const Main = () => {
       <AnimatePresence>
         {isFilterOpen && (
           <motion.div
-            initial={{opacity: 0, x: 1000}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: 1000}}
-            transition={{duration: 0.5}}
+            initial={{ opacity: 0, x: 1000 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 1000 }}
+            transition={{ duration: 0.5 }}
             className='modal-right'
           >
             <Filter closeModal={closeClose} applyFilters={applyFilters} />
