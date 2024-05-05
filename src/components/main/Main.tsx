@@ -29,12 +29,6 @@ const Main = () => {
     document.body.classList.remove('modal-open');
   };
 
-  const items = Array.from({ length: 3 }).map((_, index) => (
-    <div key={index}>
-      <img className='main__carousel--item' src={images.slide} alt='product' />
-    </div>
-  ));
-
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
   };
@@ -49,6 +43,12 @@ const Main = () => {
   useEffect(() => {
     console.log(appliedFilters);
   }, [appliedFilters]);
+
+  const items = Array.from({ length: 3 }).map((_, index) => (
+    <div key={index}>
+      <img className='main__carousel--item' src={images.slide} alt='product' />
+    </div>
+  ));
 
   return (
     <div className='main'>

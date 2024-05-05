@@ -26,7 +26,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
       className='filter__options--select'
       onChange={e => onSelect(e.target.value)}
     >
-      <option value='' disabled hidden>
+      <option hidden value=''>
         {label}
       </option>
       {options.map((option: string, index: number) => (
