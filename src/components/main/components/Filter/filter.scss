@@ -59,14 +59,14 @@
   &__btn {
     cursor: pointer;
 
-    width: 95%;
+    width: 90%;
     position: fixed;
     bottom: 5%;
-    right: 0;
 
     padding: 15px 0;
 
     background: var(--bg-sec);
+    // background: #fff;
     color: var(--text);
     border-radius: 8px;
 
