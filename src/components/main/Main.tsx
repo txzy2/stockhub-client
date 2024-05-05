@@ -1,8 +1,8 @@
-import {Footprints, Search, Shirt, SlidersHorizontal} from 'lucide-react';
+import {Footprints, Search, Shirt, SlidersHorizontal, X} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 
 import './main.scss';
@@ -11,10 +11,12 @@ import {images} from '../../assets/imagesAssets';
 import Filter from './components/Filter/Filter';
 import Shooes from './components/ShooesComponent/Shoes';
 import Cloth from './components/ClothComponent/Cloth';
+import {Filters} from '../../types/types';
 
 const Main = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+  const [appliedFilters, setAppliedFilters] = useState<Filters | null>(null);
   const [selectedButton, setSelectedButton] = useState<string | null>('shoes');
 
   const openFilter = () => {
@@ -33,19 +35,63 @@ const Main = () => {
     </div>
   ));
 
+  const applyFilters = (filters: Filters) => {
+    setAppliedFilters(filters);
+  };
+
+  const removeFilter = (keyToRemove: keyof Filters) => {
+    if (!appliedFilters) return;
+    const updatedFilters = {...appliedFilters};
+    delete updatedFilters[keyToRemove];
+    setAppliedFilters(updatedFilters);
+  };
+
+  useEffect(() => {
+    console.log(appliedFilters);
+  }, [appliedFilters]);
+
   return (
     <div className='main'>
       <section className='main__search'>
-        <div className='main__search--input'>
-          <Search size={28} />
-          <input
-            className='main__search--input_text'
-            placeholder='Поиск'
-          ></input>
+        <div className='main__search_container'>
+          <div className='main__search_container--input'>
+            <Search size={28} />
+            <input
+              className='main__search_container--input_text'
+              placeholder='Поиск'
+            ></input>
+          </div>
+          <button
+            className='main__search_container--filter'
+            onClick={openFilter}
+          >
+            <SlidersHorizontal size={28} />
+          </button>
         </div>
-        <button className='main__search--filter' onClick={openFilter}>
-          <SlidersHorizontal size={28} />
-        </button>
+
+        <div className=''>
+          {appliedFilters && (
+            <div className='main__search_filters'>
+              {Object.entries(appliedFilters).map(
+                ([key, value]) =>
+                  key !== 'priceRange' && (
+                    <div key={key} className='main__search_filters--item'>
+                      {value && (
+                        <>
+                          <span>{String(value)} </span>
+                          <button
+                            onClick={() => removeFilter(key as keyof Filters)}
+                          >
+                            <X size={18} />
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )
+              )}
+            </div>
+          )}
+        </div>
       </section>
 
       <div className='main__btn'>
@@ -95,7 +141,7 @@ const Main = () => {
             transition={{duration: 0.5}}
             className='modal-right'
           >
-            <Filter closeModal={closeClose} />
+            <Filter closeModal={closeClose} applyFilters={applyFilters} />
           </motion.div>
         )}
       </AnimatePresence>

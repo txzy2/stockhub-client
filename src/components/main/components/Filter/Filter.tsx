@@ -1,6 +1,7 @@
-import {X} from 'lucide-react';
-import {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './filter.scss';
+import {Filters} from '../../../../types/types';
+import {X} from 'lucide-react';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
@@ -12,13 +13,22 @@ const options = {
 interface FilterSelectProps {
   label: string;
   options: string[];
+  onSelect: (value: string) => void;
 }
 
-const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
+const FilterSelect: React.FC<FilterSelectProps> = ({
+  label,
+  options,
+  onSelect,
+}) => (
   <div className='filter__options'>
     <label className='filter__options--lable'>
       {label}
-      <select className='filter__options--select'>
+      <select
+        className='filter__options--select'
+        onChange={e => onSelect(e.target.value)}
+      >
+        <option value=''>Выберать</option>
         {options.map((option: string, index: number) => (
           <option key={index} value={option}>
             {option}
@@ -29,20 +39,32 @@ const FilterSelect: React.FC<FilterSelectProps> = ({label, options}) => (
   </div>
 );
 
-const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
-  useEffect(() => {
-    const handleResize = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
+interface FilterProps {
+  closeModal: () => void;
+  applyFilters: (filters: Filters) => void;
+}
 
-    window.addEventListener('resize', handleResize);
-    handleResize();
+const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
+  const [selectedFilters, setSelectedFilters] = useState<Filters>({
+    clothes: '',
+    colors: '',
+    brands: '',
+    locations: '',
+    priceRange: {from: '', to: ''},
+  });
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const handleApplyFilters = (e: React.FormEvent) => {
+    e.preventDefault();
+    applyFilters(selectedFilters);
+    closeModal();
+  };
+
+  const handleSelect = (filterName: keyof Filters, value: string) => {
+    setSelectedFilters(prevFilters => ({
+      ...prevFilters,
+      [filterName]: value,
+    }));
+  };
 
   return (
     <>
@@ -51,26 +73,54 @@ const Filter: React.FC<{closeModal: () => void}> = ({closeModal}) => {
       </button>
 
       <div className='filter'>
-        <form action='filter__form'>
-          <FilterSelect label='Одежда / Обувь' options={options.clothes} />
-          <FilterSelect label='Цвет' options={options.colors} />
-          <FilterSelect label='Бренд' options={options.brands} />
-          <FilterSelect label='Откуда' options={options.locations} />
+        <form onSubmit={handleApplyFilters}>
+          <FilterSelect
+            label='Одежда / Обувь'
+            options={options.clothes}
+            onSelect={value => handleSelect('clothes', value)}
+          />
+          <FilterSelect
+            label='Цвет'
+            options={options.colors}
+            onSelect={value => handleSelect('colors', value)}
+          />
+          <FilterSelect
+            label='Бренд'
+            options={options.brands}
+            onSelect={value => handleSelect('brands', value)}
+          />
+          <FilterSelect
+            label='Откуда'
+            options={options.locations}
+            onSelect={value => handleSelect('locations', value)}
+          />
 
           <div className='filter__options_price'>
             <input
               className='filter__options_price--input'
               type='number'
               placeholder='От'
+              value={selectedFilters.priceRange.from}
+              onChange={e =>
+                setSelectedFilters(prevFilters => ({
+                  ...prevFilters,
+                  priceRange: {...prevFilters.priceRange, from: e.target.value},
+                }))
+              }
             />
             <input
               className='filter__options_price--input'
               type='number'
               placeholder='До'
+              value={selectedFilters.priceRange.to}
+              onChange={e =>
+                setSelectedFilters(prevFilters => ({
+                  ...prevFilters,
+                  priceRange: {...prevFilters.priceRange, to: e.target.value},
+                }))
+              }
             />
           </div>
-
-          {/* TODO: Пофиксить баг с перепрыгиванием кнопки */}
 
           <button className='filter__btn' type='submit'>
             Применить

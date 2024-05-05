@@ -3,26 +3,12 @@ import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 
 import './card.scss';
-import {images} from '../../../../assets/imagesAssets';
 import {ModalProps, ProductReceive} from '../../../../types/types';
 
 const Card = ({
   closeModal,
   product,
 }: ModalProps & {product: ProductReceive | null}) => {
-  const items = Array.from({length: 3}).map((_, index) => (
-    <div key={index}>
-      <img
-        className='card__info--carusel__item'
-        src={images.product}
-        alt='product'
-      />
-    </div>
-  ));
-  console.log(product);
-
-  // TODO:Сделать динамический вывод
-
   if (!product || product.length === 0) {
     return (
       <div className='load'>
@@ -51,7 +37,7 @@ const Card = ({
                 <img
                   className='card__info--carusel__item'
                   src={`https://stockhub12.ru/uploads/${item.article}/${photo}`}
-                  alt={`${photoIndex}`}
+                  alt={`${item.name} ${item.brand} ${item.article}`}
                 />
               </div>
             ))}

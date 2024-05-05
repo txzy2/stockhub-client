@@ -35,6 +35,19 @@ export type UserRecive = {
   user: UserReciveDto[];
 };
 
+type FiltersPrice = {
+  from: string;
+  to: string;
+};
+
+export type Filters = {
+  clothes: string;
+  colors: string;
+  brands: string;
+  locations: string;
+  priceRange: FiltersPrice;
+};
+
 export type ModalProps = {
   closeModal: () => void;
 };

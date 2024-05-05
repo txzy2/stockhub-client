@@ -11,7 +11,7 @@ const Shooes = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [shoeData, setShoeData] = useState<ProductReceive | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<ProductReceive | null>(
-    null,
+    null
   );
   const [isLoading, setIsLoading] = useState(true);
 
@@ -63,7 +63,7 @@ const Shooes = () => {
                       <img
                         className='shooes__product_carousel--img'
                         src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
-                        alt={`Product ${index + 1}`}
+                        alt={`${product.name} ${product.brand} ${product.model}`}
                       />
                     </div>
                   ))}
