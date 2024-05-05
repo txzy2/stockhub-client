@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './filter.scss';
-import {Filters} from '../../../../types/types';
-import {X} from 'lucide-react';
+import { Filters } from '../../../../types/types';
+import { X } from 'lucide-react';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
@@ -28,7 +28,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
         className='filter__options--select'
         onChange={e => onSelect(e.target.value)}
       >
-        <option value=''>Выберать</option>
+        <option value=''>Выбрать</option>
         {options.map((option: string, index: number) => (
           <option key={index} value={option}>
             {option}
@@ -44,13 +44,13 @@ interface FilterProps {
   applyFilters: (filters: Filters) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
+const Filter: React.FC<FilterProps> = ({ closeModal, applyFilters }) => {
   const [selectedFilters, setSelectedFilters] = useState<Filters>({
     clothes: '',
     colors: '',
     brands: '',
     locations: '',
-    priceRange: {from: '', to: ''},
+    priceRange: { from: '', to: '' },
   });
 
   const handleApplyFilters = (e: React.FormEvent) => {
@@ -104,7 +104,7 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
               onChange={e =>
                 setSelectedFilters(prevFilters => ({
                   ...prevFilters,
-                  priceRange: {...prevFilters.priceRange, from: e.target.value},
+                  priceRange: { ...prevFilters.priceRange, from: e.target.value },
                 }))
               }
             />
@@ -116,7 +116,7 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
               onChange={e =>
                 setSelectedFilters(prevFilters => ({
                   ...prevFilters,
-                  priceRange: {...prevFilters.priceRange, to: e.target.value},
+                  priceRange: { ...prevFilters.priceRange, to: e.target.value },
                 }))
               }
             />
