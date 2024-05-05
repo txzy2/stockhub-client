@@ -1,13 +1,16 @@
 .card {
   width: 95%;
+
   display: flex;
   flex-direction: column;
-  color: var(--text);
 
   margin: 70px auto;
 
+  color: var(--text);
+
   &__info {
     width: 95%;
+
     display: flex;
     flex-direction: column;
 
@@ -18,8 +21,9 @@
       height: auto;
 
       display: flex;
-      margin: 0 auto;
       align-items: center;
+
+      margin: 0 auto;
 
       &__item {
         border-radius: 18px;
@@ -28,8 +32,9 @@
 
     &--text {
       width: 90%;
-      margin: 20px auto;
+
       text-align: center;
+      margin: 20px auto;
 
       &_title {
         font-weight: 500;
@@ -45,6 +50,7 @@
 
     &--sizes {
       width: 90%;
+
       margin: 0 auto;
       padding: 10px 15px;
 
@@ -55,21 +61,23 @@
     }
 
     &--btns {
-      display: flex;
       width: 90%;
+
+      display: flex;
       align-items: center;
       justify-content: space-between;
 
       gap: 20px;
-
       margin: 0 auto;
 
       &_basket,
       &_order {
         width: 50%;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         padding: 10px 0;
 
         border-radius: 8px;
