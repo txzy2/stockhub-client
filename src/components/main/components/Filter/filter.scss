@@ -2,7 +2,7 @@
   position: relative;
   width: 90%;
 
-  margin: 50px auto;
+  margin: 60px auto;
 
   &__options {
     font-size: 20px;
@@ -16,18 +16,28 @@
     }
 
     &--select {
+      width: 100%;
       cursor: pointer;
+
       padding: 10px 30px 10px 10px;
 
       font-weight: 400;
 
       background: var(--bg-sec);
+      // background: #fff;
       border-radius: 9px;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right-dash"><path d="M5 9v6"/><path d="M9 9h3V5l7 7-7 7v-4H9V9z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 8px center;
     }
 
     &_price {
       display: flex;
-      margin-top: 30px;
+      margin-top: 20px;
       gap: 10px;
 
       &--input {
@@ -39,17 +49,19 @@
 
         color: var(--text);
         background: var(--bg-sec);
+        // background: #fff;
       }
     }
   }
 
   &__btn {
     cursor: pointer;
+
+    width: 95%;
     position: absolute;
     bottom: 0;
     right: 0;
 
-    padding: 8px 8px;
     background: var(--bg-sec);
     color: var(--text);
     border-radius: 8px;
@@ -60,4 +72,10 @@
       transform: scale(1.1);
     }
   }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

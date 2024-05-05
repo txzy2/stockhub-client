@@ -22,20 +22,19 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
   onSelect,
 }) => (
   <div className='filter__options'>
-    <label className='filter__options--lable'>
-      {label}
-      <select
-        className='filter__options--select'
-        onChange={e => onSelect(e.target.value)}
-      >
-        <option value=''>Выбрать</option>
-        {options.map((option: string, index: number) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </label>
+    <select
+      className='filter__options--select'
+      onChange={e => onSelect(e.target.value)}
+    >
+      <option value='' disabled hidden>
+        {label}
+      </option>
+      {options.map((option: string, index: number) => (
+        <option key={index} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
   </div>
 );
 
@@ -123,7 +122,7 @@ const Filter: React.FC<FilterProps> = ({ closeModal, applyFilters }) => {
           </div>
 
           <button className='filter__btn' type='submit'>
-            Применить
+            Применить фильтры
           </button>
         </form>
       </div>
