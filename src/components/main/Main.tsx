@@ -39,13 +39,6 @@ const Main = () => {
     setAppliedFilters(filters);
   };
 
-  const removeFilter = (keyToRemove: keyof Filters) => {
-    if (!appliedFilters) return;
-    const updatedFilters = { ...appliedFilters };
-    delete updatedFilters[keyToRemove];
-    setAppliedFilters(updatedFilters);
-  };
-
   useEffect(() => {
     console.log(appliedFilters);
   }, [appliedFilters]);
@@ -79,11 +72,6 @@ const Main = () => {
                   value !== '' && (
                     <div key={key} className='main__search_filters--item'>
                       <span>{String(value)} </span>
-                      <button
-                        onClick={() => removeFilter(key as keyof Filters)}
-                      >
-                        <X size={20} />
-                      </button>
                     </div>
                   ),
               )}
