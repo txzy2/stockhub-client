@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './filter.scss';
 import { Filters } from '../../../../types/types';
-import { X } from 'lucide-react';
+import { ArrowBigRightDash, X } from 'lucide-react';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
