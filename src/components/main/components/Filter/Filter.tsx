@@ -35,6 +35,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
         </option>
       ))}
     </select>
+    <ArrowBigRightDash className='filter__options--arrow' size={25} />
   </div>
 );
 

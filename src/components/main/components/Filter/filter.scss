@@ -5,10 +5,21 @@
   margin: 60px auto;
 
   &__options {
-    font-size: 20px;
-    color: var(--text);
+    display: flex;
+    align-items: center;
 
     margin-bottom: 20px;
+    padding-right: 10px;
+
+    font-size: 20px;
+
+    background: var(--bg-sec);
+    border-radius: 9px;
+    // background: #fff;
+
+    &--arrow {
+      color: var(--text);
+    }
 
     &--select {
       width: 100%;
@@ -17,17 +28,12 @@
       padding: 10px 30px 10px 10px;
 
       font-weight: 400;
-
-      background: var(--bg-sec);
-      // background: #fff;
       border-radius: 9px;
+      background: none;
 
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right-dash"><path d="M5 9v6" stroke="var(--text)"/><path d="M9 9h3V5l7 7-7 7v-4H9V9z" stroke="var(--text)"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 8px center;
     }
 
     &_price {
