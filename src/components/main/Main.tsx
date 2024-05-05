@@ -1,4 +1,6 @@
-import { Footprints, Search, Shirt, SlidersHorizontal, X } from 'lucide-react';
+// TODO: Реализовать отрисовку по фильтрам
+
+import { Footprints, Search, Shirt, SlidersHorizontal } from 'lucide-react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
