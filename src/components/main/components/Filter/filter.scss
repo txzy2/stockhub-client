@@ -4,12 +4,6 @@
 
   margin: 60px auto;
 
-  overflow-y: scroll;
-  /* Позволяет прокручивать страницу по вертикали */
-  overflow-x: hidden;
-  /* Скрыть горизонтальную прокрутку */
-  -webkit-overflow-scrolling: touch;
-
   &__options {
     display: flex;
     align-items: center;
@@ -66,8 +60,8 @@
     cursor: pointer;
 
     width: 95%;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 5%;
     right: 0;
 
     padding: 15px 0;
