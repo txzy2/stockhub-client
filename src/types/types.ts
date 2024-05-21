@@ -1,7 +1,7 @@
 export type Variant = {
-  size: string[];
-  color: string;
-  price: string;
+  size?: string[];
+  color?: string;
+  price?: string;
 };
 
 export type Product = {
@@ -19,6 +19,20 @@ export type Product = {
 };
 
 export type ProductReceive = Product[];
+
+export type ProductRequestFilter = {
+  article?: string;
+  brand?: string;
+  createdAt?: string;
+  id?: number;
+  material?: string;
+  model?: string;
+  name?: string;
+  photos?: string[];
+  updatedAt?: string;
+  var?: string;
+  variants?: Variant[];
+};
 
 export type UserReciveDto = {
   id: number;
@@ -41,9 +55,9 @@ type FiltersPrice = {
 };
 
 export type Filters = {
-  clothes: string;
-  colors: string;
-  brands: string;
+  var: string;
+  color: string;
+  brand: string;
   locations: string;
   priceRange: FiltersPrice;
 };

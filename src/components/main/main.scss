@@ -132,16 +132,10 @@
     align-items: center;
 
     background-color: var(--bg);
-
-    align-items: center;
-    border-top-left-radius: 60px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 60px;
+    border-radius: 60px 25px 60px 25px;
 
     &--item {
       max-width: 280px;
-
       margin-top: -40px;
     }
   }

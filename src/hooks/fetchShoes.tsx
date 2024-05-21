@@ -3,7 +3,7 @@ import {Product} from '../types/types';
 
 export const fetchShoes = async (
   shoe: string,
-  setShoeData: React.Dispatch<React.SetStateAction<any>>,
+  setShoeData: React.Dispatch<React.SetStateAction<Product[]>>,
 ) => {
   if (shoe) {
     try {
@@ -16,7 +16,7 @@ export const fetchShoes = async (
       );
       setShoeData(res.data);
     } catch (err) {
-      setShoeData(null);
+      setShoeData([]);
     }
   }
 };

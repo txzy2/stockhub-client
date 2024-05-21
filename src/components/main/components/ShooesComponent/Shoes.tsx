@@ -9,7 +9,7 @@ import {Product, ProductReceive} from '../../../../types/types';
 
 const Shooes = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
-  const [shoeData, setShoeData] = useState<ProductReceive | null>(null);
+  const [shoeData, setShoeData] = useState<ProductReceive | []>([]);
   const [selectedProduct, setSelectedProduct] = useState<ProductReceive | null>(
     null
   );
@@ -35,23 +35,23 @@ const Shooes = () => {
 
   if (isLoading) {
     return (
-      <div className='load'>
-        <Loader className='animate-spin-slow spinner' size={40} />
+      <div className="load">
+        <Loader className="animate-spin-slow spinner" size={40} />
       </div>
     );
   }
 
   if (!isLoading && shoeData && shoeData && shoeData.length > 0) {
     return (
-      <div className='shooes mt-3'>
-        <div className='shooes'>
+      <div className="shooes mt-3">
+        <div className="shooes">
           {shoeData.map((product, index) => (
             <div
-              className='shooes__product'
+              className="shooes__product"
               key={index}
               onClick={() => openCard(product)}
             >
-              <div className='shooes__product_carousel'>
+              <div className="shooes__product_carousel">
                 <Carousel
                   infiniteLoop={true}
                   autoPlay={true}
@@ -61,7 +61,7 @@ const Shooes = () => {
                   {product.photos.map((photo, photoIndex) => (
                     <div key={photoIndex}>
                       <img
-                        className='shooes__product_carousel--img'
+                        className="shooes__product_carousel--img"
                         src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
                         alt={`${product.name} ${product.brand} ${product.model}`}
                       />
@@ -70,32 +70,36 @@ const Shooes = () => {
                 </Carousel>
               </div>
 
-              <div className='shooes__product_info'>
-                <p className='shooes__product_info--title'>
+              <div className="shooes__product_info">
+                <p className="shooes__product_info--title">
                   {product.brand} {product.model}
                 </p>
 
                 <p>
-                  <span className='font-medium '>Цвет: </span>{' '}
+                  <span className="font-medium ">Цвет: </span>{' '}
                   {product.variants.map(item => item.color)}
                 </p>
-                <div className=''>
-                  <p className='font-medium'>Размеры: </p>
-                  <div className='shooes__product_info--sizes'>
+                <div className="">
+                  <p className="font-medium">Размеры: </p>
+                  <div className="shooes__product_info--sizes">
                     {product.variants.map((variant, variantIndex) => (
                       <p key={variantIndex}>
-                        {variant.size.map((size, index) => (
-                          <span key={index}>
-                            {size}us
-                            {index !== variant.size.length - 1 ? ', ' : ''}
-                          </span>
-                        ))}
+                        {variant?.size?.length ? (
+                          variant.size.map((size, index) => (
+                            <span key={index}>
+                              {size}us
+                              {index !== (variant.size?.length ?? 0) - 1 ? ', ' : ''}
+                            </span>
+                          ))
+                        ) : (
+                          <span>Нет информации</span>
+                        )}
                       </p>
                     ))}
                   </div>
                 </div>
 
-                <p className='shooes__product_price'>
+                <p className="shooes__product_price">
                   {product.variants.map(item => item.price)}₽
                 </p>
               </div>
@@ -110,7 +114,7 @@ const Shooes = () => {
               animate={{opacity: 1, y: 0}}
               exit={{opacity: 0, y: 1000}}
               transition={{duration: 0.5}}
-              className='modal'
+              className="modal"
             >
               <Card closeModal={closeCard} product={selectedProduct} />
             </motion.div>
@@ -120,7 +124,7 @@ const Shooes = () => {
     );
   } else {
     return (
-      <div className='load'>
+      <div className="load">
         <p>Доступных таваров не найдено</p>
       </div>
     );

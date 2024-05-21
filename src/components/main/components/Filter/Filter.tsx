@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import './filter.scss';
-import { Filters } from '../../../../types/types';
-import { ArrowBigRightDash, X } from 'lucide-react';
+import {Filters} from '../../../../types/types';
+import {ArrowBigRightDash, X} from 'lucide-react';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
-  colors: ['Серый', 'Красный'],
+  colors: ['Серые', 'Красные'],
   brands: ['Nike', 'Puma', 'Jordan'],
-  locations: ['MCK', 'Poizon'],
+  locations: ['MCK', 'Poizon']
 };
 
 interface FilterSelectProps {
@@ -17,16 +17,16 @@ interface FilterSelectProps {
 }
 
 const FilterSelect: React.FC<FilterSelectProps> = ({
-  label,
-  options,
-  onSelect,
-}) => (
-  <div className='filter__options'>
+                                                     label,
+                                                     options,
+                                                     onSelect
+                                                   }) => (
+  <div className="filter__options">
     <select
-      className='filter__options--select'
+      className="filter__options--select"
       onChange={e => onSelect(e.target.value)}
     >
-      <option hidden value=''>
+      <option hidden value="">
         {label}
       </option>
       {options.map((option: string, index: number) => (
@@ -35,7 +35,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
         </option>
       ))}
     </select>
-    <ArrowBigRightDash className='filter__options--arrow' size={25} />
+    <ArrowBigRightDash className="filter__options--arrow" size={25} />
   </div>
 );
 
@@ -44,13 +44,13 @@ interface FilterProps {
   applyFilters: (filters: Filters) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ closeModal, applyFilters }) => {
+const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
   const [selectedFilters, setSelectedFilters] = useState<Filters>({
-    clothes: '',
-    colors: '',
-    brands: '',
+    var: '',
+    color: '',
+    brand: '',
     locations: '',
-    priceRange: { from: '', to: '' },
+    priceRange: {from: '', to: ''}
   });
 
   const handleApplyFilters = (e: React.FormEvent) => {
@@ -62,67 +62,67 @@ const Filter: React.FC<FilterProps> = ({ closeModal, applyFilters }) => {
   const handleSelect = (filterName: keyof Filters, value: string) => {
     setSelectedFilters(prevFilters => ({
       ...prevFilters,
-      [filterName]: value,
+      [filterName]: value
     }));
   };
 
   return (
     <>
-      <button type='button' onClick={closeModal}>
-        <X className='exit' size={30} />
+      <button type="button" onClick={closeModal}>
+        <X className="exit" size={30} />
       </button>
 
-      <div className='filter'>
+      <div className="filter">
         <form onSubmit={handleApplyFilters}>
           <FilterSelect
-            label='Одежда / Обувь'
+            label="Одежда / Обувь"
             options={options.clothes}
-            onSelect={value => handleSelect('clothes', value)}
+            onSelect={value => handleSelect('var', value === 'Одежда' ? 'cloth' : 'shoe')}
           />
           <FilterSelect
-            label='Цвет'
+            label="Цвет"
             options={options.colors}
-            onSelect={value => handleSelect('colors', value)}
+            onSelect={value => handleSelect('color', value)}
           />
           <FilterSelect
-            label='Бренд'
+            label="Бренд"
             options={options.brands}
-            onSelect={value => handleSelect('brands', value)}
+            onSelect={value => handleSelect('brand', value)}
           />
           <FilterSelect
-            label='Откуда'
+            label="Откуда"
             options={options.locations}
             onSelect={value => handleSelect('locations', value)}
           />
 
-          <div className='filter__options_price'>
+          <div className="filter__options_price">
             <input
-              className='filter__options_price--input'
-              type='number'
-              placeholder='От'
+              className="filter__options_price--input"
+              type="number"
+              placeholder="От"
               value={selectedFilters.priceRange.from}
               onChange={e =>
                 setSelectedFilters(prevFilters => ({
                   ...prevFilters,
-                  priceRange: { ...prevFilters.priceRange, from: e.target.value },
+                  priceRange: {...prevFilters.priceRange, from: e.target.value}
                 }))
               }
             />
             <input
-              className='filter__options_price--input'
-              type='number'
-              placeholder='До'
+              className="filter__options_price--input"
+              type="number"
+              placeholder="До"
               value={selectedFilters.priceRange.to}
               onChange={e =>
                 setSelectedFilters(prevFilters => ({
                   ...prevFilters,
-                  priceRange: { ...prevFilters.priceRange, to: e.target.value },
+                  priceRange: {...prevFilters.priceRange, to: e.target.value}
                 }))
               }
             />
           </div>
 
-          <button className='filter__btn' type='submit'>
+          <button className="filter__btn" type="submit">
             Применить фильтры
           </button>
         </form>
