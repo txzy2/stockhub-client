@@ -15,7 +15,9 @@ export type Product = {
   photos: string[];
   updatedAt: string;
   var: string;
-  variants: Variant[];
+  size?: string[];
+  color?: string[];
+  price?: string[];
 };
 
 export type ProductReceive = Product[];
@@ -55,11 +57,11 @@ type FiltersPrice = {
 };
 
 export type Filters = {
-  var: string;
-  color: string;
-  brand: string;
-  locations: string;
-  priceRange: FiltersPrice;
+  var?: string;
+  color?: string;
+  brand?: string;
+  locations?: string;
+  priceRange?: FiltersPrice;
 };
 
 export type ModalProps = {

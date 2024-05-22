@@ -1,14 +1,19 @@
 import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
 
-import {Carousel} from 'react-responsive-carousel';
-
 import './card.scss';
 import {ModalProps, ProductReceive} from '../../../../types/types';
+import React, {useEffect} from 'react';
+import {Carousel} from 'react-responsive-carousel';
 
 const Card = ({
                 closeModal,
                 product
               }: ModalProps & {product: ProductReceive | null}) => {
+
+  useEffect(() => {
+    console.log(product);
+  }, []);
+
   if (!product || product.length === 0) {
     return (
       <div className="load">
@@ -16,6 +21,7 @@ const Card = ({
       </div>
     );
   }
+
 
   return (
     <div className="card">
@@ -48,13 +54,13 @@ const Card = ({
               {item.name} {item.brand} {item.model}
             </h3>
             <p className="card__info--text__price">
-              {item.variants.map(value => value.price)}₽
+              {item.price?.map(value => value)}₽
             </p>
           </div>
 
           <select className="card__info--sizes" name="size">
             <option hidden>Выбери размер</option>
-            {item.variants[0]?.size?.map((size, sizeIndex) => (
+            {item.size?.map((size, sizeIndex) => (
               <option key={sizeIndex} value={size}>
                 {size} us
               </option>
@@ -70,10 +76,10 @@ const Card = ({
             </a>
           </div>
 
-          <p className="card__info__subtitle">
-            {item.name} {item.model} {item.brand} Основа пары выполнена из{' '}
-            {item.material} в {item.variants[0].color} цвете.
-          </p>
+          <div className="card__info__subtitle">
+            {item.name} {item.model} {item.brand}. Основа пары
+            - {item.material}. Цвет модели: {item.color?.map(item => item)}.
+          </div>
         </div>
       ))}
     </div>

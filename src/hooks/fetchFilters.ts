@@ -1,4 +1,4 @@
-import {Filters} from '../types/types';
+import {Filters, Product} from '../types/types';
 import axios from 'axios';
 
 const isEmptyValue = (value: any): boolean => {
@@ -22,27 +22,31 @@ const filterEmptyValues = (obj: any): any => {
 
 
 // TODO: Сдлеать филтрацую на беке
-export const FetchFilters = async (params: Filters) => {
-
-  const filteredParams = filterEmptyValues(params);
+export const FetchFilters = async (
+  selectVar: string | null,
+  params: Filters,
+  setProductData: React.Dispatch<React.SetStateAction<Product[]>>
+) => {
+  const filteredParams = {var: selectVar, ...filterEmptyValues(params)};
 
   if (Object.keys(filteredParams).length > 0) {
-    console.log(filteredParams);
+    console.log('Filtered Params:', filteredParams);
 
     try {
       const res = await axios.post(
         `https://stockhub12.ru:4200/api/product/get`,
-        {filteredParams},
+        filteredParams,
         {
           headers: {'Content-Type': 'application/json'}
         }
       );
 
       if (res.status === 200) {
-        console.log(res.data);
+        setProductData(res.data);
       }
     } catch (err) {
       console.log(err);
+      setProductData([]);
     }
   }
 };

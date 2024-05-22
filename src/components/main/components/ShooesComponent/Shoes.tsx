@@ -1,19 +1,15 @@
-import {Carousel} from 'react-responsive-carousel';
+import React, {useEffect, useState} from 'react';
+import './shooes.scss';
+import {Product, ProductReceive} from '../../../../types/types';
 import {Loader} from 'lucide-react';
-import {useEffect, useState} from 'react';
+import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
-import './shooes.scss';
-import {fetchShoes} from '../../../../hooks/fetchShoes';
-import {Product, ProductReceive} from '../../../../types/types';
 
-const Shooes = () => {
+
+const Shoes = ({productData}: {productData: ProductReceive}) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
-  const [shoeData, setShoeData] = useState<ProductReceive | []>([]);
-  const [selectedProduct, setSelectedProduct] = useState<ProductReceive | null>(
-    null
-  );
-  const [isLoading, setIsLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState<ProductReceive | []>([]);
 
   const openCard = (product: Product) => {
     setSelectedProduct([product]);
@@ -27,108 +23,91 @@ const Shooes = () => {
   };
 
   useEffect(() => {
-    fetchShoes('shoe', data => {
-      setShoeData(data);
-      setIsLoading(false);
-    });
+    console.log(productData);
   }, []);
 
-  if (isLoading) {
+  if (!productData || productData.length === 0) {
     return (
-      <div className="load">
-        <Loader className="animate-spin-slow spinner" size={40} />
+      <div className={'load'}>
+        <Loader className="animate-spin-slow spinner" size={30} />
       </div>
     );
   }
 
-  if (!isLoading && shoeData && shoeData && shoeData.length > 0) {
-    return (
-      <div className="shooes mt-3">
-        <div className="shooes">
-          {shoeData.map((product, index) => (
-            <div
-              className="shooes__product"
-              key={index}
-              onClick={() => openCard(product)}
-            >
-              <div className="shooes__product_carousel">
-                <Carousel
-                  infiniteLoop={true}
-                  autoPlay={true}
-                  interval={5000}
-                  showThumbs={false}
-                >
-                  {product.photos.map((photo, photoIndex) => (
-                    <div key={photoIndex}>
-                      <img
-                        className="shooes__product_carousel--img"
-                        src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
-                        alt={`${product.name} ${product.brand} ${product.model}`}
-                      />
-                    </div>
-                  ))}
-                </Carousel>
-              </div>
+  return (
+    <div className="shooes mt-3">
+      <div className="shooes">
 
-              <div className="shooes__product_info">
-                <p className="shooes__product_info--title">
-                  {product.brand} {product.model}
-                </p>
-
-                <p>
-                  <span className="font-medium ">Цвет: </span>{' '}
-                  {product.variants.map(item => item.color)}
-                </p>
-                <div className="">
-                  <p className="font-medium">Размеры: </p>
-                  <div className="shooes__product_info--sizes">
-                    {product.variants.map((variant, variantIndex) => (
-                      <p key={variantIndex}>
-                        {variant?.size?.length ? (
-                          variant.size.map((size, index) => (
-                            <span key={index}>
-                              {size}us
-                              {index !== (variant.size?.length ?? 0) - 1 ? ', ' : ''}
-                            </span>
-                          ))
-                        ) : (
-                          <span>Нет информации</span>
-                        )}
-                      </p>
-                    ))}
+        {productData.map((product, index) => (
+          <div
+            className="shooes__product"
+            key={index}
+            onClick={() => openCard(product)}
+          >
+            <div className="shooes__product_carousel">
+              <Carousel
+                infiniteLoop={true}
+                autoPlay={true}
+                interval={5000}
+                showThumbs={false}
+              >
+                {product.photos.map((photo, photoIndex) => (
+                  <div key={photoIndex}>
+                    <img
+                      className="shooes__product_carousel--img"
+                      src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
+                      alt={`${product.name} ${product.brand} ${product.model}`}
+                    />
                   </div>
-                </div>
-
-                <p className="shooes__product_price">
-                  {product.variants.map(item => item.price)}₽
-                </p>
-              </div>
+                ))}
+              </Carousel>
             </div>
-          ))}
-        </div>
 
-        <AnimatePresence>
-          {isCardOpen && (
-            <motion.div
-              initial={{opacity: 0, y: 1000}}
-              animate={{opacity: 1, y: 0}}
-              exit={{opacity: 0, y: 1000}}
-              transition={{duration: 0.5}}
-              className="modal"
-            >
-              <Card closeModal={closeCard} product={selectedProduct} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            <div className="shooes__product_info">
+              <p className="shooes__product_info--title">
+                {product.brand} {product.model}
+              </p>
+
+              <div>
+                <span className="font-medium ">Цвет: </span>{' '}
+                {product.color?.map(color => color)}
+              </div>
+
+              <div className="">
+                <p className="font-medium">Размеры: </p>
+                <div className="shooes__product_info--sizes">
+                  {product.size !== undefined && product.size.length > 0 && product.size.map((variant, index, array) => (
+                    <React.Fragment key={index}>
+                      <span>{variant}us</span>
+                      {index !== array.length - 1 && <span>, </span>}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+
+              <p className="shooes__product_price">
+                {product.price?.map(item => item)}₽
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-    );
-  } else {
-    return (
-      <div className="load">
-        <p>Доступных таваров не найдено</p>
-      </div>
-    );
-  }
+
+      <AnimatePresence>
+        {isCardOpen && (
+          <motion.div
+            initial={{opacity: 0, y: 1000}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 1000}}
+            transition={{duration: 0.5}}
+            className="modal"
+          >
+            <Card closeModal={closeCard} product={selectedProduct} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 };
 
-export default Shooes;
+export default Shoes;

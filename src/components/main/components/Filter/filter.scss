@@ -56,6 +56,12 @@
     }
   }
 
+  &__error {
+    opacity: 0.7;
+    font-size: 15px;
+    color: var(--err-message);
+  }
+
   &__btn {
     cursor: pointer;
 
