@@ -22,7 +22,15 @@ const Main = () => {
 
   // NOTE: FILTERS_DATA
   const [appliedFilters, setAppliedFilters] = useState<Filters | null>(null);
-  const [data, setData] = useState<ProductReceive | []>([]);
+  const [selectedFilters, setSelectedFilters] = useState<Filters>({
+    var: selectedButton ?? '',
+    color: '',
+    brand: '',
+    size: '',
+    material: '',
+    locations: '',
+    priceRange: {from: '', to: ''}
+  });
 
   // NOTE: PRODUCT_DATA
   const [productData, setProductData] = useState<ProductReceive | []>([]);
@@ -40,6 +48,8 @@ const Main = () => {
 
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
+
+    console.log(selectedFilters);
     if (filters.var === 'cloth') {
       setSelectedButton('cloth');
     } else if (filters.var === 'shoe') {
@@ -68,13 +78,11 @@ const Main = () => {
         setProductData(data);
         setIsLoading(false);
       });
-      console.log(productData);
     } else {
       FetchFilters(selectedButton, {}, (data) => {
         setProductData(data);
         setIsLoading(false);
       });
-      console.log(productData);
     }
 
 
@@ -196,7 +204,7 @@ const Main = () => {
             transition={{duration: 0.5}}
             className="modal-right"
           >
-            <Filter closeModal={closeClose} applyFilters={applyFilters} />
+            <Filter closeModal={closeClose} applyFilters={applyFilters} FilterSelected={selectedFilters} />
           </motion.div>
         )}
       </AnimatePresence>

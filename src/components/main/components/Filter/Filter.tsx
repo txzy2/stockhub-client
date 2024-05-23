@@ -29,16 +29,22 @@ interface FilterSelectProps {
   options: string[];
   onSelect: (value: string) => void;
   isShoe?: boolean;
-  isVisible: boolean;
+  selectedValue?: string;
 }
 
-const FilterSelect: React.FC<FilterSelectProps> = ({label, options, onSelect, isShoe = false, isVisible}) => {
-  if (!isVisible) {
-    return null;
+const FilterSelect: React.FC<FilterSelectProps> = (
+  {
+    label,
+    options,
+    onSelect,
+    isShoe = false,
+    selectedValue
   }
+) => {
 
   return (
     <div className="filter__options">
+
       <select
         className="filter__options--select"
         onChange={e => onSelect(e.target.value)}
@@ -52,6 +58,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({label, options, onSelect, is
           </option>
         ))}
       </select>
+
       <ArrowBigRightDash className="filter__options--arrow" size={25} />
     </div>
   );
@@ -60,21 +67,15 @@ const FilterSelect: React.FC<FilterSelectProps> = ({label, options, onSelect, is
 interface FilterProps {
   closeModal: () => void;
   applyFilters: (filters: Filters) => void;
+  FilterSelected: Filters;
 }
 
-const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
-  const [selectedFilters, setSelectedFilters] = useState<Filters>({
-    var: '',
-    color: '',
-    brand: '',
-    size: '',
-    material: '',
-    locations: '',
-    priceRange: {from: '', to: ''}
-  });
+const Filter: React.FC<FilterProps> = ({closeModal, applyFilters, FilterSelected}) => {
+  const [selectedFilters, setSelectedFilters] = useState<Filters>(FilterSelected);
 
+  // NOTE: SIZE_FILTER
   const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(null);
-  const [sizeVisible, setSizeVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const handleApplyFilters = (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +95,7 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
     }));
 
     if (filterName === 'var') {
-      setSizeVisible(true);
+      setVisible(true);
       setClothShoeSelected(value);
     }
   };
@@ -107,40 +108,50 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
 
       <div className="filter">
         <form onSubmit={handleApplyFilters}>
+
+          {/*TODO: Сделать проверку на var*/}
+
           <FilterSelect
-            label="Одежда / Обувь"
+            label={selectedFilters.var ?? 'Одежда / Обувь'}
             options={options.clothes}
             onSelect={value => handleSelect('var', value === 'Одежда' ? 'cloth' : 'shoe')}
-            isVisible={true}
+            selectedValue={selectedFilters.var}
           />
+
           <div className="filter__error">
-            {!clothShoeSelected && <span>Пожалуйста, выберите значение поля "Одежда / Обувь"</span>}
+            {!clothShoeSelected && <span>Пожалуйста, выберите значение поля</span>}
           </div>
-          <FilterSelect
-            label="Цвет"
-            options={options.colors}
-            onSelect={value => handleSelect('color', value)}
-            isVisible={true}
-          />
-          <FilterSelect
-            label="Бренд"
-            options={options.brands}
-            onSelect={value => handleSelect('brand', value)}
-            isVisible={true}
-          />
-          <FilterSelect
-            label="Материал"
-            options={options.material}
-            onSelect={value => handleSelect('material', value)}
-            isVisible={true}
-          />
-          <FilterSelect
-            label="Размеры"
-            options={clothShoeSelected === 'cloth' ? options.sizesCloth : options.sizesShoes}
-            onSelect={value => handleSelect('size', value)}
-            isShoe={clothShoeSelected === 'shoe'}
-            isVisible={sizeVisible}
-          />
+
+          {visible && (
+            <>
+              <FilterSelect
+                label="Цвет"
+                options={options.colors}
+                onSelect={value => handleSelect('color', value)}
+                selectedValue={selectedFilters.color}
+              />
+              <FilterSelect
+                label="Бренд"
+                options={options.brands}
+                onSelect={value => handleSelect('brand', value)}
+                selectedValue={selectedFilters.brand}
+              />
+              <FilterSelect
+                label="Материал"
+                options={options.material}
+                onSelect={value => handleSelect('material', value)}
+                selectedValue={selectedFilters.material}
+              />
+              <FilterSelect
+                label="Размеры"
+                options={clothShoeSelected === 'cloth' ? options.sizesCloth : options.sizesShoes}
+                onSelect={value => handleSelect('size', value)}
+                isShoe={clothShoeSelected === 'shoe'}
+                selectedValue={''}
+              />
+            </>
+          )}
+
 
           <div className="filter__options_price">
             <input
