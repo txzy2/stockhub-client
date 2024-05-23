@@ -8,9 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/Filter/filter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Filter/filter.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +65,7 @@
       <workItem from="1716358715760" duration="6555000" />
       <workItem from="1716366124528" duration="5203000" />
       <workItem from="1716371550920" duration="3578000" />
-      <workItem from="1716464827617" duration="1862000" />
+      <workItem from="1716464827617" duration="2488000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />

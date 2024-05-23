@@ -23,26 +23,33 @@ interface FilterSelectProps {
   options: string[];
   onSelect: (value: string) => void;
   isShoe?: boolean;
+  isVisible: boolean;
 }
 
-const FilterSelect: React.FC<FilterSelectProps> = ({label, options, onSelect, isShoe = false}) => (
-  <div className="filter__options">
-    <select
-      className="filter__options--select"
-      onChange={e => onSelect(e.target.value)}
-    >
-      <option hidden value="">
-        {label}
-      </option>
-      {options.map((option: string, index: number) => (
-        <option key={index} value={option}>
-          {label === 'Размеры' && isShoe ? option + 'us' : option}
+const FilterSelect: React.FC<FilterSelectProps> = ({label, options, onSelect, isShoe = false, isVisible}) => {
+  if (!isVisible) {
+    return null;
+  }
+
+  return (
+    <div className="filter__options">
+      <select
+        className="filter__options--select"
+        onChange={e => onSelect(e.target.value)}
+      >
+        <option hidden value="">
+          {label}
         </option>
-      ))}
-    </select>
-    <ArrowBigRightDash className="filter__options--arrow" size={25} />
-  </div>
-);
+        {options.map((option: string, index: number) => (
+          <option key={index} value={option}>
+            {label === 'Размеры' && isShoe ? option + 'us' : option}
+          </option>
+        ))}
+      </select>
+      <ArrowBigRightDash className="filter__options--arrow" size={25} />
+    </div>
+  );
+};
 
 interface FilterProps {
   closeModal: () => void;
@@ -61,6 +68,7 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
   });
 
   const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(null);
+  const [sizeVisible, setSizeVisible] = useState(false);
 
   const handleApplyFilters = (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,6 +88,7 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
     }));
 
     if (filterName === 'var') {
+      setSizeVisible(true);
       setClothShoeSelected(value);
     }
   };
@@ -96,6 +105,7 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
             label="Одежда / Обувь"
             options={options.clothes}
             onSelect={value => handleSelect('var', value === 'Одежда' ? 'cloth' : 'shoe')}
+            isVisible={true}
           />
           <div className="filter__error">
             {!clothShoeSelected && <span>Пожалуйста, выберите значение поля "Одежда / Обувь"</span>}
@@ -104,22 +114,26 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
             label="Цвет"
             options={options.colors}
             onSelect={value => handleSelect('color', value)}
+            isVisible={true}
           />
           <FilterSelect
             label="Бренд"
             options={options.brands}
             onSelect={value => handleSelect('brand', value)}
+            isVisible={true}
+          />
+          <FilterSelect
+            label="Материал"
+            options={options.material}
+            onSelect={value => handleSelect('material', value)}
+            isVisible={true}
           />
           <FilterSelect
             label="Размеры"
             options={clothShoeSelected === 'cloth' ? options.sizesCloth : options.sizesShoes}
             onSelect={value => handleSelect('size', value)}
             isShoe={clothShoeSelected === 'shoe'}
-          />
-          <FilterSelect
-            label="Материал"
-            options={options.material}
-            onSelect={value => handleSelect('material', value)}
+            isVisible={sizeVisible}
           />
 
           <div className="filter__options_price">
@@ -128,14 +142,12 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters}) => {
               type="number"
               placeholder="От"
               value={selectedFilters.priceRange?.from}
-
             />
             <input
               className="filter__options_price--input"
               type="number"
               placeholder="До"
               value={selectedFilters.priceRange?.to}
-
             />
           </div>
 

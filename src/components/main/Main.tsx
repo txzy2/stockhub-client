@@ -80,14 +80,6 @@ const Main = () => {
 
   }, [selectedButton, appliedFilters, setProductData]);
 
-  if (isLoading) {
-    return (
-      <div className={'load'}>
-        <Loader className="animate-spin-slow spinner" size={30} />
-      </div>
-    );
-  }
-
   const items = Array.from({length: 3}).map((_, index) => (
     <div key={index}>
       <img className="main__carousel--item" src={images.slide} alt="product" />
@@ -182,9 +174,15 @@ const Main = () => {
             {(selectedButton === 'shoe') && <Shoes productData={productData} />}
           </>
         ) : (
-          <div style={{textAlign: 'center'}}>
-            По данным фильтрам ничего не найдено
-          </div>
+          (isLoading) ? (
+            <div className={'load'}>
+              <Loader className="animate-spin-slow spinner" size={30} />
+            </div>
+          ) : (
+            <div style={{textAlign: 'center'}}>
+              По данным фильтрам ничего не найдено
+            </div>
+          )
         )
       }
 
