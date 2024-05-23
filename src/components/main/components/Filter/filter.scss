@@ -35,6 +35,13 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
+
+
+    }
+
+    &--select option {
+      color: var(--text);
+      background-color: var(--bg-sec);
     }
 
     &_price {

@@ -60,6 +60,8 @@ export type Filters = {
   var?: string;
   color?: string;
   brand?: string;
+  size?: string;
+  material?: string;
   locations?: string;
   priceRange?: FiltersPrice;
 };

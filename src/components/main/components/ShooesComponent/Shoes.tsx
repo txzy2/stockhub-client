@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './shooes.scss';
 import {Product, ProductReceive} from '../../../../types/types';
 import {Loader} from 'lucide-react';
@@ -21,10 +21,6 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
     setIsCardOpen(false);
     document.body.classList.remove('modal-open');
   };
-
-  useEffect(() => {
-    console.log(productData);
-  }, []);
 
   if (!productData || productData.length === 0) {
     return (
