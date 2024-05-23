@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
       <workItem from="1716358715760" duration="6555000" />
       <workItem from="1716366124528" duration="5203000" />
       <workItem from="1716371550920" duration="3578000" />
-      <workItem from="1716464827617" duration="3203000" />
+      <workItem from="1716464827617" duration="3369000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />

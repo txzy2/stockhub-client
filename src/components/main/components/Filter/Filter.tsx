@@ -5,9 +5,15 @@ import {ArrowBigRightDash, X} from 'lucide-react';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
-  colors: ['Серые', 'Красные'],
+  colors: [
+    'Серые',
+    'Красные',
+    'Черные',
+    'Голубые',
+    'Белые'
+  ],
   brands: ['Nike', 'Puma', 'Jordan'],
-  material: ['Кожа', 'Текстиль'],
+  material: ['Кожа', 'Текстиль', 'Ткань'],
   sizesShoes: [
     '5', '6', '7',
     '8', '9', '10',
