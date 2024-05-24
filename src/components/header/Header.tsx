@@ -52,7 +52,7 @@ const Header = () => {
             id="main"
           >
             <button className="header__user--btn" onClick={openModal}>
-              <CircleUser strokeWidth={1} size={32} />
+              <CircleUser strokeWidth={2} size={32} />
               <Typewriter
                 onInit={typewriter => {
                   typewriter
@@ -82,7 +82,7 @@ const Header = () => {
           id="main"
         >
           <div className="header__basket" onClick={openBasket}>
-            <PackageOpen size={32} strokeWidth={1} />
+            <PackageOpen size={32} strokeWidth={2} />
             <span className="header__basket--count">
               {userData !== null ? (
                 userData?.basket
