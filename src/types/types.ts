@@ -51,6 +51,14 @@ export type UserRecive = {
   user: UserReciveDto[];
 };
 
+export type UserResponse = {
+  locale: string;
+  email: string;
+  fio: string;
+  orders: number;
+  bonus: number;
+};
+
 type FiltersPrice = {
   from: string;
   to: string;

@@ -39,42 +39,43 @@ const Header = () => {
 
   useEffect(() => {
     userReq(user?.id ? user?.id.toString() : '', setUserData);
+    // userReq('307777256', setUserData);
   }, [user]);
 
   return (
     <div className="header">
       <div className="header__user">
-        {user?.first_name ? (
-          <motion.div
-            whileHover={{scale: 1.1}}
-            transition={{type: 'spring', stiffness: 400, damping: 10}}
-            id="main"
-          >
-            <button className="header__user--btn" onClick={openModal}>
-              <CircleUser strokeWidth={1} size={32} />
-              <Typewriter
-                onInit={typewriter => {
-                  typewriter
-                    .typeString(`${user?.first_name}`)
-                    .start()
-                    .callFunction(() => {
-                      (
-                        document.getElementsByClassName(
-                          'Typewriter__cursor'
-                        )[0] as HTMLElement
-                      ).style.display = 'none';
-                    });
-                }}
-              />
-            </button>
-          </motion.div>
-        ) : (
-          <div className="header__load">
-            <span className="header__load--emoji">💀</span>
-            <Loader className="animate-spin-slow spinner" size={30} />
-          </div>
-        )}
-        
+        {/*{user?.first_name ? (*/}
+        <motion.div
+          whileHover={{scale: 1.1}}
+          transition={{type: 'spring', stiffness: 400, damping: 10}}
+          id="main"
+        >
+          <button className="header__user--btn" onClick={openModal}>
+            <CircleUser strokeWidth={1} size={32} />
+            <Typewriter
+              onInit={typewriter => {
+                typewriter
+                  .typeString(`${user?.first_name}`)
+                  .start()
+                  .callFunction(() => {
+                    (
+                      document.getElementsByClassName(
+                        'Typewriter__cursor'
+                      )[0] as HTMLElement
+                    ).style.display = 'none';
+                  });
+              }}
+            />
+          </button>
+        </motion.div>
+        {/*) : (*/}
+        {/*  <div className="header__load">*/}
+        {/*    <span className="header__load--emoji">💀</span>*/}
+        {/*    <Loader className="animate-spin-slow spinner" size={30} />*/}
+        {/*  </div>*/}
+        {/*)}*/}
+
         <motion.div
           whileHover={{scale: 1.1}}
           transition={{type: 'spring', stiffness: 400, damping: 10}}
@@ -104,7 +105,7 @@ const Header = () => {
             transition={{duration: 0.5}}
             className="modal-left"
           >
-            <Profile closeModal={closeModal} />
+            <Profile closeModal={closeModal} userData={userData} />
           </motion.div>
         )}
       </AnimatePresence>

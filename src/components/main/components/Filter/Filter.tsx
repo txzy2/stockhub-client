@@ -48,6 +48,7 @@ const FilterSelect: React.FC<FilterSelectProps> = (
       <select
         className="filter__options--select"
         onChange={e => onSelect(e.target.value)}
+        value={selectedValue ? selectedValue : label}
       >
         <option hidden value="">
           {label}
@@ -103,10 +104,11 @@ const Filter: React.FC<FilterProps> = (
       [filterName]: value
     }));
 
-    if (filterName === 'var') {
+    if (selectedFilters.var) {
       setVisible(true);
       setClothShoeSelected(value);
     }
+
   };
 
   return (
@@ -120,7 +122,7 @@ const Filter: React.FC<FilterProps> = (
           {/*TODO: Сделать проверку на var*/}
 
           <FilterSelect
-            label={selectedFilters.var ?? 'Одежда / Обувь'}
+            label={'Одежда / Обувь'}
             options={options.clothes}
             onSelect={value =>
               handleSelect('var', value === 'Одежда' ? 'cloth' : 'shoe')
@@ -163,7 +165,7 @@ const Filter: React.FC<FilterProps> = (
                 }
                 onSelect={value => handleSelect('size', value)}
                 isShoe={clothShoeSelected === 'shoe'}
-                selectedValue={''}
+                selectedValue={selectedFilters.size}
               />
             </>
           )}
