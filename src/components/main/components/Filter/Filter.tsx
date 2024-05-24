@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './filter.scss';
 import {Filters} from '../../../../types/types';
 import {ArrowBigRightDash, X} from 'lucide-react';
-import {Slider, Typography} from '@material-ui/core';
+import {Slider} from '@material-ui/core';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
@@ -177,9 +177,9 @@ const Filter: React.FC<FilterProps> = (
             </>
           )}
 
-          <Typography id="range-slider" gutterBottom>
+          <label id="range-slider">
             Цена
-          </Typography>
+          </label>
           <Slider
             className={'filter__options_price'}
             value={value}
@@ -189,20 +189,6 @@ const Filter: React.FC<FilterProps> = (
             valueLabelDisplay="auto"
           />
 
-          {/* <div className='filter__options_price'>
-            <input
-              className='filter__options_price--input'
-              type='number'
-              placeholder='От'
-              value={selectedFilters.priceRange?.from}
-            />
-            <input
-              className='filter__options_price--input'
-              type='number'
-              placeholder='До'
-              value={selectedFilters.priceRange?.to}
-            />
-          </div> */}
 
           <button className="filter__btn" type="submit">
             Применить фильтры
