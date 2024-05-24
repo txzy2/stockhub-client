@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 300;
+
+  src: local('Rubik Light'), local('Rubik-Light'),
+  url(../assets/fonts/Rubik-Light.woff) format('woff'),
+  url(../assets/fonts/Rubik-Light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+
+  src: local('Rubik Regular'), local('Rubik-Regular'),
+  url(../assets/fonts/Rubik-Regular.woff) format('woff'),
+  url(../assets/fonts/Rubik-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+
+  src: local('Rubik Medium'), local('Rubik-Medium'),
+  url(../assets/fonts/Rubik-Medium.woff) format('woff'),
+  url(../assets/fonts/Rubik-Medium.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 600;
+
+  src: local('Rubik Bold'), local('Rubik-Bold'),
+  url(../assets/fonts/Rubik-Bold.woff) format('woff'),
+  url(../assets/fonts/Rubik-Bold.woff2) format('woff2');
+}

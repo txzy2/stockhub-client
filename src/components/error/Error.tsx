@@ -2,8 +2,9 @@ import {Footer} from '../index';
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 import {motion} from 'framer-motion';
-import {images} from '../../assets/imagesAssets';
+
 import './error.scss';
+import {images} from '../../assets/imagesAssets';
 
 const Error = () => {
   return (

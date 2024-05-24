@@ -7,12 +7,12 @@ import {AnimatePresence, motion} from 'framer-motion';
 
 import './main.scss';
 
-import {images} from '../../assets/imagesAssets';
 import Filter from './components/Filter/Filter';
 import {Filters, ProductReceive} from '../../types/types';
 import {FetchFilters} from '../../hooks/fetchFilters';
 import Cloth from './components/ClothComponent/Cloth';
 import Shoes from './components/ShooesComponent/Shoes';
+import {images} from '../../assets/imagesAssets';
 
 const Main = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);

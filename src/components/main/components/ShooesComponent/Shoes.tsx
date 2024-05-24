@@ -69,16 +69,14 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 {product.color?.map(color => color)}
               </div>
 
-              <div className="">
-                <p className="font-medium">Размеры: </p>
-                <div className="shooes__product_info--sizes">
-                  {product.size !== undefined && product.size.length > 0 && product.size.map((variant, index, array) => (
-                    <React.Fragment key={index}>
-                      <span>{variant}us</span>
-                      {index !== array.length - 1 && <span>, </span>}
-                    </React.Fragment>
-                  ))}
-                </div>
+              <p className="font-medium">Размеры (us): </p>
+              <div className="shooes__product_info--sizes">
+                {product.size !== undefined && product.size.length > 0 && product.size.map((variant, index, array) => (
+                  <React.Fragment key={index}>
+                    <span>{variant}</span>
+                    {index !== array.length - 1 && <span>, </span>}
+                  </React.Fragment>
+                ))}
               </div>
 
               <p className="shooes__product_price">

@@ -5,20 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
-      <change afterPath="$PROJECT_DIR$/src/styles/vars.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Bold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Bold.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Light.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Light.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Medium.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Medium.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/Rubik-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/normalize.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/error/error.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/error/error.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/components/basket/basket.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/basket/basket.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/components/profile/profile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/profile/profile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/Filter/filter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Filter/filter.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/error/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/error/Error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/vars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/vars.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,26 +51,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/kamaeff/Documents/Work/stockhub-client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamaeff/Documents/Work/stockhub-client/src/styles&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\styles" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src" />
+      <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client" />
+      <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\assets\fonts" />
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\styles" />
     </key>
   </component>
@@ -93,7 +104,8 @@
       <workItem from="1716464827617" duration="6248000" />
       <workItem from="1716471497429" duration="2002000" />
       <workItem from="1716554506601" duration="24000" />
-      <workItem from="1716554540029" duration="10937000" />
+      <workItem from="1716554540029" duration="11904000" />
+      <workItem from="1716575452597" duration="821000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />
