@@ -48,6 +48,7 @@ const Main = () => {
 
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
+    setSelectedFilters(filters);
 
     console.log(selectedFilters);
     if (filters.var === 'cloth') {
@@ -74,18 +75,16 @@ const Main = () => {
   useEffect(() => {
     setIsLoading(true);
     if (appliedFilters !== null) {
-      FetchFilters(selectedButton, appliedFilters, (data) => {
+      FetchFilters(selectedButton, appliedFilters, data => {
         setProductData(data);
         setIsLoading(false);
       });
     } else {
-      FetchFilters(selectedButton, {}, (data) => {
+      FetchFilters(selectedButton, {}, data => {
         setProductData(data);
         setIsLoading(false);
       });
     }
-
-
   }, [selectedButton, appliedFilters, setProductData]);
 
   const items = Array.from({length: 3}).map((_, index) => (
@@ -113,32 +112,37 @@ const Main = () => {
           </button>
         </div>
 
-        <div className="">
-          {appliedFilters && (
-            <div className="main__search_filters">
-              {Object.entries(appliedFilters).map(
-                ([key, value]) =>
-                  key !== 'priceRange' &&
-                  value !== undefined &&
-                  value !== '' && (
-                    <div key={key} className="main__search_filters--item">
-                      <span>{String(value === 'cloth' ? 'Одежда' : (value === 'shoe' ? 'Обувь' : value))} </span>
-                      <button
-                        onClick={() => removeFilter(key as keyof Filters)}
-                      >
-                        <X size={20} />
-                      </button>
-                    </div>
-                  )
-              )}
-            </div>
-          )}
-        </div>
+        {appliedFilters && (
+          <div className="main__search_filters">
+            {Object.entries(appliedFilters).map(
+              ([key, value]) =>
+                key !== 'priceRange' &&
+                value !== undefined &&
+                value !== '' && (
+                  <div key={key} className="main__search_filters--item">
+                    <span>
+                      {String(
+                        value === 'cloth'
+                          ? 'Одежда'
+                          : value === 'shoe'
+                            ? 'Обувь'
+                            : value
+                      )}{' '}
+                    </span>
+                    <button onClick={() => removeFilter(key as keyof Filters)}>
+                      <X size={20} />
+                    </button>
+                  </div>
+                )
+            )}
+          </div>
+        )}
       </section>
 
       <div className="main__btn">
         <button
-          className={`main__btn-item ${selectedButton === 'cloth' ? 'active' : ''
+          className={`main__btn-item ${
+            selectedButton === 'cloth' ? 'active' : ''
           }`}
           onClick={() => handleCategoryChange('cloth')}
         >
@@ -147,7 +151,8 @@ const Main = () => {
         </button>
 
         <button
-          className={`main__btn-item ${selectedButton === 'shoe' ? 'active' : ''
+          className={`main__btn-item ${
+            selectedButton === 'shoe' ? 'active' : ''
           }`}
           onClick={() => handleCategoryChange('shoe')}
         >
@@ -170,30 +175,21 @@ const Main = () => {
         </div>
       </section>
 
-
-      {/*TODO: Правильно настроить применение фильтров*/}
-      {/*NOTE: Правильно передавать данные: 1) По дефолту передаются все данные с productData, елси применены фильтры, то возвращается все по филььтрам*/}
-
-      {
-        (productData.length > 0 && !isLoading) ? (
-          <>
-            {(selectedButton === 'cloth' || (appliedFilters && appliedFilters.var === 'cloth')) &&
-              <Cloth />}
-            {(selectedButton === 'shoe') && <Shoes productData={productData} />}
-          </>
-        ) : (
-          (isLoading) ? (
-            <div className={'load'}>
-              <Loader className="animate-spin-slow spinner" size={30} />
-            </div>
-          ) : (
-            <div style={{textAlign: 'center'}}>
-              По данным фильтрам ничего не найдено
-            </div>
-          )
-        )
-      }
-
+      {productData.length > 0 && !isLoading ? (
+        <>
+          {(selectedButton === 'cloth' ||
+            (appliedFilters && appliedFilters.var === 'cloth')) && <Cloth />}
+          {selectedButton === 'shoe' && <Shoes productData={productData} />}
+        </>
+      ) : isLoading ? (
+        <div className={'load'}>
+          <Loader className="animate-spin-slow spinner" size={30} />
+        </div>
+      ) : (
+        <div style={{textAlign: 'center'}}>
+          По данным фильтрам ничего не найдено
+        </div>
+      )}
 
       <AnimatePresence>
         {isFilterOpen && (
@@ -204,7 +200,11 @@ const Main = () => {
             transition={{duration: 0.5}}
             className="modal-right"
           >
-            <Filter closeModal={closeClose} applyFilters={applyFilters} FilterSelected={selectedFilters} />
+            <Filter
+              closeModal={closeClose}
+              applyFilters={applyFilters}
+              FilterSelected={selectedFilters}
+            />
           </motion.div>
         )}
       </AnimatePresence>

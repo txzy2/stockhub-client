@@ -42,15 +42,15 @@ const Header = () => {
   }, [user]);
 
   return (
-    <div className='header'>
-      <div className='header__user'>
+    <div className="header">
+      <div className="header__user">
         {user?.first_name ? (
           <motion.div
             whileHover={{scale: 1.1}}
             transition={{type: 'spring', stiffness: 400, damping: 10}}
-            id='main'
+            id="main"
           >
-            <button className='header__user--btn' onClick={openModal}>
+            <button className="header__user--btn" onClick={openModal}>
               <CircleUser strokeWidth={1} size={32} />
               <Typewriter
                 onInit={typewriter => {
@@ -60,7 +60,7 @@ const Header = () => {
                     .callFunction(() => {
                       (
                         document.getElementsByClassName(
-                          'Typewriter__cursor',
+                          'Typewriter__cursor'
                         )[0] as HTMLElement
                       ).style.display = 'none';
                     });
@@ -69,44 +69,44 @@ const Header = () => {
             </button>
           </motion.div>
         ) : (
-          <div className='header__load'>
-            <span className='header__load--emoji'>💀</span>
-            <Loader className='animate-spin-slow spinner' size={30} />
+          <div className="header__load">
+            <span className="header__load--emoji">💀</span>
+            <Loader className="animate-spin-slow spinner" size={30} />
           </div>
         )}
 
         {/* TODO: Подумать надо лого */}
 
-        {/* <div className='header__logo'> */}
-        {/*   <Typewriter */}
-        {/*     onInit={typewriter => { */}
-        {/*       typewriter */}
-        {/*         .typeString('StockHub12') */}
-        {/*         .start() */}
-        {/*         .callFunction(() => { */}
-        {/*           ( */}
-        {/*             document.getElementsByClassName( */}
-        {/*               'Typewriter__cursor', */}
-        {/*             )[0] as HTMLElement */}
-        {/*           ).style.display = 'none'; */}
-        {/*         }); */}
-        {/*     }} */}
-        {/*   /> */}
-        {/* </div> */}
+        <div className="header__logo">
+          <Typewriter
+            onInit={typewriter => {
+              typewriter
+                .typeString('StockHub12')
+                .start()
+                .callFunction(() => {
+                  (
+                    document.getElementsByClassName(
+                      'Typewriter__cursor'
+                    )[0] as HTMLElement
+                  ).style.display = 'none';
+                });
+            }}
+          />
+        </div>
 
         <motion.div
           whileHover={{scale: 1.1}}
           transition={{type: 'spring', stiffness: 400, damping: 10}}
-          id='main'
+          id="main"
         >
-          <div className='header__basket' onClick={openBasket}>
+          <div className="header__basket" onClick={openBasket}>
             <PackageOpen size={32} strokeWidth={1} />
-            <span className='header__basket--count'>
+            <span className="header__basket--count">
               {userData !== null ? (
                 userData?.basket
               ) : (
-                <div className='header__load'>
-                  <Loader className='animate-spin-slow spinner' size={20} />
+                <div className="header__load">
+                  <Loader className="animate-spin-slow spinner" size={20} />
                 </div>
               )}
             </span>
@@ -121,7 +121,7 @@ const Header = () => {
             animate={{opacity: 1, x: 0}}
             exit={{opacity: 0, x: -1000}}
             transition={{duration: 0.5}}
-            className='modal-left'
+            className="modal-left"
           >
             <Profile closeModal={closeModal} />
           </motion.div>
@@ -135,7 +135,7 @@ const Header = () => {
             animate={{opacity: 1, y: 0}}
             exit={{opacity: 0, y: 1000}}
             transition={{duration: 0.5}}
-            className='modal'
+            className="modal"
           >
             <Basket closeModal={closeBasket} />
           </motion.div>

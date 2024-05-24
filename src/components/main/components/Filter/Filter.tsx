@@ -20,7 +20,8 @@ const options = {
     '11', '12', '13'
   ],
   sizesCloth: [
-    'S', 'M', 'L', 'XL', '2XL', '3XL'
+    'S', 'M', 'L',
+    'XL', '2XL', '3XL'
   ]
 };
 
@@ -41,10 +42,9 @@ const FilterSelect: React.FC<FilterSelectProps> = (
     selectedValue
   }
 ) => {
-
   return (
+    // TODO: Сделать правильный проброс selectedValue.var для заголовка Одежда / Обувь
     <div className="filter__options">
-
       <select
         className="filter__options--select"
         onChange={e => onSelect(e.target.value)}
@@ -70,11 +70,20 @@ interface FilterProps {
   FilterSelected: Filters;
 }
 
-const Filter: React.FC<FilterProps> = ({closeModal, applyFilters, FilterSelected}) => {
-  const [selectedFilters, setSelectedFilters] = useState<Filters>(FilterSelected);
+const Filter: React.FC<FilterProps> = (
+  {
+    closeModal,
+    applyFilters,
+    FilterSelected
+  }
+) => {
+  const [selectedFilters, setSelectedFilters] =
+    useState<Filters>(FilterSelected);
 
   // NOTE: SIZE_FILTER
-  const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(null);
+  const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(
+    null
+  );
   const [visible, setVisible] = useState(false);
 
   const handleApplyFilters = (e: React.FormEvent) => {
@@ -108,18 +117,21 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters, FilterSelected
 
       <div className="filter">
         <form onSubmit={handleApplyFilters}>
-
           {/*TODO: Сделать проверку на var*/}
 
           <FilterSelect
             label={selectedFilters.var ?? 'Одежда / Обувь'}
             options={options.clothes}
-            onSelect={value => handleSelect('var', value === 'Одежда' ? 'cloth' : 'shoe')}
+            onSelect={value =>
+              handleSelect('var', value === 'Одежда' ? 'cloth' : 'shoe')
+            }
             selectedValue={selectedFilters.var}
           />
 
           <div className="filter__error">
-            {!clothShoeSelected && <span>Пожалуйста, выберите значение поля</span>}
+            {!clothShoeSelected && (
+              <span>Пожалуйста, выберите значение поля</span>
+            )}
           </div>
 
           {visible && (
@@ -144,7 +156,11 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters, FilterSelected
               />
               <FilterSelect
                 label="Размеры"
-                options={clothShoeSelected === 'cloth' ? options.sizesCloth : options.sizesShoes}
+                options={
+                  clothShoeSelected === 'cloth'
+                    ? options.sizesCloth
+                    : options.sizesShoes
+                }
                 onSelect={value => handleSelect('size', value)}
                 isShoe={clothShoeSelected === 'shoe'}
                 selectedValue={''}
@@ -152,21 +168,20 @@ const Filter: React.FC<FilterProps> = ({closeModal, applyFilters, FilterSelected
             </>
           )}
 
-
-          <div className="filter__options_price">
+          {/* <div className='filter__options_price'>
             <input
-              className="filter__options_price--input"
-              type="number"
-              placeholder="От"
+              className='filter__options_price--input'
+              type='number'
+              placeholder='От'
               value={selectedFilters.priceRange?.from}
             />
             <input
-              className="filter__options_price--input"
-              type="number"
-              placeholder="До"
+              className='filter__options_price--input'
+              type='number'
+              placeholder='До'
               value={selectedFilters.priceRange?.to}
             />
-          </div>
+          </div> */}
 
           <button className="filter__btn" type="submit">
             Применить фильтры
