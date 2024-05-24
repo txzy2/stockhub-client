@@ -3,13 +3,11 @@
   width: 95%;
   margin: 15px auto;
 
-  font-family: 'Poetsen One', sans-serif;
-
   &__user {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     &--btn {
       display: flex;
       align-items: center;
@@ -19,6 +17,7 @@
   }
 
   &__logo {
+    font-family: 'Poetsen One', sans-serif;
     font-size: 20px;
   }
 

@@ -78,20 +78,21 @@ const Header = () => {
         {/* TODO: Подумать надо лого */}
 
         <div className="header__logo">
-          <Typewriter
-            onInit={typewriter => {
-              typewriter
-                .typeString('StockHub12')
-                .start()
-                .callFunction(() => {
-                  (
-                    document.getElementsByClassName(
-                      'Typewriter__cursor'
-                    )[0] as HTMLElement
-                  ).style.display = 'none';
-                });
-            }}
-          />
+          StockHub12
+          {/*<Typewriter*/}
+          {/*  onInit={typewriter => {*/}
+          {/*    typewriter*/}
+          {/*      .typeString('StockHub12')*/}
+          {/*      .start()*/}
+          {/*      .callFunction(() => {*/}
+          {/*        (*/}
+          {/*          document.getElementsByClassName(*/}
+          {/*            'Typewriter__cursor'*/}
+          {/*          )[0] as HTMLElement*/}
+          {/*        ).style.display = 'none';*/}
+          {/*      });*/}
+          {/*  }}*/}
+          {/*/>*/}
         </div>
 
         <motion.div
