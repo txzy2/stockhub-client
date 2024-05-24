@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './shooes.scss';
 import {Product, ProductReceive} from '../../../../types/types';
-import {Loader} from 'lucide-react';
+import {ArrowBigRightDash, Loader} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
@@ -64,24 +64,27 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 {product.brand} {product.model}
               </p>
 
-              <div>
-                <span className="font-medium ">Цвет: </span>{' '}
-                {product.color?.map(color => color)}
+              <div className="">
+                <div>
+                  <span className="font-medium">Цвет: </span>{' '}
+                  {product.color?.map(color => color)}
+                </div>
+
+                <p className="font-medium">Размеры (us): </p>
+                <div className="shooes__product_info--sizes">
+                  {product.size !== undefined && product.size.length > 0 && product.size.map((variant, index, array) => (
+                    <React.Fragment key={index}>
+                      <span>{variant}</span>
+                      {index !== array.length - 1 && <span>, </span>}
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
 
-              <p className="font-medium">Размеры (us): </p>
-              <div className="shooes__product_info--sizes">
-                {product.size !== undefined && product.size.length > 0 && product.size.map((variant, index, array) => (
-                  <React.Fragment key={index}>
-                    <span>{variant}</span>
-                    {index !== array.length - 1 && <span>, </span>}
-                  </React.Fragment>
-                ))}
-              </div>
-
-              <p className="shooes__product_price">
+              <div className="shooes__product_price">
                 {product.price?.map(item => item)}₽
-              </p>
+                <ArrowBigRightDash className="filter__options--arrow" size={25} />
+              </div>
             </div>
           </div>
         ))}
