@@ -1,0 +1,33 @@
+.error__container {
+
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
+
+  font-family: "Poetsen One", sans-serif;
+  line-height: 30px;
+  color: var(--text);
+
+  &--title {
+    font-size: 32px;
+  }
+
+  &--text {
+    font-size: 22px;
+  }
+
+}
+
+.qr {
+  padding: 10px;
+
+  background-color: var(--tg-theme-secondary-bg-color);
+}

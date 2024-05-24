@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
+      <change afterPath="$PROJECT_DIR$/src/components/error/Error.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/error/error.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imagesAssets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/imagesAssets.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +79,7 @@
       <workItem from="1716464827617" duration="6248000" />
       <workItem from="1716471497429" duration="2002000" />
       <workItem from="1716554506601" duration="24000" />
-      <workItem from="1716554540029" duration="8238000" />
+      <workItem from="1716554540029" duration="9112000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />
