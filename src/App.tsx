@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.scss';
+import './styles/App.scss';
 
 import {Header, Main} from './components';
 import Circles from './components/ui/Circles';
@@ -18,6 +18,7 @@ const App = () => {
       <div className="background">
         <Circles />
       </div>
+
       {user?.id && tg.platform !== 'tdesktop' ? (
         <>
           <Header />
@@ -28,6 +29,7 @@ const App = () => {
           <Error />
         </>
       )}
+
     </div>
   );
 };

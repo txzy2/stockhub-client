@@ -1,3 +1,5 @@
+@import "../../../../styles/vars";
+
 .profile {
   width: 80%;
   display: flex;
@@ -31,14 +33,14 @@
 
           padding: 5px 0 5px 10px;
 
-          background: var(--bg-sec);
+          background: $bg-sec;
           border-radius: 8px;
         }
       }
     }
 
     &--line {
-      color: var(--text);
+      color: $main-text-color;
     }
 
     &--subtitle {
@@ -70,5 +72,5 @@
 }
 
 .border_bottom {
-  border-bottom: 1px solid var(--text);
+  border-bottom: 1px solid $main-text-color;
 }

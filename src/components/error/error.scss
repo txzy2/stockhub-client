@@ -1,3 +1,5 @@
+@import "../../styles/vars";
+
 .error__container {
   position: fixed;
 
@@ -13,7 +15,7 @@
 
   font-family: "Poetsen One", sans-serif;
   line-height: 30px;
-  color: var(--text);
+  color: $main-text-color;
 
   &--title {
     font-size: 32px;
@@ -27,9 +29,8 @@
 }
 
 .qr {
-
   padding: 10px;
-  background-color: var(--tg-theme-secondary-bg-color);
+  background-color: $bg-sec;
 }
 
 @media (max-width: 992px) {

@@ -1,3 +1,5 @@
+@import '../../../../styles/vars';
+
 .card {
   width: 95%;
 
@@ -6,7 +8,7 @@
 
   margin: 70px auto;
 
-  color: var(--text);
+  color: $main-text-color;
 
   &__info {
     width: 95%;
@@ -54,8 +56,8 @@
       margin: 0 auto;
       padding: 10px 15px;
 
-      color: var(--text);
-      background: var(--bg);
+      color: $main-text-color;
+      background: $bg;
 
       border-radius: 8px;
     }
@@ -98,7 +100,7 @@
       margin: 0 auto;
       padding: 10px 10px;
 
-      background: var(--bg);
+      background: $bg;
       border-radius: 8px;
     }
   }

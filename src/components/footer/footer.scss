@@ -1,3 +1,5 @@
+@import "../../styles/vars";
+
 .footer {
   position: absolute;
 
@@ -7,7 +9,7 @@
 
   font-family: "Poetsen One", sans-serif;
   font-weight: 500;
-  color: var(--text);
+  color: $main-text-color;
 
   transition: 0.3s ease-in-out;
 }

@@ -1,3 +1,5 @@
+@import "../../../../styles/vars";
+
 .shooes {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@
     gap: 15px;
 
     border-radius: 12px;
-    background-color: var(--bg);
+    background-color: $bg;
     // background: #c5c5c5;
 
     &_carousel {

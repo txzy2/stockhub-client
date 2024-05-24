@@ -1,3 +1,5 @@
+@import "../../../../styles/vars";
+
 .filter {
   position: relative;
   width: 90%;
@@ -13,12 +15,12 @@
 
     font-size: 20px;
 
-    background: var(--bg-sec);
+    background: $bg-sec;
     border-radius: 9px;
     // background: #fff;
 
     &--arrow {
-      color: var(--text);
+      color: $main-text-color;
     }
 
     &--select {
@@ -40,8 +42,8 @@
     }
 
     &--select option {
-      color: var(--text);
-      background-color: var(--bg-sec);
+      color: $main-text-color;
+      background-color: $bg-sec;
     }
 
     &_price {
@@ -56,8 +58,8 @@
         outline: none;
         border-radius: 9px;
 
-        color: var(--text);
-        background: var(--bg-sec);
+        color: $main-text-color;
+        background: $bg-sec;
         // background: #fff;
       }
     }
@@ -66,7 +68,7 @@
   &__error {
     opacity: 0.7;
     font-size: 15px;
-    color: var(--err-message);
+    color: $err;
   }
 
   &__btn {
@@ -78,7 +80,7 @@
 
     padding: 15px 0;
 
-    background: var(--bg-sec);
+    background: $bg-sec;
     // background: #fff;
     color: var(--text);
     border-radius: 8px;

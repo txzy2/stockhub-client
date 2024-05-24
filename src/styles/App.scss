@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import 'vars';
 
 * {
   margin: 0;
@@ -7,23 +8,12 @@
   box-sizing: border-box;
 }
 
-:root {
-  --bg: var(--tg-theme-bg-color);
-  --bg-sec: var(--tg-theme-secondary-bg-color);
-  --text: var(--tg-theme-text-color);
-  --btn: var(--tg-theme-button-color);
-  --btn-text: var(--tg-theme-button-text-color);
-  --section-bg: var(--tg-theme-section-bg-color);
-  --accent: var(--tg-theme-accent-text-color);
-  --err-message: #e74c4c;
-}
-
 body {
   position: relative;
   height: 100vh;
 
-  background: var(--bg-sec);
-  color: var(--text);
+  background: $bg-sec;
+  color: $main-text-color;
 
   font-family: 'Rubik', serif;
 }
@@ -88,7 +78,7 @@ body {
 }
 
 .circle {
-  background-color: var(--text);
+  background-color: $main-text-color;
 }
 
 .circle-desk {
@@ -112,7 +102,7 @@ body {
 }
 
 .spinner {
-  color: var(--text);
+  color: $main-text-color;
 }
 
 .modal,
@@ -126,7 +116,7 @@ body {
 
   display: flex;
 
-  background: var(--section-bg);
+  background: $section-bg;
   // background: #c5c5c5;
   color: var(--text);
 }
