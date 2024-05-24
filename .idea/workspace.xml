@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/footer.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +79,7 @@
       <workItem from="1716464827617" duration="6248000" />
       <workItem from="1716471497429" duration="2002000" />
       <workItem from="1716554506601" duration="24000" />
-      <workItem from="1716554540029" duration="6897000" />
+      <workItem from="1716554540029" duration="7860000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />
