@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './filter.scss';
 import {Filters} from '../../../../types/types';
 import {ArrowBigRightDash, X} from 'lucide-react';
+import {Slider, Typography} from '@material-ui/core';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
@@ -80,6 +81,7 @@ const Filter: React.FC<FilterProps> = (
 ) => {
   const [selectedFilters, setSelectedFilters] =
     useState<Filters>(FilterSelected);
+  const [value, setValue] = React.useState([5000, 10000]);
 
   // NOTE: SIZE_FILTER
   const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(
@@ -109,6 +111,11 @@ const Filter: React.FC<FilterProps> = (
       setClothShoeSelected(value);
     }
 
+  };
+
+  const rangeSelector = (event: any, newValue: any) => {
+    setValue(newValue);
+    console.log(newValue);
   };
 
   return (
@@ -169,6 +176,18 @@ const Filter: React.FC<FilterProps> = (
               />
             </>
           )}
+
+          <Typography id="range-slider" gutterBottom>
+            Цена
+          </Typography>
+          <Slider
+            className={'filter__options_price'}
+            value={value}
+            min={5000}
+            max={30000}
+            onChange={rangeSelector}
+            valueLabelDisplay="auto"
+          />
 
           {/* <div className='filter__options_price'>
             <input
