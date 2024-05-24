@@ -74,27 +74,7 @@ const Header = () => {
             <Loader className="animate-spin-slow spinner" size={30} />
           </div>
         )}
-
-        {/* TODO: Подумать надо лого */}
-
-        <div className="header__logo">
-          StockHub12
-          {/*<Typewriter*/}
-          {/*  onInit={typewriter => {*/}
-          {/*    typewriter*/}
-          {/*      .typeString('StockHub12')*/}
-          {/*      .start()*/}
-          {/*      .callFunction(() => {*/}
-          {/*        (*/}
-          {/*          document.getElementsByClassName(*/}
-          {/*            'Typewriter__cursor'*/}
-          {/*          )[0] as HTMLElement*/}
-          {/*        ).style.display = 'none';*/}
-          {/*      });*/}
-          {/*  }}*/}
-          {/*/>*/}
-        </div>
-
+        
         <motion.div
           whileHover={{scale: 1.1}}
           transition={{type: 'spring', stiffness: 400, damping: 10}}
