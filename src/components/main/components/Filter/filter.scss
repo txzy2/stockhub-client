@@ -47,8 +47,9 @@
     }
 
     &_price {
+      width: 80% !important;
       display: flex;
-      margin-top: 20px;
+      margin: 20px auto;
       gap: 10px;
 
 
@@ -99,6 +100,7 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 
 .MuiSlider-rail {
   background-color: $bg !important;
