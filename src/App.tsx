@@ -22,8 +22,6 @@ const App = () => {
       </div>
       {user?.id && tg.platform !== 'tdesktop' ? (
         <>
-
-          <div className="">{tg.platform}</div>
           <Header />
           <Main />
         </>
