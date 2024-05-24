@@ -33,24 +33,24 @@
     &_info {
       display: flex;
       flex-direction: column;
-
+      
       text-align: justify;
       gap: 5px;
+      padding: 10px;
+
+      background: $main-text-color;
+      color: $bg;
+
+      border-radius: $radius;
 
       &--title {
         margin-bottom: 10px;
-        padding: 5px;
         text-align: left;
 
         font-family: "Poetsen One", sans-serif;
         font-weight: 500;
         font-size: 22px;
         line-height: 24px;
-
-        background: $main-text-color;
-        color: $bg;
-
-        border-radius: $radius;
       }
 
       &--sizes {
