@@ -33,13 +33,12 @@
     &_info {
       display: flex;
       flex-direction: column;
-      
+
       text-align: justify;
       gap: 5px;
       padding: 10px;
 
-      background: $main-text-color;
-      color: $bg;
+      color: $main-text-color;
 
       border-radius: $radius;
 
