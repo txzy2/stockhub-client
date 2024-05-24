@@ -1,5 +1,4 @@
 .error__container {
-
   position: fixed;
 
   left: 50%;
@@ -21,13 +20,29 @@
   }
 
   &--text {
+    width: 60%;
     font-size: 22px;
   }
 
 }
 
 .qr {
-  padding: 10px;
 
+  padding: 10px;
   background-color: var(--tg-theme-secondary-bg-color);
+}
+
+@media (max-width: 992px) {
+  .error__container {
+    &--title {
+      font-size: 26px;
+    }
+
+    &--text {
+      width: 100%;
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
 }

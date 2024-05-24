@@ -44,8 +44,7 @@ const Error = () => {
             />
           </a>
         </motion.div>
-        <div className="error__container--text">Эксклюзиво только в мобильном <a
-          href={'https://t.me/stockhub12bot'}>Telegram</a></div>
+        <div className="error__container--text">Эксклюзиво только в мобильной версии Telegram</div>
       </div>
       <Footer />
     </>
