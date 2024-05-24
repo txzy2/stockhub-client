@@ -20,6 +20,7 @@ const App = () => {
           <div className="background">
             <Circles />
           </div>
+          <div className="">{tg.platform}</div>
           <Header />
           <Main />
         </>
