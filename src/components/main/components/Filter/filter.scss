@@ -102,9 +102,15 @@ input[type='number']::-webkit-outer-spin-button {
 
 .MuiSlider-rail {
   background-color: $bg !important;
+  border-radius: 3px;
+}
+
+.MuiSlider-track {
+  border-radius: 3px
 }
 
 .MuiSlider-thumb,
 .MuiSlider-track {
   background-color: $main-text-color !important;
 }
+
