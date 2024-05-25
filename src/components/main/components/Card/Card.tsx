@@ -2,17 +2,15 @@ import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
 
 import './card.scss';
 import {ModalProps, ProductReceive} from '../../../../types/types';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Carousel} from 'react-responsive-carousel';
 
-const Card = ({
-                closeModal,
-                product
-              }: ModalProps & {product: ProductReceive | null}) => {
-
-  useEffect(() => {
-    console.log(product);
-  }, []);
+const Card = (
+  {
+    closeModal,
+    product
+  }: ModalProps & {product: ProductReceive | null}
+) => {
 
   if (!product || product.length === 0) {
     return (

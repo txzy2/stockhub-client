@@ -177,6 +177,8 @@ const Filter: React.FC<FilterProps> = (
             </>
           )}
 
+          {/*TODO: Доделать выбор цен*/}
+
           <label id="range-slider">
             Цена
           </label>

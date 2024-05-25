@@ -49,8 +49,7 @@ const Main = () => {
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
     setSelectedFilters(filters);
-
-    console.log(selectedFilters);
+    
     if (filters.var === 'cloth') {
       setSelectedButton('cloth');
     } else if (filters.var === 'shoe') {
