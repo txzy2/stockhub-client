@@ -174,6 +174,10 @@ const Filter: React.FC<FilterProps> = (
           {/*TODO: Доделать выбор цен*/}
           <div className={'filter__options--price'}>
             <label className={'filter__options--price__label'} htmlFor={'price'}>Цена</label>
+            <div className={'filter__options--price__container'}>
+              <span>От {value[0]}</span>
+              <span>До {value[1]}</span>
+            </div>
 
             <Slider
               value={value}
