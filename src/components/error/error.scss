@@ -23,7 +23,12 @@
 
   &--text {
     width: 60%;
+    font-family: "Rubik", sans-serif;
     font-size: 22px;
+
+    span {
+      font-family: "Poetsen One", sans-serif;
+    }
   }
 
 }

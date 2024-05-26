@@ -6,7 +6,7 @@ import {motion} from 'framer-motion';
 import './error.scss';
 import {images} from '../../assets/imagesAssets';
 
-const Error = () => {
+const ErrorPage = () => {
   return (
     <>
       <div className="error__container">
@@ -45,11 +45,12 @@ const Error = () => {
             />
           </a>
         </motion.div>
-        <div className="error__container--text">Эксклюзиво только в мобильной версии Telegram</div>
+        <div className="error__container--text">Эксклюзиво только в мобильной версии <span>Telegram</span>
+        </div>
       </div>
       <Footer />
     </>
   );
 };
 
-export default Error;
+export default ErrorPage;

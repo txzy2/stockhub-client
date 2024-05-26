@@ -46,6 +46,7 @@ const FilterSelect: React.FC<FilterSelectProps> = (
   return (
     // TODO: Сделать правильный проброс selectedValue.var для заголовка Одежда / Обувь
     <div className="filter__options">
+      
       <select
         className="filter__options--select"
         onChange={e => onSelect(e.target.value)}
@@ -54,10 +55,12 @@ const FilterSelect: React.FC<FilterSelectProps> = (
         <option hidden value="">
           {label}
         </option>
+
         {options.map((option: string, index: number) => (
           <option key={index} value={option}>
             {label === 'Размеры' && isShoe ? option + 'us' : option}
           </option>
+
         ))}
       </select>
 
@@ -173,6 +176,7 @@ const Filter: React.FC<FilterProps> = (
 
           {/*TODO: Доделать выбор цен*/}
           <div className={'filter__options--price'}>
+
             <label className={'filter__options--price__label'} htmlFor={'price'}>Цена</label>
             <div className={'filter__options--price__container'}>
               <span>{value[0]} ₽</span>
