@@ -81,7 +81,7 @@ const Filter: React.FC<FilterProps> = (
 ) => {
   const [selectedFilters, setSelectedFilters] =
     useState<Filters>(FilterSelected);
-  const [value, setValue] = React.useState([5000, 10000]);
+  const [value, setValue] = React.useState([7000, 11000]);
 
   // NOTE: SIZE_FILTER
   const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(
@@ -173,9 +173,7 @@ const Filter: React.FC<FilterProps> = (
 
           {/*TODO: Доделать выбор цен*/}
           <div className={'filter__options--price'}>
-            <label className={'filter__options--price__label'} htmlFor={'price'}>
-              Цена
-            </label>
+            <label className={'filter__options--price__label'} htmlFor={'price'}>Цена</label>
 
             <Slider
               value={value}
@@ -186,7 +184,6 @@ const Filter: React.FC<FilterProps> = (
               name={'price'}
             />
           </div>
-
 
           <button className="filter__btn" type="submit">
             Применить фильтры
