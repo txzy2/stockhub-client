@@ -7,9 +7,7 @@
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/error/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/error/ErrorPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/error/error.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/error/error.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,24 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamaeff/Documents/Work/stockhub-client/src/styles&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/kamae/Documents/Work/stockhub.v2/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Users\\kamae\\Documents\\Work\\stockhub.v2\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\styles" />
@@ -66,13 +64,6 @@
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\assets\fonts" />
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\styles" />
     </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -93,6 +84,7 @@
       <workItem from="1716554506601" duration="24000" />
       <workItem from="1716554540029" duration="11904000" />
       <workItem from="1716575452597" duration="13607000" />
+      <workItem from="1716752959116" duration="286000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />
@@ -149,7 +141,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/@material-ui/core/Slider/Slider.d.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

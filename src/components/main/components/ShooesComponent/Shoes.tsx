@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './shooes.scss';
 import {Product, ProductReceive} from '../../../../types/types';
-import {ArrowBigRightDash, Loader} from 'lucide-react';
+import {Loader} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
@@ -83,7 +83,6 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
 
               <div className="shooes__product_price">
                 {product.price?.map(item => item)}₽
-                <ArrowBigRightDash className="filter__options--arrow" size={25} />
               </div>
             </div>
           </div>
