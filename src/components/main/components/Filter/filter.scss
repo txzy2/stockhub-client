@@ -32,7 +32,7 @@
 
       font-weight: 400;
       outline: none;
-      border-radius: 9px;
+      border-radius: $radius;
       background: none;
 
       -webkit-appearance: none;
@@ -49,6 +49,11 @@
     &_price {
       display: flex;
       gap: 10px;
+
+      padding: 10px 30px 10px 10px;
+      background: $bg-sec;
+
+      border-radius: $radius;
     }
   }
 
@@ -86,19 +91,23 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
-
 .MuiSlider-rail {
   background-color: $bg !important;
-  height: 4px !important;
+  height: 5px !important;
 }
 
 .MuiSlider-track {
-  height: 4px !important;
+  height: 5px !important;
 }
 
 .MuiSlider-thumb,
 .MuiSlider-track {
   background-color: $main-text-color !important;
+}
+
+.MuiSlider-thumb {
+  width: 15px !important;
+  height: 15px !important;
 }
 
 .PrivateValueLabel-circle-4 {

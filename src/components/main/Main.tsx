@@ -36,6 +36,7 @@ const Main = () => {
   const [productData, setProductData] = useState<ProductReceive | []>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // NOTE: FILTERS_FUNC
   const openFilter = () => {
     setIsFilterOpen(true);
     document.body.classList.add('modal-open');
@@ -49,7 +50,7 @@ const Main = () => {
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
     setSelectedFilters(filters);
-    
+
     if (filters.var === 'cloth') {
       setSelectedButton('cloth');
     } else if (filters.var === 'shoe') {
@@ -176,8 +177,8 @@ const Main = () => {
 
       {productData.length > 0 && !isLoading ? (
         <>
-          {(selectedButton === 'cloth' ||
-            (appliedFilters && appliedFilters.var === 'cloth')) && <Cloth />}
+          {(selectedButton === 'cloth' || (appliedFilters && appliedFilters.var === 'cloth')) && <Cloth />}
+          
           {selectedButton === 'shoe' && <Shoes productData={productData} />}
         </>
       ) : isLoading ? (
