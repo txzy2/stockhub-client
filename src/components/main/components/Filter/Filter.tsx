@@ -137,12 +137,6 @@ const Filter: React.FC<FilterProps> = (
             selectedValue={selectedFilters.var}
           />
 
-          <div className="filter__error">
-            {!clothShoeSelected && (
-              <span>Пожалуйста, выберите значение поля</span>
-            )}
-          </div>
-
           {visible && (
             <>
               <FilterSelect
