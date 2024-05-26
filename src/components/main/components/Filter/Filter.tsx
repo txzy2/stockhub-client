@@ -179,17 +179,20 @@ const Filter: React.FC<FilterProps> = (
 
           {/*TODO: Доделать выбор цен*/}
 
-          <label id="range-slider">
-            Цена
-          </label>
-          <Slider
-            className={'filter__options_price'}
-            value={value}
-            min={5000}
-            max={30000}
-            onChange={rangeSelector}
-            valueLabelDisplay="auto"
-          />
+          <div className={'filter__options--price'}>
+            <label className={'filter__options--price__label'} htmlFor={'price'}>
+              Цена
+            </label>
+
+            <Slider
+              value={value}
+              min={5000}
+              max={30000}
+              onChange={rangeSelector}
+              valueLabelDisplay="auto"
+              name={'price'}
+            />
+          </div>
 
 
           <button className="filter__btn" type="submit">
