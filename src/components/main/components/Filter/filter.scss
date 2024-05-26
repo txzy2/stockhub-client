@@ -67,6 +67,13 @@
         justify-content: space-between;
 
         margin-bottom: 15px;
+
+        span {
+          padding: 2px;
+          background: $bg;
+
+          border-radius: 9px;
+        }
       }
     }
   }
