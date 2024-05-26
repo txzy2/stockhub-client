@@ -66,12 +66,13 @@
         display: flex;
         justify-content: space-between;
 
-        margin-bottom: 15px;
+        margin-bottom: 12px;
 
         span {
           padding: 8px;
-          background: $bg;
+          font-size: 16px;
 
+          background: $bg;
           border-radius: 9px;
         }
       }
