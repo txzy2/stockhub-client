@@ -1,15 +1,23 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './shooes.scss';
-import {Product, ProductReceive} from '../../../../types/types';
-import {Loader} from 'lucide-react';
-import {Carousel} from 'react-responsive-carousel';
-import {AnimatePresence, motion} from 'framer-motion';
+import { Product, ProductReceive } from '../../../../types/types';
+import {
+  ArrowBigLeftDash,
+  ArrowBigRight,
+  ArrowBigRightDash,
+  Loader,
+} from 'lucide-react';
+import { Carousel } from 'react-responsive-carousel';
+import { AnimatePresence, motion } from 'framer-motion';
 import Card from '../Card/Card';
 
-
-const Shoes = ({productData}: {productData: ProductReceive}) => {
+const Shoes = ({ productData }: { productData: ProductReceive }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<ProductReceive | []>([]);
+  const [selectedProduct, setSelectedProduct] = useState<ProductReceive | []>(
+    [],
+  );
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const openCard = (product: Product) => {
     setSelectedProduct([product]);
@@ -22,25 +30,37 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
     document.body.classList.remove('modal-open');
   };
 
+  const changePage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const productsPerPage = 4;
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = productData.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
+  const totalPages = Math.ceil(productData.length / productsPerPage);
+
   if (!productData || productData.length === 0) {
     return (
       <div className={'load'}>
-        <Loader className="animate-spin-slow spinner" size={30} />
+        <Loader className='animate-spin-slow spinner' size={30} />
       </div>
     );
   }
 
   return (
-    <div className="shooes mt-3">
-      <div className="shooes">
-
-        {productData.map((product, index) => (
+    <div className='shooes mt-3'>
+      <div className='shooes'>
+        {currentProducts.map((product, index) => (
           <div
-            className="shooes__product"
+            className='shooes__product'
             key={index}
             onClick={() => openCard(product)}
           >
-            <div className="shooes__product_carousel">
+            <div className='shooes__product_carousel'>
               <Carousel
                 infiniteLoop={true}
                 autoPlay={true}
@@ -50,7 +70,7 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 {product.photos.map((photo, photoIndex) => (
                   <div key={photoIndex}>
                     <img
-                      className="shooes__product_carousel--img"
+                      className='shooes__product_carousel--img'
                       src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
                       alt={`${product.name} ${product.brand} ${product.model}`}
                     />
@@ -59,29 +79,31 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
               </Carousel>
             </div>
 
-            <div className="shooes__product_info">
-              <p className="shooes__product_info--title">
+            <div className='shooes__product_info'>
+              <p className='shooes__product_info--title'>
                 {product.brand} {product.model}
               </p>
 
-              <div className="">
+              <div className=''>
                 <div>
-                  <span className="font-medium">Цвет: </span>{' '}
+                  <span className='font-medium'>Цвет: </span>{' '}
                   {product.color?.map(color => color)}
                 </div>
 
-                <p className="font-medium">Размеры (us): </p>
-                <div className="shooes__product_info--sizes">
-                  {product.size !== undefined && product.size.length > 0 && product.size.map((variant, index, array) => (
-                    <React.Fragment key={index}>
-                      <span>{variant}</span>
-                      {index !== array.length - 1 && <span>, </span>}
-                    </React.Fragment>
-                  ))}
+                <p className='font-medium'>Размеры (us): </p>
+                <div className='shooes__product_info--sizes'>
+                  {product.size !== undefined &&
+                    product.size.length > 0 &&
+                    product.size.map((variant, index, array) => (
+                      <React.Fragment key={index}>
+                        <span>{variant}</span>
+                        {index !== array.length - 1 && <span>, </span>}
+                      </React.Fragment>
+                    ))}
                 </div>
               </div>
 
-              <div className="shooes__product_price">
+              <div className='shooes__product_price'>
                 {product.price?.map(item => item)}₽
               </div>
             </div>
@@ -89,14 +111,34 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
         ))}
       </div>
 
+      <div className='shooes__pagination'>
+        <button
+          onClick={() => changePage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <ArrowBigLeftDash size={30} />
+        </button>
+
+        <p>
+          {currentPage} из {totalPages}
+        </p>
+
+        <button
+          onClick={() => changePage(currentPage + 1)}
+          disabled={currentProducts.length < productsPerPage}
+        >
+          <ArrowBigRightDash size={30} />
+        </button>
+      </div>
+
       <AnimatePresence>
         {isCardOpen && (
           <motion.div
-            initial={{opacity: 0, y: 1000}}
-            animate={{opacity: 1, y: 0}}
-            exit={{opacity: 0, y: 1000}}
-            transition={{duration: 0.5}}
-            className="modal"
+            initial={{ opacity: 0, y: 1000 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 1000 }}
+            transition={{ duration: 0.5 }}
+            className='modal'
           >
             <Card closeModal={closeCard} product={selectedProduct} />
           </motion.div>
