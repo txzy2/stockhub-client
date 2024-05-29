@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { Product, ProductReceive } from '../../../../types/types';
-import {
-  ArrowBigLeftDash,
-  ArrowBigRight,
-  ArrowBigRightDash,
-  Loader,
-} from 'lucide-react';
+import { ArrowBigLeftDash, ArrowBigRightDash, Loader } from 'lucide-react';
 import { Carousel } from 'react-responsive-carousel';
 import { AnimatePresence, motion } from 'framer-motion';
 import Card from '../Card/Card';
