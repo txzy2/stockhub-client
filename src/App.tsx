@@ -19,16 +19,16 @@ const App = () => {
         <Circles />
       </div>
 
-      {user?.id && tg.platform !== 'tdesktop' ? (
-        <>
-          <Header />
-          <Main />
-        </>
-      ) : (
+      {/* {user?.id && tg.platform !== 'tdesktop' ? ( */}
+      <>
+        <Header />
+        <Main />
+      </>
+      {/* ) : (
         <>
           <ErrorPage />
         </>
-      )}
+      )} */}
     </div>
   );
 };

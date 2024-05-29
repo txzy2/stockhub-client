@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { Product, ProductReceive } from '../../../../types/types';
-import { ArrowBigLeftDash, ArrowBigRightDash, Loader } from 'lucide-react';
-import { Carousel } from 'react-responsive-carousel';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, {useState} from 'react';
+import {Product, ProductReceive} from '../../../../types/types';
+import {ArrowBigLeftDash, ArrowBigRightDash, Loader} from 'lucide-react';
+import {Carousel} from 'react-responsive-carousel';
+import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
 import './shooes.scss';
+import Footer from '../../../footer/Footer';
 
-const Shoes = ({ productData }: { productData: ProductReceive }) => {
+const Shoes = ({productData}: {productData: ProductReceive}) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductReceive | []>(
-    [],
+    []
   );
-
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
 
   const openCard = (product: Product) => {
     setSelectedProduct([product]);
@@ -29,13 +30,16 @@ const Shoes = ({ productData }: { productData: ProductReceive }) => {
     setCurrentPage(pageNumber);
   };
 
+  const showAllProducts = () => {
+    setShowAll(true);
+  };
+
   const productsPerPage = 4;
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = productData.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct,
-  );
+  const currentProducts = showAll
+    ? productData
+    : productData.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(productData.length / productsPerPage);
 
   if (!productData || productData.length === 0) {
@@ -107,32 +111,39 @@ const Shoes = ({ productData }: { productData: ProductReceive }) => {
       </div>
 
       <div className='shooes__pagination'>
-        <button
-          onClick={() => changePage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          <ArrowBigLeftDash size={40} strokeWidth={1} />
-        </button>
+        {!showAll && (
+          <>
+            <div className='shooes__pagination--info'>
+              <span>{currentPage}</span> из <span>{totalPages}</span>
+            </div>
+            <button
+              onClick={() => changePage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <ArrowBigLeftDash size={40} strokeWidth={1} />
+            </button>
+          </>
+        )}
 
-        <div className='shooes__pagination--info'>
-          <span>{currentPage}</span> из <span>{totalPages}</span>
-        </div>
+        {!showAll && <button onClick={showAllProducts}>Показать все</button>}
 
-        <button
-          onClick={() => changePage(currentPage + 1)}
-          disabled={currentProducts.length < productsPerPage}
-        >
-          <ArrowBigRightDash size={40} strokeWidth={1} />
-        </button>
+        {!showAll && (
+          <button
+            onClick={() => changePage(currentPage + 1)}
+            disabled={currentProducts.length < productsPerPage}
+          >
+            <ArrowBigRightDash size={40} strokeWidth={1} />
+          </button>
+        )}
       </div>
 
       <AnimatePresence>
         {isCardOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 1000 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 1000 }}
-            transition={{ duration: 0.5 }}
+            initial={{opacity: 0, y: 1000}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 1000}}
+            transition={{duration: 0.5}}
             className='modal'
           >
             <Card closeModal={closeCard} product={selectedProduct} />
