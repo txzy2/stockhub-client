@@ -64,6 +64,7 @@
   }
 
   &__pagination {
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,5 +73,7 @@
     padding: 10px;
 
     background: $bg;
+
+    border-radius: $radius;
   }
 }
