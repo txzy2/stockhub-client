@@ -225,7 +225,7 @@ const Main = () => {
         <div style={{ textAlign: 'center' }}>Ничего не найдено</div>
       )}
 
-      <ArrowBigUpDash size={40} onClick={scrollToTop} className='arrow_up' />
+      <ArrowBigUpDash size={50} onClick={scrollToTop} className='arrow_up' />
 
       <AnimatePresence>
         {isFilterOpen && (
