@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './shooes.scss';
 import { Product, ProductReceive } from '../../../../types/types';
 import {
   ArrowBigLeftDash,
@@ -10,6 +9,7 @@ import {
 import { Carousel } from 'react-responsive-carousel';
 import { AnimatePresence, motion } from 'framer-motion';
 import Card from '../Card/Card';
+import './shooes.scss';
 
 const Shoes = ({ productData }: { productData: ProductReceive }) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -116,18 +116,18 @@ const Shoes = ({ productData }: { productData: ProductReceive }) => {
           onClick={() => changePage(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          <ArrowBigLeftDash size={35} />
+          <ArrowBigLeftDash size={40} />
         </button>
 
-        <p>
-          {currentPage} из {totalPages}
-        </p>
+        <div className='shooes__pagination--info'>
+          <span>{currentPage}</span> из <span>{totalPages}</span>
+        </div>
 
         <button
           onClick={() => changePage(currentPage + 1)}
           disabled={currentProducts.length < productsPerPage}
         >
-          <ArrowBigRightDash size={35} />
+          <ArrowBigRightDash size={40} />
         </button>
       </div>
 
