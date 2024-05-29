@@ -1,4 +1,4 @@
-import {Filters, Product} from '../types/types';
+import { Filters, Product } from '../types/types';
 import axios from 'axios';
 
 const isEmptyValue = (value: any): boolean => {
@@ -13,21 +13,23 @@ const isEmptyValue = (value: any): boolean => {
 const filterEmptyValues = (obj: any): any => {
   const result: any = {};
   for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key) && !isEmptyValue(obj[key])) {
+    if (
+      Object.prototype.hasOwnProperty.call(obj, key) &&
+      !isEmptyValue(obj[key])
+    ) {
       result[key] = obj[key];
     }
   }
   return result;
 };
 
-
 // TODO: Сдлеать филтрацую на беке
 export const FetchFilters = async (
   selectVar: string | null,
   params: Filters,
-  setProductData: React.Dispatch<React.SetStateAction<Product[]>>
+  setProductData: React.Dispatch<React.SetStateAction<Product[]>>,
 ) => {
-  const filteredParams = {var: selectVar, ...filterEmptyValues(params)};
+  const filteredParams = { var: selectVar, ...filterEmptyValues(params) };
 
   if (Object.keys(filteredParams).length > 0) {
     console.log('Filtered Params:', filteredParams);
@@ -37,8 +39,8 @@ export const FetchFilters = async (
         `https://stockhub12.ru:4200/api/product/get`,
         filteredParams,
         {
-          headers: {'Content-Type': 'application/json'}
-        }
+          headers: { 'Content-Type': 'application/json' },
+        },
       );
 
       if (res.status === 200) {
