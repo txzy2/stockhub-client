@@ -116,7 +116,7 @@ const Shoes = ({ productData }: { productData: ProductReceive }) => {
           onClick={() => changePage(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          <ArrowBigLeftDash size={40} />
+          <ArrowBigLeftDash size={40} strokeWidth={1} />
         </button>
 
         <div className='shooes__pagination--info'>
@@ -127,7 +127,7 @@ const Shoes = ({ productData }: { productData: ProductReceive }) => {
           onClick={() => changePage(currentPage + 1)}
           disabled={currentProducts.length < productsPerPage}
         >
-          <ArrowBigRightDash size={40} />
+          <ArrowBigRightDash size={40} strokeWidth={1} />
         </button>
       </div>
 
