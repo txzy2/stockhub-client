@@ -1,4 +1,6 @@
 import {
+  ArrowBigRightDash,
+  ArrowBigUpDash,
   Footprints,
   Loader,
   Search,
@@ -20,6 +22,13 @@ import { FetchFilters } from '../../hooks/fetchFilters';
 import Cloth from './components/ClothComponent/Cloth';
 import Shoes from './components/ShooesComponent/Shoes';
 import { images } from '../../assets/imagesAssets';
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
 const Main = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -215,6 +224,8 @@ const Main = () => {
       ) : (
         <div style={{ textAlign: 'center' }}>Ничего не найдено</div>
       )}
+
+      <ArrowBigUpDash size={40} onClick={scrollToTop} className='arrow_up' />
 
       <AnimatePresence>
         {isFilterOpen && (

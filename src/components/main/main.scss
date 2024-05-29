@@ -1,4 +1,4 @@
-@import "../../styles/vars";
+@import '../../styles/vars';
 
 .main {
   &__close {
@@ -125,4 +125,19 @@
       margin-top: -40px;
     }
   }
+}
+
+.arrow_up {
+  cursor: pointer;
+  position: fixed;
+
+  bottom: 30px;
+  right: 10px;
+
+  background: $main-text-color;
+  color: $bg;
+
+  padding: 10px;
+
+  border-radius: 9px;
 }
