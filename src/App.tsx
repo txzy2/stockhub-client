@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import './styles/styles.scss';
 
-import { Header, Main, Footer } from './components';
+import {Header, Main, Footer} from './components';
 import Circles from './components/ui/Circles';
-import { UseTg } from './hooks/useTg';
+import {UseTg} from './hooks/useTg';
+import ErrorPage from './components/error/ErrorPage';
 
 const App = () => {
-  const { tg, user } = UseTg();
+  const {tg, user} = UseTg();
   useEffect(() => {
     tg.ready();
     tg.expand();
@@ -18,17 +19,16 @@ const App = () => {
         <Circles />
       </div>
 
-      {/*{user?.id && tg.platform !== 'tdesktop' ? (*/}
-      <>
-        <Header />
-        <Main />
-        <Footer />
-      </>
-      {/*) : (*/}
-      {/*  <>*/}
-      {/*    <ErrorPage />*/}
-      {/*  </>*/}
-      {/*)}*/}
+      {user?.id && tg.platform !== 'tdesktop' ? (
+        <>
+          <Header />
+          <Main />
+        </>
+      ) : (
+        <>
+          <ErrorPage />
+        </>
+      )}
     </div>
   );
 };

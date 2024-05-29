@@ -9,8 +9,8 @@ import {images} from '../../assets/imagesAssets';
 const ErrorPage = () => {
   return (
     <>
-      <div className="error__container">
-        <div className="error__container--title">
+      <div className='error__container'>
+        <div className='error__container--title'>
           <Typewriter
             onInit={typewriter => {
               typewriter
@@ -32,20 +32,21 @@ const ErrorPage = () => {
           transition={{type: 'spring', stiffness: 400, damping: 10}}
         >
           <a
-            href="https://t.me/yokross_bot"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='https://t.me/yokross_bot'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             <img
-              className="qr"
+              className='qr'
               src={images.qr}
-              alt="qr"
+              alt='qr'
               width={300}
               height={300}
             />
           </a>
         </motion.div>
-        <div className="error__container--text">Эксклюзиво только в мобильной версии <span>Telegram</span>
+        <div className='error__container--text'>
+          Эксклюзиво только в мобильной версии <span>Telegram</span>
         </div>
       </div>
       <Footer />

@@ -1,4 +1,4 @@
-@import "../../styles/vars";
+@import '../../styles/vars';
 
 .footer {
   position: absolute;
@@ -7,10 +7,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-family: "Poetsen One", sans-serif;
+  font-family: 'Poetsen One', sans-serif;
   font-weight: 500;
   color: $main-text-color;
-
-  transition: 0.3s ease-in-out;
 }
-
