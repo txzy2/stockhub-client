@@ -1,7 +1,6 @@
 @import "../../../../styles/vars";
 
 .filter {
-  position: relative;
   width: 90%;
 
   margin: 60px auto;
@@ -88,14 +87,17 @@
   &__btn {
     cursor: pointer;
 
-    width: 90%;
-    position: fixed;
+    position: absolute;
     bottom: 5%;
+    right: 5%;
+    width: 90%;
+
+    margin-top: auto;
 
     padding: 15px 0;
 
     background: $bg-sec;
-    // background: #fff;
+    //background: #fff;
     color: $main-text-color;
     border-radius: 8px;
 

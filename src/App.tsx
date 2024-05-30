@@ -4,7 +4,6 @@ import './styles/styles.scss';
 import {Footer, Header, Main} from './components';
 import Circles from './components/ui/Circles';
 import {UseTg} from './hooks/useTg';
-import ErrorPage from './components/error/ErrorPage';
 
 const App = () => {
   const {tg, user} = UseTg();
@@ -20,17 +19,17 @@ const App = () => {
           <Circles />
         </div>
 
-        {user?.id && tg.platform !== 'tdesktop' ? (
-          <>
-            <Header />
-            <Main />
-            <Footer />
-          </>
-        ) : (
-          <>
-            <ErrorPage />
-          </>
-        )}
+        {/*{user?.id && tg.platform !== 'tdesktop' ? (*/}
+        <>
+          <Header />
+          <Main />
+          <Footer />
+        </>
+        {/*) : (*/}
+        {/*  <>*/}
+        {/*    <ErrorPage />*/}
+        {/*  </>*/}
+        {/*)}*/}
       </div>
 
     </>
