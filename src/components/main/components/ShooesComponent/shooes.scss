@@ -73,8 +73,8 @@
     gap: 10px;
     padding: 5px;
 
-    background: #000;
-    color: #fff;
+    background: $main-text-color;
+    color: $bg;
 
     border-radius: $radius;
 
@@ -82,4 +82,8 @@
       font-size: 18px;
     }
   }
+}
+
+.disabled {
+  color: $main-text-color;
 }

@@ -131,6 +131,9 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
           <button
             onClick={() => changePage(currentPage + 1)}
             disabled={currentProducts.length < productsPerPage}
+            className={
+              currentProducts.length < productsPerPage ? 'disabled' : ''
+            }
           >
             <ArrowBigRightDash size={40} strokeWidth={1} />
           </button>

@@ -8,20 +8,20 @@ import {
   SlidersHorizontal,
   X,
 } from 'lucide-react';
-import { Carousel } from 'react-responsive-carousel';
+import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React, {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
 
 import './main.scss';
 
 import Filter from './components/Filter/Filter';
-import { Filters, Product, ProductReceive } from '../../types/types';
-import { FetchFilters } from '../../hooks/fetchFilters';
+import {Filters, Product, ProductReceive} from '../../types/types';
+import {FetchFilters} from '../../hooks/fetchFilters';
 import Cloth from './components/ClothComponent/Cloth';
 import Shoes from './components/ShooesComponent/Shoes';
-import { images } from '../../assets/imagesAssets';
+import {images} from '../../assets/imagesAssets';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -47,7 +47,7 @@ const Main = () => {
     size: '',
     material: '',
     locations: '',
-    priceRange: { from: '', to: '' },
+    priceRange: {from: '', to: ''},
   });
 
   // NOTE: PRODUCT_DATA
@@ -80,7 +80,7 @@ const Main = () => {
 
   const removeFilter = (keyToRemove: keyof Filters) => {
     if (!appliedFilters) return;
-    const updatedFilters = { ...appliedFilters };
+    const updatedFilters = {...appliedFilters};
     delete updatedFilters[keyToRemove];
     setAppliedFilters(updatedFilters);
   };
@@ -114,13 +114,13 @@ const Main = () => {
       setFilteredProductData(productData);
     } else {
       const filteredData = productData.filter(product =>
-        product.brand.toLowerCase().includes(searchQuery.toLowerCase()),
+        product.brand.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredProductData(filteredData);
     }
   }, [searchQuery, productData]);
 
-  const items = Array.from({ length: 3 }).map((_, index) => (
+  const items = Array.from({length: 3}).map((_, index) => (
     <div key={index}>
       <img className='main__carousel--item' src={images.slide} alt='product' />
     </div>
@@ -160,15 +160,15 @@ const Main = () => {
                         value === 'cloth'
                           ? 'Одежда'
                           : value === 'shoe'
-                            ? 'Обувь'
-                            : value,
+                          ? 'Обувь'
+                          : value
                       )}{' '}
                     </span>
                     <button onClick={() => removeFilter(key as keyof Filters)}>
                       <X size={20} />
                     </button>
                   </div>
-                ),
+                )
             )}
           </div>
         )}
@@ -176,8 +176,9 @@ const Main = () => {
 
       <div className='main__btn'>
         <button
-          className={`main__btn-item ${selectedButton === 'cloth' ? 'active' : ''
-            }`}
+          className={`main__btn-item ${
+            selectedButton === 'cloth' ? 'active' : ''
+          }`}
           onClick={() => handleCategoryChange('cloth')}
         >
           <Shirt size={30} />
@@ -185,8 +186,9 @@ const Main = () => {
         </button>
 
         <button
-          className={`main__btn-item ${selectedButton === 'shoe' ? 'active' : ''
-            }`}
+          className={`main__btn-item ${
+            selectedButton === 'shoe' ? 'active' : ''
+          }`}
           onClick={() => handleCategoryChange('shoe')}
         >
           <Footprints />
@@ -222,7 +224,7 @@ const Main = () => {
           <Loader className='animate-spin-slow spinner' size={30} />
         </div>
       ) : (
-        <div style={{ textAlign: 'center' }}>Ничего не найдено</div>
+        <div style={{textAlign: 'center'}}>Ничего не найдено</div>
       )}
 
       <ArrowBigUpDash size={50} onClick={scrollToTop} className='arrow_up' />
@@ -230,10 +232,10 @@ const Main = () => {
       <AnimatePresence>
         {isFilterOpen && (
           <motion.div
-            initial={{ opacity: 0, x: 1000 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 1000 }}
-            transition={{ duration: 0.5 }}
+            initial={{opacity: 0, x: 1000}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: 1000}}
+            transition={{duration: 0.5}}
             className='modal-right'
           >
             <Filter
