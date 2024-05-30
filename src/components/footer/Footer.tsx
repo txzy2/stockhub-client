@@ -2,9 +2,9 @@ import './footer.scss';
 import {UseTg} from '../../hooks/useTg';
 
 const Footer = () => {
-  const {tg} = UseTg();
+  const {user} = UseTg();
   return (
-    <div className={tg ? 'footer' : 'footer-desk'}>
+    <div className={user.id ? 'footer' : 'footer-desk'}>
       <a href={'mailto:support@stockhub12.ru'}>@StockHub12</a>
       <div className="footer__info">
         <a href="https://telegra.ph/Dogovor-oferty-na-okazanie-uslugi-11-27" target={'_blank'}>Договор
