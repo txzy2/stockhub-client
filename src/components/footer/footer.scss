@@ -16,6 +16,11 @@
 
   border-radius: $radius;
 
+  &-desk {
+    color: $main-text-color;
+    background: $bg;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
