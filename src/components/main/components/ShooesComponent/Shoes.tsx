@@ -127,7 +127,6 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 className={currentPage === 1 ? 'disabled' : ''}
                 title='Наазад'
                 onClick={() => changePage(currentPage - 1)}
-                disabled={currentPage === 1}
               >
                 <ArrowBigLeftDash size={35} strokeWidth={1} />
               </button>
@@ -142,7 +141,6 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 }
                 title='Вперед'
                 onClick={() => changePage(currentPage + 1)}
-                disabled={currentProducts.length < productsPerPage}
               >
                 <ArrowBigRightDash size={35} strokeWidth={1} />
               </button>
