@@ -129,11 +129,11 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 onClick={() => changePage(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                <ArrowBigLeftDash size={30} strokeWidth={1} />
+                <ArrowBigLeftDash size={35} strokeWidth={1} />
               </button>
 
               <button onClick={showAllProducts} title='Показать все'>
-                <Import size={30} strokeWidth={1} />
+                <Import size={35} strokeWidth={1} />
               </button>
 
               <button
@@ -144,7 +144,7 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 onClick={() => changePage(currentPage + 1)}
                 disabled={currentProducts.length < productsPerPage}
               >
-                <ArrowBigRightDash size={30} strokeWidth={1} />
+                <ArrowBigRightDash size={35} strokeWidth={1} />
               </button>
             </div>
           </>
