@@ -9,6 +9,7 @@
   padding: 10px 0;
 
   font-family: 'Poetsen One', sans-serif;
+  
   color: $main-text-color;
   background: $bg;
 
@@ -23,5 +24,11 @@
     font-family: 'Rubik', sans-serif, serif;
 
     gap: 5px;
+
+    a {
+      text-decoration: underline;
+    }
+
   }
+
 }

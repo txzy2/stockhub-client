@@ -4,6 +4,7 @@ import {motion} from 'framer-motion';
 
 import './error.scss';
 import {images} from '../../assets/imagesAssets';
+import {Footer} from '../index';
 
 const ErrorPage = () => {
   return (
@@ -48,6 +49,8 @@ const ErrorPage = () => {
           Эксклюзиво только в мобильной версии <span>Telegram</span>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };
