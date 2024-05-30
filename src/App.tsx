@@ -13,23 +13,23 @@ const App = () => {
   }, [tg, user]);
 
   return (
-    <div className="App">
+    <>
       <div className="background">
         <Circles />
       </div>
 
       {/*{user?.id && tg.platform !== 'tdesktop' ? (*/}
-      <>
+      <div className="App">
         <Header />
         <Main />
         <Footer />
-      </>
+      </div>
       {/*) : (*/}
       {/*  <>*/}
       {/*    <ErrorPage />*/}
       {/*  </>*/}
       {/*)}*/}
-    </div>
+    </>
   );
 };
 

@@ -1,16 +1,14 @@
 @import '../../styles/vars';
 
 .footer {
-  width: 95%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 
-  margin: 10px auto;
+  margin-top: auto;
   padding: 10px 0;
 
   font-family: 'Poetsen One', sans-serif;
-  font-weight: 500;
   color: $main-text-color;
   background: $bg;
 
@@ -19,6 +17,8 @@
   &__info {
     display: flex;
     flex-direction: column;
+
+    font-family: 'Rubik', sans-serif, serif;
 
     gap: 5px;
   }
