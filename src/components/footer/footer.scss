@@ -5,7 +5,7 @@
   justify-content: space-around;
   align-items: center;
 
-  margin-top: auto;
+  margin: auto 10px 0 10px;
   padding: 10px 0;
 
   font-family: 'Poetsen One', sans-serif;
@@ -17,6 +17,8 @@
   &__info {
     display: flex;
     flex-direction: column;
+
+    text-align: left;
 
     font-family: 'Rubik', sans-serif, serif;
 
