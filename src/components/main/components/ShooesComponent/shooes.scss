@@ -70,7 +70,6 @@
     justify-content: space-around;
 
     margin: 3px auto;
-    gap: 10px;
     padding: 5px;
 
     background: $main-text-color;
@@ -81,9 +80,27 @@
     div span {
       font-size: 18px;
     }
+
+    &--buttons {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      button {
+        cursor: pointer;
+        padding: 5px;
+
+        background: $bg;
+        color: $main-text-color;
+
+        border-radius: $radius;
+      }
+    }
   }
 }
 
 .disabled {
   color: $main-text-color;
+  background: $bg;
 }

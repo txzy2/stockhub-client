@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {Product, ProductReceive} from '../../../../types/types';
-import {ArrowBigLeftDash, ArrowBigRightDash, Loader} from 'lucide-react';
+import {
+  ArrowBigLeftDash,
+  ArrowBigRightDash,
+  Import,
+  Loader,
+} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
@@ -116,27 +121,33 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
             <div className='shooes__pagination--info'>
               <span>{currentPage}</span> из <span>{totalPages}</span>
             </div>
-            <button
-              onClick={() => changePage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              <ArrowBigLeftDash size={40} strokeWidth={1} />
-            </button>
+
+            <div className='shooes__pagination--buttons'>
+              <button
+                className={currentPage === 1 ? 'disabled' : ''}
+                title='Наазад'
+                onClick={() => changePage(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                <ArrowBigLeftDash size={30} strokeWidth={1} />
+              </button>
+
+              <button onClick={showAllProducts} title='Показать все'>
+                <Import size={30} strokeWidth={1} />
+              </button>
+
+              <button
+                className={
+                  currentProducts.length < productsPerPage ? 'disabled' : ''
+                }
+                title='Вперед'
+                onClick={() => changePage(currentPage + 1)}
+                disabled={currentProducts.length < productsPerPage}
+              >
+                <ArrowBigRightDash size={30} strokeWidth={1} />
+              </button>
+            </div>
           </>
-        )}
-
-        {!showAll && <button onClick={showAllProducts}>Показать все</button>}
-
-        {!showAll && (
-          <button
-            onClick={() => changePage(currentPage + 1)}
-            disabled={currentProducts.length < productsPerPage}
-            className={
-              currentProducts.length < productsPerPage ? 'disabled' : ''
-            }
-          >
-            <ArrowBigRightDash size={40} strokeWidth={1} />
-          </button>
         )}
       </div>
 
