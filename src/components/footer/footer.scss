@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
-.footer {
+.footer,
+.footer-desk {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,10 +16,6 @@
   background: $bg;
 
   border-radius: $radius;
-
-  &-desk {
-    color: #000;
-  }
 
   &__info {
     display: flex;
@@ -36,6 +33,10 @@
 
   }
 
+}
+
+.footer-desk {
+  color: #000 !important;
 }
 
 @media (max-width: 680px) {
