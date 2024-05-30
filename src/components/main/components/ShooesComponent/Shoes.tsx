@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import {Product, ProductReceive} from '../../../../types/types';
-import {
-  ArrowBigLeftDash,
-  ArrowBigRightDash,
-  Import,
-  Loader,
-} from 'lucide-react';
+import {ArrowBigLeftDash, ArrowBigRightDash, ArrowBigUpDash, Import, Loader} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
 import './shooes.scss';
-import Footer from '../../../footer/Footer';
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+
 
 const Shoes = ({productData}: {productData: ProductReceive}) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -50,21 +52,21 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
   if (!productData || productData.length === 0) {
     return (
       <div className={'load'}>
-        <Loader className='animate-spin-slow spinner' size={30} />
+        <Loader className="animate-spin-slow spinner" size={30} />
       </div>
     );
   }
 
   return (
-    <div className='shooes mt-3'>
-      <div className='shooes'>
+    <div className="shooes mt-3">
+      <div className="shooes">
         {currentProducts.map((product, index) => (
           <div
-            className='shooes__product'
+            className="shooes__product"
             key={index}
             onClick={() => openCard(product)}
           >
-            <div className='shooes__product_carousel'>
+            <div className="shooes__product_carousel">
               <Carousel
                 infiniteLoop={true}
                 autoPlay={true}
@@ -74,7 +76,7 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 {product.photos.map((photo, photoIndex) => (
                   <div key={photoIndex}>
                     <img
-                      className='shooes__product_carousel--img'
+                      className="shooes__product_carousel--img"
                       src={`https://stockhub12.ru/uploads/${product.article}/${photo}`}
                       alt={`${product.name} ${product.brand} ${product.model}`}
                     />
@@ -83,19 +85,19 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
               </Carousel>
             </div>
 
-            <div className='shooes__product_info'>
-              <p className='shooes__product_info--title'>
+            <div className="shooes__product_info">
+              <p className="shooes__product_info--title">
                 {product.brand} {product.model}
               </p>
 
-              <div className=''>
+              <div className="">
                 <div>
-                  <span className='font-medium'>Цвет: </span>{' '}
+                  <span className="font-medium">Цвет: </span>{' '}
                   {product.color?.map(color => color)}
                 </div>
 
-                <p className='font-medium'>Размеры (us): </p>
-                <div className='shooes__product_info--sizes'>
+                <p className="font-medium">Размеры (us): </p>
+                <div className="shooes__product_info--sizes">
                   {product.size !== undefined &&
                     product.size.length > 0 &&
                     product.size.map((variant, index, array) => (
@@ -107,7 +109,7 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                 </div>
               </div>
 
-              <div className='shooes__product_price'>
+              <div className="shooes__product_price">
                 {product.price?.map(item => item)}₽
               </div>
             </div>
@@ -115,38 +117,44 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
         ))}
       </div>
 
-      <div className='shooes__pagination'>
+      <div className="shooes__pagination">
+
+        <div className="shooes__pagination--info">
+          <span>{currentPage}</span> из <span>{totalPages}</span>
+        </div>
+
         {!showAll && (
-          <>
-            <div className='shooes__pagination--info'>
-              <span>{currentPage}</span> из <span>{totalPages}</span>
-            </div>
+          <div className="shooes__pagination--buttons">
 
-            <div className='shooes__pagination--buttons'>
-              <button
-                className={currentPage === 1 ? 'disabled' : ''}
-                title='Наазад'
-                onClick={() => changePage(currentPage - 1)}
-              >
-                <ArrowBigLeftDash size={35} strokeWidth={1} />
-              </button>
+            <button
+              className={currentPage === 1 ? 'disabled' : ''}
+              title="Наазад"
+              onClick={() => changePage(currentPage - 1)}
+            >
+              <ArrowBigLeftDash size={35} strokeWidth={1} />
+            </button>
 
-              <button onClick={showAllProducts} title='Показать все'>
-                <Import size={35} strokeWidth={1} />
-              </button>
+            <button onClick={showAllProducts} title="Показать все">
+              <Import size={35} strokeWidth={1} />
+            </button>
 
-              <button
-                className={
-                  currentProducts.length < productsPerPage ? 'disabled' : ''
-                }
-                title='Вперед'
-                onClick={() => changePage(currentPage + 1)}
-              >
-                <ArrowBigRightDash size={35} strokeWidth={1} />
-              </button>
-            </div>
-          </>
+            <button
+              className={
+                currentProducts.length < productsPerPage ? 'disabled' : ''
+              }
+              title="Вперед"
+              onClick={() => changePage(currentPage + 1)}
+            >
+
+              <ArrowBigRightDash size={35} strokeWidth={1} />
+            </button>
+          </div>
         )}
+
+        <button>
+          <ArrowBigUpDash className="arrow_up" size={35} strokeWidth={1} onClick={scrollToTop} />
+        </button>
+
       </div>
 
       <AnimatePresence>
@@ -156,7 +164,7 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
             animate={{opacity: 1, y: 0}}
             exit={{opacity: 0, y: 1000}}
             transition={{duration: 0.5}}
-            className='modal'
+            className="modal"
           >
             <Card closeModal={closeCard} product={selectedProduct} />
           </motion.div>

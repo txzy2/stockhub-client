@@ -3,7 +3,7 @@
 .shooes {
   display: flex;
   flex-direction: column;
-  
+
   gap: 15px;
 
   &__product {
@@ -101,4 +101,12 @@
 
 .disabled {
   visibility: hidden;
+}
+
+.arrow_up {
+  cursor: pointer;
+  background: $main-text-color;
+  color: $bg;
+
+  border-radius: 9px;
 }

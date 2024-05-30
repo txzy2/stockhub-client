@@ -1,4 +1,4 @@
-import {ArrowBigUpDash, Footprints, Loader, Search, Shirt, SlidersHorizontal, X} from 'lucide-react';
+import {Footprints, Loader, Search, Shirt, SlidersHorizontal, X} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -14,12 +14,6 @@ import Cloth from './components/ClothComponent/Cloth';
 import Shoes from './components/ShooesComponent/Shoes';
 import {images} from '../../assets/imagesAssets';
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-};
 
 const Main = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -217,8 +211,6 @@ const Main = () => {
       ) : (
         <div style={{textAlign: 'center'}}>Ничего не найдено</div>
       )}
-
-      <ArrowBigUpDash className="arrow_up" size={50} strokeWidth={1} onClick={scrollToTop} />
 
       <AnimatePresence>
         {isFilterOpen && (
