@@ -15,18 +15,17 @@ const App = () => {
 
   return (
     <>
-      <div className="background">
-        <Circles />
-      </div>
-
-
       <div className="App">
+        <div className=" background">
+          <Circles />
+        </div>
+
         {user?.id && tg.platform !== 'tdesktop' ? (
           <>
             <Header />
             <Main />
-            <Footer /></>
-
+            <Footer />
+          </>
         ) : (
           <>
             <ErrorPage />
