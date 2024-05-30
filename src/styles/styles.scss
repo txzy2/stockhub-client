@@ -9,13 +9,16 @@
 }
 
 body {
-  position: relative;
   height: 100vh;
 
   background: $bg-sec;
   color: $main-text-color;
 
   font-family: 'Rubik', sans-serif, serif;
+}
+
+.App {
+  position: relative;
 }
 
 .background,
