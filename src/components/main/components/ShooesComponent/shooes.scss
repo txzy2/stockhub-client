@@ -72,8 +72,8 @@
     margin: 3px auto;
     padding: 5px;
 
-    background: $main-text-color;
-    color: $bg;
+    background: $bg;
+    color: $main-text-color;
 
     border-radius: $radius;
 
@@ -85,14 +85,14 @@
       display: flex;
       align-items: center;
 
-      gap: 10px;
+      gap: 15px;
 
       button {
         cursor: pointer;
         padding: 5px;
 
-        background: $bg;
-        color: $main-text-color;
+        background: $main-text-color;
+        color: $bg;
 
         border-radius: $radius;
       }
@@ -101,6 +101,6 @@
 }
 
 .disabled {
-  color: $main-text-color;
-  background: $bg;
+  color: $main-text-color !important;
+  background: $bg !important;
 }
