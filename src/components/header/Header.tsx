@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Typewriter from 'typewriter-effect';
 import './header.scss';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -6,25 +6,50 @@ import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
 import {UseTg} from '../../hooks/useTg';
+import {userReq} from '../../hooks/fetchUser';
+import {UserReciveDto} from '../../types/types';
 
 const Header = () => {
   const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBasketOpen, setBasket] = useState(false);
+  const [userData, setUserData] = useState<UserReciveDto>();
 
-  const data = localStorage.getItem('userData');
+  const userGet = async () => {
+    try {
+      if (!user?.id) {
+        setUserData(undefined);
+        return;
+      }
 
-  if (!data) {
-    console.log('userData is null');
-    return (
-      <div className="header__error">
-        <span className="header__load--emoji">💀</span>
-        <p className="">Вы еще на зарегистрированны</p>
-      </div>
-    );
-  }
+      // const fetchedUserData = await userReq('307777256');
+      // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
 
-  const userData = JSON.parse(data);
+      const fetchedUserData = await userReq(user.id.toString());
+      localStorage.setItem(user.id.toString(), JSON.stringify(fetchedUserData));
+
+      setUserData(fetchedUserData);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    } else {
+      userGet();
+    }
+    const handleBeforeUnload = () => {
+      localStorage.removeItem('userData');
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const openBasket = () => {
     setBasket(true);
@@ -48,7 +73,6 @@ const Header = () => {
     document.body.classList.remove('modal-open');
   };
 
-
   return (
     <header className="header">
       <div className="header__user">
@@ -63,7 +87,7 @@ const Header = () => {
               <Typewriter
                 onInit={typewriter => {
                   typewriter
-                    .typeString(`${user?.first_name}`)
+                    .typeString(`${userData?.username}`)
                     .start()
                     .callFunction(() => {
                       (
@@ -91,7 +115,7 @@ const Header = () => {
           <div className="header__basket" onClick={openBasket}>
             <PackageOpen size={32} strokeWidth={1} />
             <span className="header__basket--count">
-              {userData !== null ? (
+              {userData ? (
                 userData?.basket
               ) : (
                 <div className="header__load">
@@ -112,7 +136,7 @@ const Header = () => {
             transition={{duration: 0.5}}
             className="modal-left"
           >
-            <Profile closeModal={closeModal} userData={userData} />
+            <Profile closeModal={closeModal} />
           </motion.div>
         )}
       </AnimatePresence>

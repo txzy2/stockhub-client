@@ -75,6 +75,14 @@ export type Filters = {
   priceRange?: FiltersPrice;
 };
 
+export type UserOreder = {
+  amount: string,
+  email: string,
+  brand: string,
+  model: string,
+  order_id: string,
+}
+
 export type ModalProps = {
   closeModal: () => void;
 };

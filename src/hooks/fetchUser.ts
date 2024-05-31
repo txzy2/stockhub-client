@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {env_dev} from '../enviroments/env';
 
 export const userReq = async (
   chat_id: string
@@ -6,7 +7,7 @@ export const userReq = async (
   if (chat_id) {
     try {
       const userFetch = await axios.post(
-        `https://stockhub12.ru:4200/api/user/get`,
+        `${env_dev.host}/user/get`,
         {chat_id},
         {
           headers: {'Content-Type': 'application/json'}

@@ -1,21 +1,24 @@
 import axios from 'axios';
+import {env_dev} from '../enviroments/env';
 
 export const addOrderData = async (
-  id: string,
-  setOrderData: React.Dispatch<React.SetStateAction<any>>
+  paymentData: any
 ) => {
-  if (id) {
+  if (paymentData) {
     try {
+      const {chat_id, brand, model, amount} = paymentData;
+      const transactionTitle = `Оплата${brand}${model}`;
+
       const res = await axios.post(
-        `https://stockhub12.ru:4200/api/user/addOrder`,
-        {chat_id: id},
+        `${env_dev.host}/user/addOrder`,
+        {chat_id, transactionTitle, amount},
         {
           headers: {'Content-Type': 'application/json'}
         }
       );
-      setOrderData(res.data);
+      return res.data;
     } catch (err) {
-      setOrderData('');
+      return null;
     }
   }
 };

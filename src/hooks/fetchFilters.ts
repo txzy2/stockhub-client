@@ -1,5 +1,6 @@
-import { Filters, Product } from '../types/types';
+import {Filters, Product} from '../types/types';
 import axios from 'axios';
+import {env_dev} from '../enviroments/env';
 
 const isEmptyValue = (value: any): boolean => {
   if (value === null || value === undefined) return true;
@@ -27,20 +28,20 @@ const filterEmptyValues = (obj: any): any => {
 export const FetchFilters = async (
   selectVar: string | null,
   params: Filters,
-  setProductData: React.Dispatch<React.SetStateAction<Product[]>>,
+  setProductData: React.Dispatch<React.SetStateAction<Product[]>>
 ) => {
-  const filteredParams = { var: selectVar, ...filterEmptyValues(params) };
+  const filteredParams = {var: selectVar, ...filterEmptyValues(params)};
 
   if (Object.keys(filteredParams).length > 0) {
     console.log('Filtered Params:', filteredParams);
 
     try {
       const res = await axios.post(
-        `https://stockhub12.ru:4200/api/product/get`,
+        `${env_dev.host}/product/get`,
         filteredParams,
         {
-          headers: { 'Content-Type': 'application/json' },
-        },
+          headers: {'Content-Type': 'application/json'}
+        }
       );
 
       if (res.status === 200) {

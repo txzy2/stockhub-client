@@ -7,10 +7,6 @@
   z-index: 1000;
 
   &__error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     margin-top: 10px;
   }
 
@@ -38,8 +34,8 @@
     gap: 2px;
 
     &--emoji {
-      font-weight: 500;
-      font-size: 24px;
+      font-weight: 400;
+      font-size: 20px;
     }
   }
 

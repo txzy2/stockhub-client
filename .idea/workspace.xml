@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/components/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enviroments/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/enviroments/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/addOrderData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/addOrderData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/fetchFilters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/fetchFilters.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/fetchUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/fetchUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +24,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -93,7 +107,8 @@
       <workItem from="1716988637456" duration="584000" />
       <workItem from="1717065713497" duration="8620000" />
       <workItem from="1717096801442" duration="9000000" />
-      <workItem from="1717143388399" duration="2319000" />
+      <workItem from="1717143388399" duration="10354000" />
+      <workItem from="1717158100765" duration="5035000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />

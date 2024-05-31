@@ -4,83 +4,79 @@ import './card.scss';
 import {ModalProps, ProductReceive} from '../../../../types/types';
 import React, {useState} from 'react';
 import {Carousel} from 'react-responsive-carousel';
-import {MonetaEnv} from '../../../../enviroments/env';
-
-const sendData = (amount: string | undefined, email: string, brand: string, model: string, order_id: string): boolean => {
-
-  // TODO: Вынести роут для успешной оплаты (MNT_SUCCESS_URL=&amp;)
-  // NOTE: &MNT_SIGNATURE=${signature}& - передать эту сигнатуру с бека
-
-  const generateUrl = `https://www.payanyway.ru/assistant.widget?MNT_ID=${MonetaEnv.mNTID}&MNT_AMOUNT=${amount}&MNT_DESCRIPTION=${'Оплата ' + (brand + model)}&MNT_SUBSCRIBER_ID=${email}&MNT_CURRENCY_CODE=RUB&MNT_TRANSACTION_ID=${order_id}`;
-
-  console.log(generateUrl);
-  return true;
-};
+import {UseTg} from '../../../../hooks/useTg';
+import {addOrderData} from '../../../../hooks/addOrderData';
 
 const OrderButton = ({amount, brand, model}: {
   amount: string | undefined,
   brand: string,
   model: string
 }) => {
-
-  const [orderData, setOrderData] = useState<string>('');
-
-  // const email = user?.email ?? '';
+  const {user} = UseTg();
+  const [paymentUrl, setPaymentUrl] = useState('');
 
   const handleOrderClick = async () => {
     const newAmount = amount?.replace(/\s+/g, '') ?? '0';
-
-    const data = localStorage.getItem('userData');
-    const chatId = localStorage.getItem('chatId');
-
+    const data = localStorage.getItem(user?.id.toString());
+    // const data = localStorage.getItem('307777256');
     if (!data) {
       console.log('userData is null');
       return;
     }
-
     const userData = JSON.parse(data);
-    console.log(userData.email);
-    console.log(chatId);
 
-    // NOTE: В setOrderData придет order_id
-    // await addOrderData(userId ?? '', setOrderData);
+    const paymentData = {
+      chat_id: userData.chat_id,
+      brand,
+      model,
+      amount: newAmount
+    };
 
+    const paymentUrl = await addOrderData(paymentData);
 
     // TODO: Сделать уведомление об ошибке запроса
-    if (!orderData) {
+    if (!paymentUrl) {
       console.log('Ошибка запроса');
-      return;
+      return alert('Ошибка запроса');
     }
 
-    // sendData(newAmount, email, brand, model, orderData);
+    console.log(paymentUrl);
+
+    setPaymentUrl(paymentUrl);
   };
 
   return (
-    <button className="card__info--btns_order" onClick={handleOrderClick}>
-      Заказать <ChevronRight />
-    </button>
+    <>
+      <button className="card__info--btns_order" onClick={handleOrderClick}>
+        Заказать <ChevronRight />
+      </button>
+      {paymentUrl && (
+        <div className="iframe-container">
+          <iframe
+            src={paymentUrl}
+            title="Payment"
+            width="600"
+            height="400"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
+    </>
   );
 
 };
 
-
-const Card = (
-  {
-    closeModal,
-    product
-  }: ModalProps & {product: ProductReceive | null}
+const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | null}
 ) => {
-  const data = localStorage.getItem('userData');
-  
-  if (!product || product.length === 0 || !data) {
+  const {user} = UseTg();
+
+  if (!product || product.length === 0) {
     return (
       <div className="load">
         <Loader className="animate-spin-slow spinner" size={40} />
       </div>
     );
   }
-
-  const userData = JSON.parse(data);
 
   return (
     <div className="card">
@@ -126,20 +122,20 @@ const Card = (
             ))}
           </select>
 
-          {/*{userData ? (*/}
-          <div className="card__info--btns">
-            <a className="card__info--btns_basket" href="/">
-              <ChevronLeft />В корзину
-            </a>
-            <OrderButton amount={item.price?.toString()} brand={item.brand}
-                         model={item.model} />
-          </div>
+          {user?.id ? (
+            <div className="card__info--btns">
+              <a className="card__info--btns_basket" href="/">
+                <ChevronLeft />В корзину
+              </a>
+              <OrderButton amount={item.price?.toString()} brand={item.brand}
+                           model={item.model} />
+            </div>
 
-          {/*) : (*/}
-          {/*  <>*/}
-          {/*    <p>Для заказа используй мобильную версию Telegram</p>*/}
-          {/*  </>*/}
-          {/*)}*/}
+          ) : (
+            <>
+              <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>
+            </>
+          )}
 
           <div className="card__info__subtitle">
             {item.name} {item.model} {item.brand}. Основа пары
