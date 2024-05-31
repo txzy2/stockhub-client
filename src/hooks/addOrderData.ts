@@ -6,12 +6,12 @@ export const addOrderData = async (
 ) => {
   if (paymentData) {
     try {
-      const {chat_id, brand, model, amount} = paymentData;
+      const {chat_id, brand, model, article, amount} = paymentData;
       const transactionTitle = `Оплата${brand}${model}`;
 
       const res = await axios.post(
         `${env_dev.host}/user/addOrder`,
-        {chat_id, transactionTitle, amount},
+        {chat_id, transactionTitle, amount, article},
         {
           headers: {'Content-Type': 'application/json'}
         }

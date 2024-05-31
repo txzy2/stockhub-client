@@ -38,6 +38,8 @@ const Header = () => {
     const storedUserData = localStorage.getItem(user?.id.toString());
     if (storedUserData) {
       setUserData(JSON.parse(storedUserData));
+
+      console.log(userData);
     } else {
       userGet();
     }

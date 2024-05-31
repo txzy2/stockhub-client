@@ -2,15 +2,16 @@ import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
 
 import './card.scss';
 import {ModalProps, ProductReceive} from '../../../../types/types';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Carousel} from 'react-responsive-carousel';
 import {UseTg} from '../../../../hooks/useTg';
 import {addOrderData} from '../../../../hooks/addOrderData';
 
-const OrderButton = ({amount, brand, model}: {
+const OrderButton = ({amount, brand, model, article}: {
   amount: string | undefined,
   brand: string,
-  model: string
+  model: string,
+  article: string
 }) => {
   const {user} = UseTg();
   const [paymentUrl, setPaymentUrl] = useState('');
@@ -29,11 +30,12 @@ const OrderButton = ({amount, brand, model}: {
       chat_id: userData.chat_id,
       brand,
       model,
+      article,
       amount: newAmount
     };
 
     const paymentUrl = await addOrderData(paymentData);
-    
+
     if (!paymentUrl) {
       console.log('Ошибка запроса');
       return alert('Ошибка запроса');
@@ -52,6 +54,10 @@ const OrderButton = ({amount, brand, model}: {
 const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | null}
 ) => {
   const {user} = UseTg();
+
+  useEffect(() => {
+    console.log(product);
+  }, []);
 
   if (!product || product.length === 0) {
     return (
@@ -106,12 +112,13 @@ const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | nul
           </select>
 
           {user?.id ? (
+
             <div className="card__info--btns">
               <a className="card__info--btns_basket" href="/">
                 <ChevronLeft />В корзину
               </a>
               <OrderButton amount={item.price?.toString()} brand={item.brand}
-                           model={item.model} />
+                           model={item.model} article={item.article} />
             </div>
 
           ) : (

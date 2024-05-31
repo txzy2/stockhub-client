@@ -13,7 +13,6 @@ const scrollToTop = () => {
   });
 };
 
-
 const Shoes = ({productData}: {productData: ProductReceive}) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductReceive | []>(

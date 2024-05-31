@@ -18,8 +18,8 @@ const Profile = (
   }
 ) => {
   const {user} = UseTg();
-  const data = localStorage.getItem(user?.id.toString());
-  // const data = localStorage.getItem('681242886');
+  // const data = localStorage.getItem(user?.id.toString());
+  const data = localStorage.getItem('307777256');
 
   if (!data) {
     console.log('userData is null');
