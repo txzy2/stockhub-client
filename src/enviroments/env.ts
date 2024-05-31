@@ -9,5 +9,5 @@ export const MonetaEnv: monetaData = {
 };
 
 export const env_dev = {
-  host: 'http://localhost:8080/api'
+  host: 'http://stockhub12.ru:4200/api'
 };
