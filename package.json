@@ -19,6 +19,7 @@
     "dotenv": "^16.4.5",
     "framer-motion": "^11.0.14",
     "lucide-react": "^0.356.0",
+    "md5": "^2.3.0",
     "os-browserify": "^0.3.0",
     "path": "^0.12.7",
     "path-browserify": "^1.0.1",

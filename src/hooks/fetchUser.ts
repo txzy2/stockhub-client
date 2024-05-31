@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export const userReq = async (
-  chat_id: string,
-  setUserData: React.Dispatch<React.SetStateAction<any>>
+  chat_id: string
 ) => {
   if (chat_id) {
     try {
@@ -10,14 +9,15 @@ export const userReq = async (
         `https://stockhub12.ru:4200/api/user/get`,
         {chat_id},
         {
-          headers: {'Content-Type': 'application/json'},
+          headers: {'Content-Type': 'application/json'}
         }
       );
-      setUserData(userFetch.data);
+      return userFetch.data;
     } catch (err) {
-      setUserData(null);
+      return null;
     }
   } else {
     console.log('skip');
+    return null;
   }
 };

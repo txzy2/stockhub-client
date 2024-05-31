@@ -1,9 +1,18 @@
 .header {
   position: relative;
   width: 95%;
+
   margin: 5px auto 0 auto;
 
   z-index: 1000;
+
+  &__error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10px;
+  }
 
   &__user {
     display: flex;

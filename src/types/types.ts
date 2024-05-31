@@ -17,7 +17,7 @@ export type Product = {
   var: string;
   size?: string[];
   color?: string[];
-  price?: string[];
+  price?: string;
 };
 
 export type ProductReceive = Product[];
@@ -45,6 +45,7 @@ export type UserReciveDto = {
   locale: string;
   bonus: number;
   orders: number;
+  basket: number;
 };
 
 export type UserRecive = {

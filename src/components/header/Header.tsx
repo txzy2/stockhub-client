@@ -1,19 +1,28 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import Typewriter from 'typewriter-effect';
 import './header.scss';
-import {UseTg} from '../../hooks/useTg';
 import {AnimatePresence, motion} from 'framer-motion';
 import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
-import {userReq} from '../../hooks/fetchUser';
 
 const Header = () => {
-  const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBasketOpen, setBasket] = useState(false);
 
-  const [userData, setUserData] = useState<any>(null);
+  const data = localStorage.getItem('userData');
+
+  if (!data) {
+    console.log('userData is null');
+    return (
+      <div className="header__error">
+        <span className="header__load--emoji">💀</span>
+        <p className="">Вы еще на зарегистрированны</p>
+      </div>
+    );
+  }
+
+  const userData = JSON.parse(data);
 
   const openBasket = () => {
     setBasket(true);
@@ -37,15 +46,11 @@ const Header = () => {
     document.body.classList.remove('modal-open');
   };
 
-  useEffect(() => {
-    userReq(user?.id ? user?.id.toString() : '', setUserData);
-    // userReq('307777256', setUserData);
-  }, [user]);
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__user">
-        {user?.first_name ? (
+        {userData ? (
           <motion.div
             whileHover={{scale: 1.1}}
             transition={{type: 'spring', stiffness: 400, damping: 10}}
@@ -56,7 +61,7 @@ const Header = () => {
               <Typewriter
                 onInit={typewriter => {
                   typewriter
-                    .typeString(`${user?.first_name}`)
+                    .typeString(`${userData.first_name}`)
                     .start()
                     .callFunction(() => {
                       (
@@ -123,7 +128,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </header>
   );
 };
 

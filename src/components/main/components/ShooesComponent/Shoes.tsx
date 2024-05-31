@@ -110,7 +110,7 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
               </div>
 
               <div className="shooes__product_price">
-                {product.price?.map(item => item)}₽
+                {product.price}₽
               </div>
             </div>
           </div>
