@@ -33,35 +33,18 @@ const OrderButton = ({amount, brand, model}: {
     };
 
     const paymentUrl = await addOrderData(paymentData);
-
-    // TODO: Сделать уведомление об ошибке запроса
+    
     if (!paymentUrl) {
       console.log('Ошибка запроса');
       return alert('Ошибка запроса');
     }
-
-    console.log(paymentUrl);
-
-    setPaymentUrl(paymentUrl);
+    window.location.href = paymentUrl;
   };
 
   return (
-    <>
-      <button className="card__info--btns_order" onClick={handleOrderClick}>
-        Заказать <ChevronRight />
-      </button>
-      {paymentUrl && (
-        <div className="iframe-container">
-          <iframe
-            src={paymentUrl}
-            title="Payment"
-            width="600"
-            height="400"
-            allowFullScreen
-          ></iframe>
-        </div>
-      )}
-    </>
+    <button className="card__info--btns_order" onClick={handleOrderClick}>
+      Заказать <ChevronRight />
+    </button>
   );
 
 };
