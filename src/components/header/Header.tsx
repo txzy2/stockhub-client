@@ -25,8 +25,8 @@ const Header = () => {
       // const fetchedUserData = await userReq('307777256');
       // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
 
-      const fetchedUserData = await userReq(user.id.toString());
-      localStorage.setItem(user.id.toString(), JSON.stringify(fetchedUserData));
+      const fetchedUserData = await userReq(user?.id.toString());
+      localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
 
       setUserData(fetchedUserData);
     } catch (error) {
@@ -35,7 +35,20 @@ const Header = () => {
   };
 
   useEffect(() => {
-    userGet();
+    const storedUserData = localStorage.getItem(user?.id.toString());
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    } else {
+      userGet();
+    }
+    const handleBeforeUnload = () => {
+      localStorage.removeItem(user?.id.toString());
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, []);
 
   const openBasket = () => {
