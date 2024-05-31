@@ -35,20 +35,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const storedUserData = localStorage.getItem('userData');
-    if (storedUserData) {
-      setUserData(JSON.parse(storedUserData));
-    } else {
-      userGet();
-    }
-    const handleBeforeUnload = () => {
-      localStorage.removeItem('userData');
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
+    userGet();
   }, []);
 
   const openBasket = () => {
