@@ -5,8 +5,10 @@ import {AnimatePresence, motion} from 'framer-motion';
 import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
+import {UseTg} from '../../hooks/useTg';
 
 const Header = () => {
+  const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBasketOpen, setBasket] = useState(false);
 
@@ -61,7 +63,7 @@ const Header = () => {
               <Typewriter
                 onInit={typewriter => {
                   typewriter
-                    .typeString(`${userData.first_name}`)
+                    .typeString(`${user?.first_name}`)
                     .start()
                     .callFunction(() => {
                       (
