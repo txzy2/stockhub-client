@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
+      <change afterPath="$PROJECT_DIR$/src/assets/slide2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imagesAssets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/imagesAssets.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,26 +42,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamaeff/Documents/Work/stockhub-server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/kamaeff/Documents/Work/stockhub-client/src/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "ts.external.directory.path": "C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\assets" />
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\styles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -106,7 +108,7 @@
       <workItem from="1717175808108" duration="48000" />
       <workItem from="1717246329577" duration="12000" />
       <workItem from="1717340773615" duration="6458000" />
-      <workItem from="1717357447910" duration="1521000" />
+      <workItem from="1717357447910" duration="3708000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />

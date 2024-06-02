@@ -1,3 +1,7 @@
+import React, {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+import {Carousel} from 'react-responsive-carousel';
+
 import {
   ArrowBigUpDash,
   Footprints,
@@ -7,20 +11,19 @@ import {
   SlidersHorizontal,
   X
 } from 'lucide-react';
-import {Carousel} from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-import React, {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
 
 import './main.scss';
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+import {images} from '../../assets/imagesAssets';
 
 import Filter from './components/Filter/Filter';
 import {Filters, Product, ProductReceive} from '../../types/types';
 import {FetchFilters} from '../../hooks/fetchFilters';
+
 import Cloth from './components/ClothComponent/Cloth';
 import Shoes from './components/ShooesComponent/Shoes';
-import {images} from '../../assets/imagesAssets';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -118,13 +121,7 @@ const Main = () => {
       setFilteredProductData(filteredData);
     }
   }, [searchQuery, productData]);
-
-  const items = Array.from({length: 3}).map((_, index) => (
-    <div key={index}>
-      <img className="main__carousel--item" src={images.slide} alt="product" />
-    </div>
-  ));
-
+  
   return (
     <div className="main">
       <section className="main__search">
@@ -204,10 +201,29 @@ const Main = () => {
             interval={3000}
             showThumbs={false}
           >
-            {items}
+            {/*{items}*/}
+            <div>
+              <img className="main__carousel--item" src={images.slide} alt="product" />
+            </div>
+            <div>
+              <img className="main__carousel--tshirt" src={images.slide2} alt="product" />
+            </div>
           </Carousel>
         </div>
       </section>
+
+      {/*TODO: Разобраться swiperJs*/}
+      {/*<section className="">*/}
+      {/*  <div className="">*/}
+      {/*    <Swiper modules={[Virtual]} spaceBetween={50} slidesPerView={3} virtual>*/}
+      {/*      {items.map((image, index) => (*/}
+      {/*        <SwiperSlide key={index}>*/}
+      {/*          <img src={image.src} alt={image.alt} />*/}
+      {/*        </SwiperSlide>*/}
+      {/*      ))}*/}
+      {/*    </Swiper>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
 
       {filteredProductData.length > 0 && !isLoading ? (
         <>
