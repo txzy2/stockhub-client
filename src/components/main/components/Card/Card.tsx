@@ -19,8 +19,8 @@ const OrderButton = ({amount, brand, model, article, size, disabled}: {
 
   const handleOrderClick = async () => {
     const newAmount = amount?.replace(/\s+/g, '') ?? '0';
-    // const data = localStorage.getItem(user?.id.toString());
-    const data = localStorage.getItem('307777256');
+    const data = localStorage.getItem(user?.id.toString());
+    // const data = localStorage.getItem('307777256');
     if (!data) {
       console.log('userData is null');
       return;
