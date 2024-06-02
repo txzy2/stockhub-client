@@ -35,11 +35,10 @@ export const FetchFilters = async (
   if (Object.keys(filteredParams).length > 0) {
     console.log('Filtered Params:', filteredParams);
     try {
-      const res = await axios.post(
+      const res = await axios.get(
         `${env_dev.host}/product/get`,
-        filteredParams,
         {
-          headers: {'Content-Type': 'application/json'}
+          params: filteredParams
         }
       );
 
