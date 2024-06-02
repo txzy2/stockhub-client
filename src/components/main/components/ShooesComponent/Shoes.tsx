@@ -1,17 +1,10 @@
 import React, {useState} from 'react';
 import {Product, ProductReceive} from '../../../../types/types';
-import {ArrowBigLeftDash, ArrowBigRightDash, ArrowBigUpDash, Import, Loader} from 'lucide-react';
+import {ArrowBigLeftDash, ArrowBigRightDash, Import, Loader} from 'lucide-react';
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
 import './shooes.scss';
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-};
 
 const Shoes = ({productData}: {productData: ProductReceive}) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -149,11 +142,6 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
             </button>
           </div>
         )}
-
-        <button>
-          <ArrowBigUpDash className="arrow_up" size={35} strokeWidth={1} onClick={scrollToTop} />
-        </button>
-
       </div>
 
       <AnimatePresence>

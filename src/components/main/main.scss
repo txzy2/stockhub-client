@@ -126,3 +126,17 @@
     }
   }
 }
+
+.arrow_up {
+  position: fixed;
+  cursor: pointer;
+
+  bottom: 4%;
+  right: 4%;
+
+  background: $bg;
+  //background: #fff;
+  color: $main-text-color;
+
+  border-radius: $radius;
+}

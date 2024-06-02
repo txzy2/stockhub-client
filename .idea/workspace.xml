@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/fetchFilters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/fetchFilters.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/fetchUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/fetchUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/main.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +106,7 @@
       <workItem from="1717175808108" duration="48000" />
       <workItem from="1717246329577" duration="12000" />
       <workItem from="1717340773615" duration="6458000" />
-      <workItem from="1717357447910" duration="825000" />
+      <workItem from="1717357447910" duration="1521000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />
