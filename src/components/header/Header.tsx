@@ -17,16 +17,16 @@ const Header = () => {
 
   const userGet = async () => {
     try {
-      if (!user?.id) {
-        setUserData(undefined);
-        return;
-      }
+      // if (!user?.id) {
+      //   setUserData(undefined);
+      //   return;
+      // }
 
-      // const fetchedUserData = await userReq('307777256');
-      // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
-
-      const fetchedUserData = await userReq(user?.id.toString());
-      localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
+      const fetchedUserData = await userReq('307777256');
+      localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
+      //
+      // const fetchedUserData = await userReq(user?.id.toString());
+      // localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
 
       setUserData(fetchedUserData);
     } catch (error) {
@@ -35,22 +35,11 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const storedUserData = localStorage.getItem(user?.id.toString());
-    if (storedUserData) {
-      setUserData(JSON.parse(storedUserData));
+    // const storedUserData = localStorage.getItem(user?.id.toString());
+    // const storedUserData = localStorage.getItem('307777256');
 
-      console.log(userData);
-    } else {
-      userGet();
-    }
-    const handleBeforeUnload = () => {
-      localStorage.removeItem(user?.id.toString());
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    userGet();
 
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
   }, []);
 
   const openBasket = () => {

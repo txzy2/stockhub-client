@@ -34,7 +34,6 @@ export const FetchFilters = async (
 
   if (Object.keys(filteredParams).length > 0) {
     console.log('Filtered Params:', filteredParams);
-
     try {
       const res = await axios.post(
         `${env_dev.host}/product/get`,

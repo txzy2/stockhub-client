@@ -7,19 +7,20 @@ import {Carousel} from 'react-responsive-carousel';
 import {UseTg} from '../../../../hooks/useTg';
 import {addOrderData} from '../../../../hooks/addOrderData';
 
-const OrderButton = ({amount, brand, model, article}: {
+const OrderButton = ({amount, brand, model, article, size, disabled}: {
   amount: string | undefined,
   brand: string,
   model: string,
-  article: string
+  article: string,
+  size: string,
+  disabled: boolean,
 }) => {
   const {user} = UseTg();
-  const [paymentUrl, setPaymentUrl] = useState('');
 
   const handleOrderClick = async () => {
     const newAmount = amount?.replace(/\s+/g, '') ?? '0';
-    const data = localStorage.getItem(user?.id.toString());
-    // const data = localStorage.getItem('307777256');
+    // const data = localStorage.getItem(user?.id.toString());
+    const data = localStorage.getItem('307777256');
     if (!data) {
       console.log('userData is null');
       return;
@@ -27,11 +28,13 @@ const OrderButton = ({amount, brand, model, article}: {
     const userData = JSON.parse(data);
 
     const paymentData = {
-      chat_id: userData.chat_id,
+      // chat_id: userData.chat_id,
+      chat_id: '307777256',
       brand,
       model,
       article,
-      amount: newAmount
+      amount: newAmount,
+      size
     };
 
     const paymentUrl = await addOrderData(paymentData);
@@ -44,7 +47,8 @@ const OrderButton = ({amount, brand, model, article}: {
   };
 
   return (
-    <button className="card__info--btns_order" onClick={handleOrderClick}>
+    <button className={'card__info--btns_order'}
+            disabled={disabled} onClick={handleOrderClick}>
       Заказать <ChevronRight />
     </button>
   );
@@ -54,6 +58,13 @@ const OrderButton = ({amount, brand, model, article}: {
 const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | null}
 ) => {
   const {user} = UseTg();
+
+  const [selectedSize, setSelectedSize] = useState('');
+
+  const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSize(event.target.value);
+  };
+  ;
 
   useEffect(() => {
     console.log(product);
@@ -102,7 +113,10 @@ const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | nul
             </p>
           </div>
 
-          <select className="card__info--sizes" name="size">
+          <select className="card__info--sizes" name="size"
+                  value={selectedSize}
+                  onChange={handleSizeChange}
+          >
             <option hidden>Выбери размер</option>
             {item.size?.map((size, sizeIndex) => (
               <option key={sizeIndex} value={size}>
@@ -111,21 +125,32 @@ const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | nul
             ))}
           </select>
 
-          {user?.id ? (
+          {/*TODO : Сделать отправку еще и выбраного размера*/}
 
-            <div className="card__info--btns">
-              <a className="card__info--btns_basket" href="/">
-                <ChevronLeft />В корзину
-              </a>
+          {/*{user?.id ? (*/}
+
+          <div className="card__info--btns">
+            <a className="card__info--btns_basket" href="/">
+              <ChevronLeft />В корзину
+            </a>
+            {!selectedSize ? (
+              <>
+                <p className={'card__info--btns_order'}>Выбери размер</p>
+              </>
+            ) : (
               <OrderButton amount={item.price?.toString()} brand={item.brand}
-                           model={item.model} article={item.article} />
-            </div>
+                           model={item.model} article={item.article} size={selectedSize}
+                           disabled={!selectedSize} />
+            )}
 
-          ) : (
-            <>
-              <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>
-            </>
-          )}
+          </div>
+
+
+          {/*) : (*/}
+          {/*  <>*/}
+          {/*    <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>*/}
+          {/*  </>*/}
+          {/*)}*/}
 
           <div className="card__info__subtitle">
             {item.name} {item.model} {item.brand}. Основа пары
