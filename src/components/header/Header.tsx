@@ -6,8 +6,8 @@ import {CircleUser, Loader, PackageOpen} from 'lucide-react';
 import Profile from './components/profile/Profile';
 import Basket from './components/basket/Basket';
 import {UseTg} from '../../hooks/useTg';
-import {userReq} from '../../hooks/fetchUser';
 import {UserReciveDto} from '../../types/types';
+import {userReq} from '../../hooks/fetchUser';
 
 const Header = () => {
   const {user} = UseTg();
@@ -17,16 +17,16 @@ const Header = () => {
 
   const userGet = async () => {
     try {
-      if (!user?.id) {
-        setUserData(undefined);
-        return;
-      }
+      // if (!user?.id) {
+      //   setUserData(undefined);
+      //   return;
+      // }
 
-      // const fetchedUserData = await userReq('307777256');
-      // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
+      const fetchedUserData = await userReq('307777256');
+      localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
 
-      const fetchedUserData = await userReq(user?.id.toString());
-      localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
+      // const fetchedUserData = await userReq(user?.id.toString());
+      // localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
 
       setUserData(fetchedUserData);
     } catch (error) {
@@ -35,11 +35,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // const storedUserData = localStorage.getItem(user?.id.toString());
-    // const storedUserData = localStorage.getItem('307777256');
-
     userGet();
-
   }, []);
 
   const openBasket = () => {

@@ -18,8 +18,8 @@ const Profile = (
   }
 ) => {
   const {user} = UseTg();
-  const data = localStorage.getItem(user?.id.toString());
-  // const data = localStorage.getItem('307777256');
+  // const data = localStorage.getItem(user?.id.toString());
+  const data = localStorage.getItem('307777256');
 
   if (!data) {
     console.log('userData is null');
@@ -46,7 +46,7 @@ const Profile = (
         <div className="profile__details">
           <div className="profile__details--stat">
             <div className="profile__details--stat_container">
-              <label className="italic" htmlFor="">
+              <label className="italic">
                 Заказы
               </label>
               <div className="profile__details--stat_container-info">
@@ -56,7 +56,7 @@ const Profile = (
             </div>
 
             <div className="profile__details--stat_container">
-              <label className="italic" htmlFor="">
+              <label className="italic">
                 Бонусы
               </label>
               <div className="profile__details--stat_container-info">
