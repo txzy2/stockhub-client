@@ -19,8 +19,8 @@ export const OrderButton = ({amount, brand, model, article, size, disabled}: {
 
   const handleOrderClick = async () => {
     const newAmount = amount?.replace(/\s+/g, '') ?? '0';
-    // const data = localStorage.getItem(user?.id.toString());
-    const data = localStorage.getItem('307777256');
+    const data = localStorage.getItem(user?.id.toString());
+    // const data = localStorage.getItem('307777256');
     if (!data) {
       console.log('userData is null');
       return null;
@@ -28,8 +28,8 @@ export const OrderButton = ({amount, brand, model, article, size, disabled}: {
     const userData = JSON.parse(data);
 
     const paymentData = {
-      // chat_id: userData.chat_id,
-      chat_id: '307777256',
+      chat_id: userData.chat_id,
+      // chat_id: '307777256',
       brand,
       model,
       article,
@@ -66,7 +66,6 @@ const Card = ({closeModal, product}: ModalProps & {
   const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSize(event.target.value);
   };
-
 
   useEffect(() => {
     console.log(product);
@@ -147,7 +146,7 @@ const Card = ({closeModal, product}: ModalProps & {
 
               )}
             </div>
-            
+
           ) : (
             <>
               <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>

@@ -4,9 +4,11 @@ import {ModalProps} from '../../../../types/types';
 import './basket.scss';
 import React from 'react';
 import {OrderButton} from '../../../main/components/Card/Card';
+import {UseTg} from '../../../../hooks/useTg';
 
 const Basket = ({closeModal}: ModalProps) => {
-  const data = localStorage.getItem('307777256');
+  const {user} = UseTg();
+  const data = localStorage.getItem(user?.id.toString());
   if (!data) {
     return (
       <div className="">

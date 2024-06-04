@@ -92,15 +92,15 @@ const Header = () => {
           transition={{type: 'spring', stiffness: 400, damping: 10}}
           id="main"
         >
-          <button className="header__basket" onClick={toggleBasketModal}>
+          <button className="header__basket" disabled={!userData} onClick={toggleBasketModal}>
             <PackageOpen size={32} strokeWidth={1} />
             <span className="header__basket--count">
-              {userData && userData.basket.length > 0 ? (
-                userData?.basket.length
-              ) : (
-                <div className="header__load">
-                  0
+              {userData ? (
+                <div>
+                  {userData?.basket.length}
                 </div>
+              ) : (
+                <Loader className="animate-spin-slow spinner" size={20} />
               )}
             </span>
           </button>
