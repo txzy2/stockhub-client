@@ -6,10 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/imagesAssets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/imagesAssets.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/slide2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/slide2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/components/basket/Basket.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/basket/Basket.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/components/basket/basket.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/basket/basket.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/components/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enviroments/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/enviroments/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamaeff/Documents/Work/stockhub-client/src/assets&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamaeff/Documents/Work/stockhub-server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -61,6 +70,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\assets" />
+      <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src" />
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\styles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -107,7 +117,10 @@
       <workItem from="1717246329577" duration="12000" />
       <workItem from="1717340773615" duration="6458000" />
       <workItem from="1717357447910" duration="8053000" />
-      <workItem from="1717399184582" duration="638000" />
+      <workItem from="1717399184582" duration="3741000" />
+      <workItem from="1717508544406" duration="3764000" />
+      <workItem from="1717514260147" duration="11919000" />
+      <workItem from="1717534540007" duration="299000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />

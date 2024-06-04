@@ -9,6 +9,7 @@ import {UseTg} from '../../hooks/useTg';
 import {UserReciveDto} from '../../types/types';
 import {userReq} from '../../hooks/fetchUser';
 
+
 const Header = () => {
   const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,17 +18,18 @@ const Header = () => {
 
   const userGet = async () => {
     try {
-      // if (!user?.id) {
-      //   setUserData(undefined);
-      //   return;
-      // }
+      if (!user?.id) {
+        setUserData(undefined);
+        return;
+      }
 
-      const fetchedUserData = await userReq('307777256');
-      localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
+      // const fetchedUserData = await userReq('307777256');
+      // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
 
-      // const fetchedUserData = await userReq(user?.id.toString());
-      // localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
+      const fetchedUserData = await userReq(user?.id.toString());
+      localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
 
+      console.log(fetchedUserData);
       setUserData(fetchedUserData);
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -38,28 +40,19 @@ const Header = () => {
     userGet();
   }, []);
 
-  const openBasket = () => {
-    setBasket(true);
+  const toggleBasketModal = () => {
+    const newBasketState = !isBasketOpen;
+    setBasket(newBasketState);
     setIsModalOpen(false);
-    document.body.classList.add('modal-open');
+    document.body.classList.toggle('modal-open', newBasketState);
   };
 
-  const closeBasket = () => {
+  const toggleProfileModal = () => {
+    const newModalState = !isModalOpen;
+    setIsModalOpen(newModalState);
     setBasket(false);
-    document.body.classList.remove('modal-open');
+    document.body.classList.toggle('modal-open', newModalState);
   };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-    setBasket(false);
-    document.body.classList.add('modal-open');
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    document.body.classList.remove('modal-open');
-  };
-
   return (
     <header className="header">
       <div className="header__user">
@@ -69,7 +62,7 @@ const Header = () => {
             transition={{type: 'spring', stiffness: 400, damping: 10}}
             id="main"
           >
-            <button className="header__user--btn" onClick={openModal}>
+            <button className="header__user--btn" onClick={toggleProfileModal}>
               <CircleUser strokeWidth={1} size={32} />
               <Typewriter
                 onInit={typewriter => {
@@ -99,18 +92,18 @@ const Header = () => {
           transition={{type: 'spring', stiffness: 400, damping: 10}}
           id="main"
         >
-          <div className="header__basket" onClick={openBasket}>
+          <button className="header__basket" onClick={toggleBasketModal}>
             <PackageOpen size={32} strokeWidth={1} />
             <span className="header__basket--count">
-              {userData ? (
-                userData?.basket
+              {userData && userData.basket.length > 0 ? (
+                userData?.basket.length
               ) : (
                 <div className="header__load">
-                  <Loader className="animate-spin-slow spinner" size={20} />
+                  0
                 </div>
               )}
             </span>
-          </div>
+          </button>
         </motion.div>
       </div>
 
@@ -123,7 +116,7 @@ const Header = () => {
             transition={{duration: 0.5}}
             className="modal-left"
           >
-            <Profile closeModal={closeModal} />
+            <Profile closeModal={toggleProfileModal} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -137,7 +130,7 @@ const Header = () => {
             transition={{duration: 0.5}}
             className="modal"
           >
-            <Basket closeModal={closeBasket} />
+            <Basket closeModal={toggleBasketModal} />
           </motion.div>
         )}
       </AnimatePresence>

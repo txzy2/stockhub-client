@@ -36,6 +36,14 @@ export type ProductRequestFilter = {
   variants?: Variant[];
 };
 
+export type UserBasket = {
+  id: number,
+  createdAt: string,
+  updatedAt: string,
+  article: string,
+  userId: string,
+}
+
 export type UserReciveDto = {
   id: number;
   chat_id: string;
@@ -45,7 +53,7 @@ export type UserReciveDto = {
   locale: string;
   bonus: number;
   orders: number;
-  basket: number;
+  basket: UserBasket[];
 };
 
 export type UserRecive = {

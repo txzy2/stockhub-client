@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
-import {Carousel} from 'react-responsive-carousel';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {A11y, Autoplay, Navigation} from 'swiper/modules';
 
 import {
   ArrowBigUpDash,
@@ -13,6 +14,7 @@ import {
 } from 'lucide-react';
 
 import './main.scss';
+import 'swiper/swiper-bundle.css';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -33,14 +35,11 @@ const scrollToTop = () => {
 };
 
 const Main = () => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredProductData, setFilteredProductData] = useState<Product[]>([]);
-
-  // NOTE: DEFAULT OPEN STATE
   const [selectedButton, setSelectedButton] = useState<string | null>('shoe');
 
-  // NOTE: FILTERS_DATA
+  // NOTE: FOR_FILTERS
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [appliedFilters, setAppliedFilters] = useState<Filters | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<Filters>({
     var: selectedButton ?? '',
@@ -51,33 +50,20 @@ const Main = () => {
     locations: '',
     priceRange: {from: '', to: ''}
   });
+  const [filteredProductData, setFilteredProductData] = useState<Product[]>([]);
 
-  // NOTE: PRODUCT_DATA
   const [productData, setProductData] = useState<ProductReceive | []>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // NOTE: FILTERS_FUNC
-  const openFilter = () => {
-    setIsFilterOpen(true);
-    document.body.classList.add('modal-open');
-  };
-
-  const closeClose = () => {
-    setIsFilterOpen(false);
-    document.body.classList.remove('modal-open');
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+    document.body.classList.toggle('modal-open', !isFilterOpen);
   };
 
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
     setSelectedFilters(filters);
-
-    if (filters.var === 'cloth') {
-      setSelectedButton('cloth');
-    } else if (filters.var === 'shoe') {
-      setSelectedButton('shoe');
-    } else {
-      setSelectedButton(null);
-    }
+    setSelectedButton(filters.var === 'cloth' ? 'cloth' : filters.var === 'shoe' ? 'shoe' : null);
   };
 
   const removeFilter = (keyToRemove: keyof Filters) => {
@@ -92,24 +78,17 @@ const Main = () => {
     setAppliedFilters(null);
   };
 
-  useEffect(() => {
+  const fetchData = () => {
     setIsLoading(true);
-    if (appliedFilters !== null) {
-      FetchFilters(selectedButton, appliedFilters ?? {}, data => {
-        setProductData(data);
-        setIsLoading(false);
-      });
-    } else {
-      FetchFilters(selectedButton, {}, data => {
-        setProductData(data);
-        setIsLoading(false);
-      });
-    }
-  }, [selectedButton, appliedFilters, setProductData]);
-
-  const handleSearchInputChange = (e: any) => {
-    setSearchQuery(e.target.value);
+    FetchFilters(selectedButton, appliedFilters ?? {}, data => {
+      setProductData(data);
+      setIsLoading(false);
+    });
   };
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedButton, appliedFilters]);
 
   useEffect(() => {
     if (searchQuery.trim() === '') {
@@ -121,7 +100,11 @@ const Main = () => {
       setFilteredProductData(filteredData);
     }
   }, [searchQuery, productData]);
-  
+
+  const handleSearchInputChange = (e: any) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <div className="main">
       <section className="main__search">
@@ -137,7 +120,7 @@ const Main = () => {
           </div>
           <button
             className="main__search_container--filter"
-            onClick={openFilter}
+            onClick={toggleFilter}
           >
             <SlidersHorizontal size={28} />
           </button>
@@ -193,37 +176,57 @@ const Main = () => {
       </div>
 
       {/*TODO: Добавить еще по 2 слайда*/}
-      <section className="main__sections">
-        <div className="main__carousel">
-          <Carousel
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={3000}
-            showThumbs={false}
-          >
-            {/*{items}*/}
-            <div>
-              <img className="main__carousel--item" src={images.slide} alt="product" />
-            </div>
-            <div>
-              <img className="main__carousel--tshirt" src={images.slide2} alt="product" />
-            </div>
-          </Carousel>
-        </div>
-      </section>
-
-      {/*TODO: Разобраться swiperJs*/}
-      {/*<section className="">*/}
-      {/*  <div className="">*/}
-      {/*    <Swiper modules={[Virtual]} spaceBetween={50} slidesPerView={3} virtual>*/}
-      {/*      {items.map((image, index) => (*/}
-      {/*        <SwiperSlide key={index}>*/}
-      {/*          <img src={image.src} alt={image.alt} />*/}
-      {/*        </SwiperSlide>*/}
-      {/*      ))}*/}
-      {/*    </Swiper>*/}
+      {/*<section className="main__sections">*/}
+      {/*  <div className="main__carousel">*/}
+      {/*    <Carousel*/}
+      {/*      infiniteLoop={true}*/}
+      {/*      autoPlay={true}*/}
+      {/*      interval={3000}*/}
+      {/*      showThumbs={false}*/}
+      {/*    >*/}
+      {/*      /!*{items}*!/*/}
+      {/*      <div>*/}
+      {/*        <img className="main__carousel--item" src={images.slide} alt="product" />*/}
+      {/*      </div>*/}
+      {/*      <div>*/}
+      {/*        <img className="main__carousel--tshirt" src={images.slide2} alt="product" />*/}
+      {/*      </div>*/}
+      {/*    </Carousel>*/}
       {/*  </div>*/}
       {/*</section>*/}
+
+      {/*TODO: Разобраться swiperJs*/}
+
+      <div className="main__carousel">
+        <Swiper
+          modules={[Navigation, A11y, Autoplay]}
+          slidesPerView={1}
+          navigation
+          autoplay={{
+            delay: 5000,
+            pauseOnMouseEnter: true,
+            disableOnInteraction: false
+          }}
+          loop
+          style={{
+            '--swiper-navigation-size': '30px'
+          }}
+        >
+          <SwiperSlide>
+            <img src={images.nike} alt="product1" />
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <img src={images.nike} alt="product1" />
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <img src={images.nike} alt="product1" />
+          </SwiperSlide>
+
+        </Swiper>
+      </div>
+
 
       {filteredProductData.length > 0 && !isLoading ? (
         <>
@@ -256,7 +259,7 @@ const Main = () => {
             className="modal-right"
           >
             <Filter
-              closeModal={closeClose}
+              closeModal={toggleFilter}
               applyFilters={applyFilters}
               FilterSelected={selectedFilters}
             />

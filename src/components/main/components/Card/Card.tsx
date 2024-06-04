@@ -3,11 +3,11 @@ import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
 import './card.scss';
 import {ModalProps, ProductReceive} from '../../../../types/types';
 import React, {useEffect, useState} from 'react';
-import {Carousel} from 'react-responsive-carousel';
 import {UseTg} from '../../../../hooks/useTg';
 import {addOrderData} from '../../../../hooks/addOrderData';
+import {Carousel} from 'react-responsive-carousel';
 
-const OrderButton = ({amount, brand, model, article, size, disabled}: {
+export const OrderButton = ({amount, brand, model, article, size, disabled}: {
   amount: string | undefined,
   brand: string,
   model: string,
@@ -23,7 +23,7 @@ const OrderButton = ({amount, brand, model, article, size, disabled}: {
     const data = localStorage.getItem('307777256');
     if (!data) {
       console.log('userData is null');
-      return;
+      return null;
     }
     const userData = JSON.parse(data);
 
@@ -47,15 +47,17 @@ const OrderButton = ({amount, brand, model, article, size, disabled}: {
   };
 
   return (
-    <button className={'card__info--btns_order'}
-            disabled={disabled} onClick={handleOrderClick}>
+    <button style={{display: 'flex', alignItems: 'center'}} disabled={disabled}
+            onClick={handleOrderClick}>
       Заказать <ChevronRight />
     </button>
   );
 
 };
 
-const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | null}
+const Card = ({closeModal, product}: ModalProps & {
+                product: ProductReceive | null,
+              }
 ) => {
   const {user} = UseTg();
 
@@ -64,7 +66,7 @@ const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | nul
   const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSize(event.target.value);
   };
-  ;
+
 
   useEffect(() => {
     console.log(product);
@@ -125,32 +127,32 @@ const Card = ({closeModal, product}: ModalProps & {product: ProductReceive | nul
             ))}
           </select>
 
-          {/*TODO : Сделать отправку еще и выбраного размера*/}
+          {user?.id ? (
 
-          {/*{user?.id ? (*/}
+            <div className={'card__info--btns'}>
+              <a className="card__info--btns_basket" href="/">
+                <ChevronLeft />В корзину
+              </a>
 
-          <div className="card__info--btns">
-            <a className="card__info--btns_basket" href="/">
-              <ChevronLeft />В корзину
-            </a>
-            {!selectedSize ? (
-              <>
-                <p className={'card__info--btns_order'}>Выбери размер</p>
-              </>
-            ) : (
-              <OrderButton amount={item.price?.toString()} brand={item.brand}
-                           model={item.model} article={item.article} size={selectedSize}
-                           disabled={!selectedSize} />
-            )}
+              {!selectedSize ? (
+                <>
+                  <p className={'card__info--btns_order'}>Выбери размер</p>
+                </>
+              ) : (
+                <div className={'card__info--btns_order'}>
+                  <OrderButton amount={item.price?.toString()} brand={item.brand}
+                               model={item.model} article={item.article} size={selectedSize}
+                               disabled={!selectedSize} />
+                </div>
 
-          </div>
-
-
-          {/*) : (*/}
-          {/*  <>*/}
-          {/*    <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>*/}
-          {/*  </>*/}
-          {/*)}*/}
+              )}
+            </div>
+            
+          ) : (
+            <>
+              <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>
+            </>
+          )}
 
           <div className="card__info__subtitle">
             {item.name} {item.model} {item.brand}. Основа пары
