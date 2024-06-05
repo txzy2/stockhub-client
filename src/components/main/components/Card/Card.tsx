@@ -1,58 +1,49 @@
-import {ChevronLeft, ChevronRight, Loader, X} from 'lucide-react';
+import {ChevronLeft, Loader, X} from 'lucide-react';
 
 import './card.scss';
 import {ModalProps, ProductReceive} from '../../../../types/types';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {UseTg} from '../../../../hooks/useTg';
-import {addOrderData} from '../../../../hooks/addOrderData';
 import {Carousel} from 'react-responsive-carousel';
+import OrderButton from '../../../orderButton/OrderButton';
+import {addToBasket} from '../../../../hooks/addToBasket';
 
-export const OrderButton = ({amount, brand, model, article, size, disabled}: {
-  amount: string | undefined,
-  brand: string,
-  model: string,
-  article: string,
-  size: string,
-  disabled: boolean,
-}) => {
+const AddToBasket = ({article, size}: {article: string, size: string}) => {
   const {user} = UseTg();
 
   const handleOrderClick = async () => {
-    const newAmount = amount?.replace(/\s+/g, '') ?? '0';
     const data = localStorage.getItem(user?.id.toString());
     // const data = localStorage.getItem('307777256');
+
     if (!data) {
       console.log('userData is null');
       return null;
     }
+
     const userData = JSON.parse(data);
 
-    const paymentData = {
-      chat_id: userData.chat_id,
-      // chat_id: '307777256',
-      brand,
-      model,
-      article,
-      amount: newAmount,
-      size
+    const addData = {
+      userId: userData.chat_id,
+      // userId: '307777256',
+      size,
+      article
     };
 
-    const paymentUrl = await addOrderData(paymentData);
+    const add = addToBasket(addData);
 
-    if (!paymentUrl) {
-      console.log('Ошибка запроса');
-      return alert('Ошибка запроса');
+    if (!add) {
+      console.log('Error during request');
+      return alert('Error during request');
     }
-    window.location.href = paymentUrl;
+
+    window.location.reload();
   };
 
   return (
-    <button style={{display: 'flex', alignItems: 'center'}} disabled={disabled}
-            onClick={handleOrderClick}>
-      Заказать <ChevronRight />
+    <button style={{display: 'flex', alignItems: 'center'}} onClick={handleOrderClick}>
+      <ChevronLeft />В корзину
     </button>
   );
-
 };
 
 const Card = ({closeModal, product}: ModalProps & {
@@ -66,10 +57,6 @@ const Card = ({closeModal, product}: ModalProps & {
   const handleSizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSize(event.target.value);
   };
-
-  useEffect(() => {
-    console.log(product);
-  }, []);
 
   if (!product || product.length === 0) {
     return (
@@ -128,24 +115,25 @@ const Card = ({closeModal, product}: ModalProps & {
 
           {user?.id ? (
 
-            <div className={'card__info--btns'}>
-              <a className="card__info--btns_basket" href="/">
-                <ChevronLeft />В корзину
-              </a>
 
-              {!selectedSize ? (
-                <>
-                  <p className={'card__info--btns_order'}>Выбери размер</p>
-                </>
-              ) : (
-                <div className={'card__info--btns_order'}>
-                  <OrderButton amount={item.price?.toString()} brand={item.brand}
-                               model={item.model} article={item.article} size={selectedSize}
-                               disabled={!selectedSize} />
+            !selectedSize ? (
+              <>
+                <p style={{color: 'red'}}>Выбери размер</p>
+              </>
+            ) : (
+              <div className={'card__info--btns'}>
+                <div className="card__info--btns_basket">
+                  <AddToBasket article={item.article} size={selectedSize} />
                 </div>
 
-              )}
-            </div>
+                <div className={'card__info--btns_order'}>
+                  <OrderButton amount={item.price?.toString()} brand={item.brand}
+                               model={item.model} article={item.article} size={selectedSize} />
+                </div>
+
+              </div>
+            )
+
 
           ) : (
             <>
@@ -153,8 +141,8 @@ const Card = ({closeModal, product}: ModalProps & {
             </>
           )}
 
-          <div className="card__info__subtitle">
-            {item.name} {item.model} {item.brand}. Основа пары
+          <div className="card__info--subtitle">
+            <span className={''}>{item.name} {item.model} {item.brand}</span>. Материал модели
             - {item.material}. Цвет модели: {item.color?.map(item => item)}.
           </div>
         </div>

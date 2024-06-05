@@ -94,7 +94,7 @@
       }
     }
 
-    &__subtitle {
+    &--subtitle {
       width: 90%;
 
       margin: 0 auto;
@@ -102,6 +102,10 @@
 
       background: $bg;
       border-radius: 8px;
+
+      span {
+        font-weight: 600;
+      }
     }
   }
 }

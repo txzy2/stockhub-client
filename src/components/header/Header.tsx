@@ -22,7 +22,7 @@ const Header = () => {
         setUserData(undefined);
         return;
       }
-
+      //
       // const fetchedUserData = await userReq('307777256');
       // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
 

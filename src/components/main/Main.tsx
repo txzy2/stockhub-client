@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {A11y, Autoplay, Navigation} from 'swiper/modules';
@@ -19,13 +19,11 @@ import 'swiper/swiper-bundle.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import {images} from '../../assets/imagesAssets';
+import ProductComponent from './components/ProductComponent/Product';
 
 import Filter from './components/Filter/Filter';
 import {Filters, Product, ProductReceive} from '../../types/types';
 import {FetchFilters} from '../../hooks/fetchFilters';
-
-import Cloth from './components/ClothComponent/Cloth';
-import Shoes from './components/ShooesComponent/Shoes';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -78,17 +76,18 @@ const Main = () => {
     setAppliedFilters(null);
   };
 
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     setIsLoading(true);
     FetchFilters(selectedButton, appliedFilters ?? {}, data => {
       setProductData(data);
+      console.log(data);
       setIsLoading(false);
     });
-  };
+  }, [selectedButton, appliedFilters]);
 
   useEffect(() => {
     fetchData();
-  }, [selectedButton, appliedFilters]);
+  }, [fetchData]);
 
   useEffect(() => {
     if (searchQuery.trim() === '') {
@@ -175,26 +174,6 @@ const Main = () => {
         </button>
       </div>
 
-      {/*TODO: Добавить еще по 2 слайда*/}
-      {/*<section className="main__sections">*/}
-      {/*  <div className="main__carousel">*/}
-      {/*    <Carousel*/}
-      {/*      infiniteLoop={true}*/}
-      {/*      autoPlay={true}*/}
-      {/*      interval={3000}*/}
-      {/*      showThumbs={false}*/}
-      {/*    >*/}
-      {/*      /!*{items}*!/*/}
-      {/*      <div>*/}
-      {/*        <img className="main__carousel--item" src={images.slide} alt="product" />*/}
-      {/*      </div>*/}
-      {/*      <div>*/}
-      {/*        <img className="main__carousel--tshirt" src={images.slide2} alt="product" />*/}
-      {/*      </div>*/}
-      {/*    </Carousel>*/}
-      {/*  </div>*/}
-      {/*</section>*/}
-
       {/*TODO: Разобраться swiperJs*/}
 
       <div className="main__carousel">
@@ -227,16 +206,8 @@ const Main = () => {
         </Swiper>
       </div>
 
-
-      {filteredProductData.length > 0 && !isLoading ? (
-        <>
-          {(selectedButton === 'cloth' ||
-            (appliedFilters && appliedFilters.var === 'cloth')) && <Cloth />}
-
-          {selectedButton === 'shoe' && (
-            <Shoes productData={filteredProductData} />
-          )}
-        </>
+      {filteredProductData.length > 0 && !isLoading && selectedButton ? (
+        <ProductComponent productData={filteredProductData} />
       ) : isLoading ? (
         <div className={'load'}>
           <Loader className="animate-spin-slow spinner" size={30} />

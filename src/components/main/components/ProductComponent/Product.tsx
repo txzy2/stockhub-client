@@ -4,9 +4,9 @@ import {ArrowBigLeftDash, ArrowBigRightDash, Import, Loader} from 'lucide-react'
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
 import Card from '../Card/Card';
-import './shooes.scss';
+import './product.scss';
 
-const Shoes = ({productData}: {productData: ProductReceive}) => {
+const ProductComponent = ({productData}: {productData: ProductReceive}) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductReceive | []>(
     []
@@ -88,15 +88,15 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
                   {product.color?.map(color => color)}
                 </div>
 
-                <p className="font-medium">Размеры (us): </p>
+                <p className="font-medium">Размеры: </p>
                 <div className="shooes__product_info--sizes">
                   {product.size !== undefined &&
                     product.size.length > 0 &&
                     product.size.map((variant, index, array) => (
-                      <React.Fragment key={index}>
-                        <span>{variant}</span>
+                      <div key={index}>
+                        <span>{variant}{product.var === 'shoe' ? 'us' : ''}</span>
                         {index !== array.length - 1 && <span>, </span>}
-                      </React.Fragment>
+                      </div>
                     ))}
                 </div>
               </div>
@@ -161,4 +161,4 @@ const Shoes = ({productData}: {productData: ProductReceive}) => {
   );
 };
 
-export default Shoes;
+export default ProductComponent;

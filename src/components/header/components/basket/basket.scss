@@ -22,7 +22,7 @@
 
   &__product {
     cursor: pointer;
-    width: 95%;
+    width: 98%;
     display: flex;
     align-items: center;
 
@@ -76,14 +76,31 @@
       font-size: 20px;
     }
 
-    &--btn {
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      padding: 5px 0;
-      background: #47a76a;
+    &--btns {
+      width: 100%;
 
-      border-radius: $radius;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__order {
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        padding: 5px 0;
+        background: #47a76a;
+
+        border-radius: 8px;
+      }
+
+      &__trash {
+        padding: 7px;
+        background: $bg-sec;
+        //background: #fff;
+        color: $main-text-color;
+
+        border-radius: 8px;
+      }
     }
   }
 }

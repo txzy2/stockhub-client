@@ -1,14 +1,53 @@
-import {Loader, X} from 'lucide-react';
+import {Loader, Trash2, X} from 'lucide-react';
 import {ModalProps} from '../../../../types/types';
-
 import './basket.scss';
 import React from 'react';
-import {OrderButton} from '../../../main/components/Card/Card';
+
 import {UseTg} from '../../../../hooks/useTg';
+import OrderButton from '../../../orderButton/OrderButton';
+import {deleteItemFromBasket} from '../../../../hooks/delItemFromBasket';
+
+const DeleteItemBasketButton = ({article}: {article: string}) => {
+  const {user} = UseTg();
+
+  const handleOrderClick = async () => {
+    const data = localStorage.getItem(user?.id.toString());
+    // const data = localStorage.getItem('307777256');
+
+    if (!data) {
+      console.log('userData is null');
+      return null;
+    }
+
+    const userData = JSON.parse(data);
+
+    const delData = {
+      chat_id: userData.chat_id,
+      // chat_id: '307777256',
+      article
+    };
+
+    const deleteItem = await deleteItemFromBasket(delData);
+    if (!deleteItem) {
+      console.log('Error during request');
+      return alert('Error during request');
+    }
+
+    window.location.reload();
+  };
+
+  return (
+    <button style={{display: 'flex', alignItems: 'center'}} onClick={handleOrderClick}>
+      <Trash2 size={20} />
+    </button>
+  );
+
+};
 
 const Basket = ({closeModal}: ModalProps) => {
   const {user} = UseTg();
-  const data = localStorage.getItem(user?.id.toString());
+  // const data = localStorage.getItem(user?.id.toString());
+  const data = localStorage.getItem('307777256');
   if (!data) {
     return (
       <div className="">
@@ -17,14 +56,15 @@ const Basket = ({closeModal}: ModalProps) => {
     );
   }
   const userData = JSON.parse(data);
-
-  console.log(userData.basket.map((item: any) => item.product));
+  console.log(userData);
 
   return (
     <div className="basket">
       <button type="button" onClick={closeModal}>
         <X className="exit" size={30} />
       </button>
+
+      {/*TODO: Добавить удаление из корзины*/}
 
       {userData.basket.length > 0 ? (
         <div className="mt-14">
@@ -33,12 +73,10 @@ const Basket = ({closeModal}: ModalProps) => {
             return (
               <div key={item.id} className="basket__product">
                 <div className="basket__product--photo">
-                  <div key={item.product.photos[0]}>
-                    <img
-                      src={`https://stockhub12.ru/uploads/${item.product.article}/${item.product.photos[0]}`}
-                      alt={`${item.product.name} ${item.product.brand} ${item.product.model}`}
-                    />
-                  </div>
+                  <img
+                    src={`https://stockhub12.ru/uploads/${item.product.article}/${item.product.photos[0]}`}
+                    alt={`${item.product.name} ${item.product.brand} ${item.product.model}`}
+                  />
                 </div>
 
                 <div className="basket__product_info">
@@ -59,15 +97,20 @@ const Basket = ({closeModal}: ModalProps) => {
                     {prices} ₽
                   </div>
 
-                  <div className="basket__product--btn">
-                    <OrderButton
-                      amount={prices}
-                      brand={item.product.brand}
-                      model={item.product.model}
-                      article={item.product.article}
-                      size={item.size}
-                      disabled={false}
-                    />
+                  <div className="basket__product--btns">
+                    <div className="basket__product--btns__trash">
+                      <DeleteItemBasketButton article={item.product.article} />
+                    </div>
+
+                    <div className="basket__product--btns__order">
+                      <OrderButton
+                        amount={prices}
+                        brand={item.product.brand}
+                        model={item.product.model}
+                        article={item.product.article}
+                        size={item.size}
+                      />
+                    </div>
                   </div>
 
                 </div>
