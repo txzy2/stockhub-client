@@ -114,8 +114,6 @@ const Card = ({closeModal, product}: ModalProps & {
           </select>
 
           {user?.id ? (
-
-
             !selectedSize ? (
               <>
                 <p style={{color: 'red'}}>Выбери размер</p>
@@ -133,8 +131,6 @@ const Card = ({closeModal, product}: ModalProps & {
 
               </div>
             )
-
-
           ) : (
             <>
               <p style={{color: 'red'}}>Для заказа используй мобильную версию Telegram</p>

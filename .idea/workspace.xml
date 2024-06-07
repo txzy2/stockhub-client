@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe4d080-2ee1-4d5f-b53a-d66370af4a40" name="Changes" comment="fix header">
-      <change afterPath="$PROJECT_DIR$/src/components/orderButton/OrderButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/addToBasket.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/delItemFromBasket.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/error/error.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/error/error.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/components/basket/Basket.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/basket/Basket.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/components/basket/basket.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/components/basket/basket.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Card/card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/Shoes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ProductComponent/Product.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/components/ShooesComponent/shooes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ProductComponent/product.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/fetchProduct.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/Filter/Filter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main/components/ProductComponent/product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/components/ProductComponent/product.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/Circles.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/delItemFromBasket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/delItemFromBasket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/fonts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,24 +48,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kamaeff/Documents/Work/stockhub-server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/kamaeff/Documents/Work/stockhub-bot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "ts.external.directory.path": "C:\\Users\\kamaeff\\Documents\\Work\\stockhub-client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kamaeff\Documents\Work\stockhub-client\src\assets" />
@@ -120,7 +120,7 @@
       <workItem from="1717508544406" duration="3764000" />
       <workItem from="1717514260147" duration="11919000" />
       <workItem from="1717534540007" duration="3953000" />
-      <workItem from="1717574830372" duration="7254000" />
+      <workItem from="1717574830372" duration="11991000" />
     </task>
     <task id="LOCAL-00001" summary="Add filtersfetch">
       <option name="closed" value="true" />

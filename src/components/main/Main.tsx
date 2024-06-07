@@ -10,7 +10,7 @@ import {
   Search,
   Shirt,
   SlidersHorizontal,
-  X
+  X,
 } from 'lucide-react';
 
 import './main.scss';
@@ -28,7 +28,7 @@ import {FetchFilters} from '../../hooks/fetchFilters';
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: 'smooth',
   });
 };
 
@@ -46,7 +46,7 @@ const Main = () => {
     size: '',
     material: '',
     locations: '',
-    priceRange: {from: '', to: ''}
+    priceRange: {from: '', to: ''},
   });
   const [filteredProductData, setFilteredProductData] = useState<Product[]>([]);
 
@@ -61,7 +61,9 @@ const Main = () => {
   const applyFilters = (filters: Filters) => {
     setAppliedFilters(filters);
     setSelectedFilters(filters);
-    setSelectedButton(filters.var === 'cloth' ? 'cloth' : filters.var === 'shoe' ? 'shoe' : null);
+    setSelectedButton(
+      filters.var === 'cloth' ? 'cloth' : filters.var === 'shoe' ? 'shoe' : null
+    );
   };
 
   const removeFilter = (keyToRemove: keyof Filters) => {
@@ -78,6 +80,7 @@ const Main = () => {
 
   const fetchData = useCallback(() => {
     setIsLoading(true);
+    console.log(appliedFilters);
     FetchFilters(selectedButton, appliedFilters ?? {}, data => {
       setProductData(data);
       console.log(data);
@@ -105,20 +108,20 @@ const Main = () => {
   };
 
   return (
-    <div className="main">
-      <section className="main__search">
-        <div className="main__search_container">
-          <div className="main__search_container--input">
+    <div className='main'>
+      <section className='main__search'>
+        <div className='main__search_container'>
+          <div className='main__search_container--input'>
             <Search size={28} />
             <input
-              className="main__search_container--input_text"
-              placeholder="Поиск по бренду..."
+              className='main__search_container--input_text'
+              placeholder='Поиск по бренду...'
               value={searchQuery}
               onChange={handleSearchInputChange}
             ></input>
           </div>
           <button
-            className="main__search_container--filter"
+            className='main__search_container--filter'
             onClick={toggleFilter}
           >
             <SlidersHorizontal size={28} />
@@ -126,33 +129,38 @@ const Main = () => {
         </div>
 
         {appliedFilters && (
-          <div className="main__search_filters">
-            {Object.entries(appliedFilters).map(
-              ([key, value]) =>
-                key !== 'priceRange' &&
-                value !== undefined &&
-                value !== '' && (
-                  <div key={key} className="main__search_filters--item">
+          <div className='main__search_filters'>
+            {Object.entries(appliedFilters).map(([key, value]) => {
+              if (value !== undefined && value !== '') {
+                return (
+                  <div key={key} className='main__search_filters--item'>
                     <span>
-                      {String(
-                        value === 'cloth'
-                          ? 'Одежда'
-                          : value === 'shoe'
-                            ? 'Обувь'
-                            : value
-                      )}{' '}
+                      {key === 'priceRange' &&
+                      typeof value === 'object' &&
+                      'from' in value &&
+                      'to' in value
+                        ? `Цена: от ${value.from} до ${value.to}`
+                        : String(
+                            value === 'cloth'
+                              ? 'Одежда'
+                              : value === 'shoe'
+                              ? 'Обувь'
+                              : value
+                          )}
                     </span>
                     <button onClick={() => removeFilter(key as keyof Filters)}>
                       <X size={20} />
                     </button>
                   </div>
-                )
-            )}
+                );
+              }
+              return null;
+            })}
           </div>
         )}
       </section>
 
-      <div className="main__btn">
+      <div className='main__btn'>
         <button
           className={`main__btn-item ${
             selectedButton === 'cloth' ? 'active' : ''
@@ -174,9 +182,7 @@ const Main = () => {
         </button>
       </div>
 
-      {/*TODO: Разобраться swiperJs*/}
-
-      <div className="main__carousel">
+      <div className='main__carousel'>
         <Swiper
           modules={[Navigation, A11y, Autoplay]}
           slidesPerView={1}
@@ -184,25 +190,24 @@ const Main = () => {
           autoplay={{
             delay: 5000,
             pauseOnMouseEnter: true,
-            disableOnInteraction: false
+            disableOnInteraction: false,
           }}
           loop
           style={{
-            '--swiper-navigation-size': '30px'
+            '--swiper-navigation-size': '30px',
           }}
         >
           <SwiperSlide>
-            <img src={images.nike} alt="product1" />
+            <img src={images.nike} alt='product1' />
           </SwiperSlide>
 
           <SwiperSlide>
-            <img src={images.nike} alt="product1" />
+            <img src={images.nike} alt='product1' />
           </SwiperSlide>
 
           <SwiperSlide>
-            <img src={images.nike} alt="product1" />
+            <img src={images.nike} alt='product1' />
           </SwiperSlide>
-
         </Swiper>
       </div>
 
@@ -210,14 +215,19 @@ const Main = () => {
         <ProductComponent productData={filteredProductData} />
       ) : isLoading ? (
         <div className={'load'}>
-          <Loader className="animate-spin-slow spinner" size={30} />
+          <Loader className='animate-spin-slow spinner' size={30} />
         </div>
       ) : (
         <div style={{textAlign: 'center'}}>Ничего не найдено</div>
       )}
 
       <button>
-        <ArrowBigUpDash className="arrow_up" size={35} strokeWidth={1} onClick={scrollToTop} />
+        <ArrowBigUpDash
+          className='arrow_up'
+          size={35}
+          strokeWidth={1}
+          onClick={scrollToTop}
+        />
       </button>
 
       <AnimatePresence>
@@ -227,7 +237,7 @@ const Main = () => {
             animate={{opacity: 1, x: 0}}
             exit={{opacity: 0, x: 1000}}
             transition={{duration: 0.5}}
-            className="modal-right"
+            className='modal-right'
           >
             <Filter
               closeModal={toggleFilter}

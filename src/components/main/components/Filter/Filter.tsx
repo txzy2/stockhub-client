@@ -6,24 +6,11 @@ import {Slider} from '@material-ui/core';
 
 const options = {
   clothes: ['Одежда', 'Обувь'],
-  colors: [
-    'Серые',
-    'Красные',
-    'Черные',
-    'Голубые',
-    'Белые'
-  ],
+  colors: ['Серые', 'Красные', 'Черные', 'Голубые', 'Белые'],
   brands: ['Nike', 'Puma', 'Jordan'],
   material: ['Кожа', 'Текстиль', 'Ткань'],
-  sizesShoes: [
-    '5', '6', '7',
-    '8', '9', '10',
-    '11', '12', '13'
-  ],
-  sizesCloth: [
-    'S', 'M', 'L',
-    'XL', '2XL', '3XL'
-  ]
+  sizesShoes: ['5', '6', '7', '8', '9', '10', '11', '12', '13'],
+  sizesCloth: ['S', 'M', 'L', 'XL', '2XL', '3XL'],
 };
 
 interface FilterSelectProps {
@@ -34,25 +21,21 @@ interface FilterSelectProps {
   selectedValue?: string;
 }
 
-const FilterSelect: React.FC<FilterSelectProps> = (
-  {
-    label,
-    options,
-    onSelect,
-    isShoe = false,
-    selectedValue
-  }
-) => {
+const FilterSelect: React.FC<FilterSelectProps> = ({
+  label,
+  options,
+  onSelect,
+  isShoe = false,
+  selectedValue,
+}) => {
   return (
-    // TODO: Сделать правильный проброс selectedValue.var для заголовка Одежда / Обувь
-    <div className="filter__options">
-      
+    <div className='filter__options'>
       <select
-        className="filter__options--select"
+        className='filter__options--select'
         onChange={e => onSelect(e.target.value)}
         value={selectedValue ? selectedValue : label}
       >
-        <option hidden value="">
+        <option hidden value=''>
           {label}
         </option>
 
@@ -60,11 +43,10 @@ const FilterSelect: React.FC<FilterSelectProps> = (
           <option key={index} value={option}>
             {label === 'Размеры' && isShoe ? option + 'us' : option}
           </option>
-
         ))}
       </select>
 
-      <ArrowBigRightDash className="filter__options--arrow" size={25} />
+      <ArrowBigRightDash className='filter__options--arrow' size={25} />
     </div>
   );
 };
@@ -75,13 +57,11 @@ interface FilterProps {
   FilterSelected: Filters;
 }
 
-const Filter: React.FC<FilterProps> = (
-  {
-    closeModal,
-    applyFilters,
-    FilterSelected
-  }
-) => {
+const Filter: React.FC<FilterProps> = ({
+  closeModal,
+  applyFilters,
+  FilterSelected,
+}) => {
   const [selectedFilters, setSelectedFilters] =
     useState<Filters>(FilterSelected);
   const [value, setValue] = React.useState([7000, 11000]);
@@ -106,31 +86,31 @@ const Filter: React.FC<FilterProps> = (
   const handleSelect = (filterName: keyof Filters, value: string) => {
     setSelectedFilters(prevFilters => ({
       ...prevFilters,
-      [filterName]: value
+      [filterName]: value,
     }));
 
     if (selectedFilters.var) {
       setVisible(true);
       setClothShoeSelected(value);
     }
-
   };
 
   const rangeSelector = (event: any, newValue: any) => {
     setValue(newValue);
-    console.log(newValue);
+    selectedFilters.priceRange = {
+      from: value[0].toString(),
+      to: value[1].toString(),
+    };
   };
 
   return (
     <>
-      <button type="button" onClick={closeModal}>
-        <X className="exit" size={30} />
+      <button type='button' onClick={closeModal}>
+        <X className='exit' size={30} />
       </button>
 
-      <div className="filter">
+      <div className='filter'>
         <form onSubmit={handleApplyFilters}>
-          {/*TODO: Сделать проверку на var*/}
-
           <FilterSelect
             label={'Одежда / Обувь'}
             options={options.clothes}
@@ -143,25 +123,25 @@ const Filter: React.FC<FilterProps> = (
           {visible && (
             <>
               <FilterSelect
-                label="Цвет"
+                label='Цвет'
                 options={options.colors}
                 onSelect={value => handleSelect('color', value)}
                 selectedValue={selectedFilters.color}
               />
               <FilterSelect
-                label="Бренд"
+                label='Бренд'
                 options={options.brands}
                 onSelect={value => handleSelect('brand', value)}
                 selectedValue={selectedFilters.brand}
               />
               <FilterSelect
-                label="Материал"
+                label='Материал'
                 options={options.material}
                 onSelect={value => handleSelect('material', value)}
                 selectedValue={selectedFilters.material}
               />
               <FilterSelect
-                label="Размеры"
+                label='Размеры'
                 options={
                   clothShoeSelected === 'cloth'
                     ? options.sizesCloth
@@ -176,8 +156,12 @@ const Filter: React.FC<FilterProps> = (
 
           {/*TODO: Доделать выбор цен*/}
           <div className={'filter__options--price'}>
-
-            <label className={'filter__options--price__label'} htmlFor={'price'}>Цена</label>
+            <label
+              className={'filter__options--price__label'}
+              htmlFor={'price'}
+            >
+              Цена
+            </label>
             <div className={'filter__options--price__container'}>
               <span>{value[0]} ₽</span>
               <span>{value[1]} ₽</span>
@@ -185,15 +169,15 @@ const Filter: React.FC<FilterProps> = (
 
             <Slider
               value={value}
-              min={5000}
-              max={30000}
+              min={1000}
+              max={100000}
               onChange={rangeSelector}
-              valueLabelDisplay="auto"
+              valueLabelDisplay='auto'
               name={'price'}
             />
           </div>
 
-          <button className="filter__btn" type="submit">
+          <button className='filter__btn' type='submit'>
             Применить фильтры
           </button>
         </form>

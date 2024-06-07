@@ -7,7 +7,7 @@ import {UseTg} from '../../../../hooks/useTg';
 import OrderButton from '../../../orderButton/OrderButton';
 import {deleteItemFromBasket} from '../../../../hooks/delItemFromBasket';
 
-const DeleteItemBasketButton = ({article}: {article: string}) => {
+const DeleteItemBasketButton = ({size}: {size: string}) => {
   const {user} = UseTg();
 
   const handleOrderClick = async () => {
@@ -22,9 +22,9 @@ const DeleteItemBasketButton = ({article}: {article: string}) => {
     const userData = JSON.parse(data);
 
     const delData = {
-      chat_id: userData.chat_id,
-      // chat_id: '307777256',
-      article
+      size: size,
+      chat_id: userData.chat_id
+      // chat_id: '307777256'
     };
 
     const deleteItem = await deleteItemFromBasket(delData);
@@ -46,8 +46,8 @@ const DeleteItemBasketButton = ({article}: {article: string}) => {
 
 const Basket = ({closeModal}: ModalProps) => {
   const {user} = UseTg();
-  // const data = localStorage.getItem(user?.id.toString());
-  const data = localStorage.getItem('307777256');
+  const data = localStorage.getItem(user?.id.toString());
+  // const data = localStorage.getItem('307777256');
   if (!data) {
     return (
       <div className="">
@@ -99,7 +99,7 @@ const Basket = ({closeModal}: ModalProps) => {
 
                   <div className="basket__product--btns">
                     <div className="basket__product--btns__trash">
-                      <DeleteItemBasketButton article={item.product.article} />
+                      <DeleteItemBasketButton size={item.size} />
                     </div>
 
                     <div className="basket__product--btns__order">

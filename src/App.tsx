@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import './styles/styles.scss';
 
 import {Footer, Header, Main} from './components';
-import Circles from './components/ui/Circles';
 import {UseTg} from './hooks/useTg';
 
 const App = () => {
@@ -16,10 +15,6 @@ const App = () => {
   return (
 
     <div className="App">
-      <div className=" background">
-        <Circles />
-      </div>
-
       {/*{user?.id && tg.platform !== 'tdesktop' ? (*/}
       <>
         <Header />
