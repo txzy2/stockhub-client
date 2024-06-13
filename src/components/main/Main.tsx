@@ -36,7 +36,6 @@ const Main = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedButton, setSelectedButton] = useState<string | null>('shoe');
 
-  // NOTE: FOR_FILTERS
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [appliedFilters, setAppliedFilters] = useState<Filters | null>(null);
   const [selectedFilters, setSelectedFilters] = useState<Filters>({

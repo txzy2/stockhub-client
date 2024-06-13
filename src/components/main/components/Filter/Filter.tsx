@@ -28,6 +28,8 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
   isShoe = false,
   selectedValue,
 }) => {
+  console.log(options);
+  console.log(selectedValue);
   return (
     <div className='filter__options'>
       <select
@@ -41,7 +43,7 @@ const FilterSelect: React.FC<FilterSelectProps> = ({
 
         {options.map((option: string, index: number) => (
           <option key={index} value={option}>
-            {label === 'Размеры' && isShoe ? option + 'us' : option}
+            {isShoe ? option + ' us' : option}
           </option>
         ))}
       </select>
@@ -66,7 +68,6 @@ const Filter: React.FC<FilterProps> = ({
     useState<Filters>(FilterSelected);
   const [value, setValue] = React.useState([7000, 11000]);
 
-  // NOTE: SIZE_FILTER
   const [clothShoeSelected, setClothShoeSelected] = useState<string | null>(
     null
   );
@@ -154,7 +155,6 @@ const Filter: React.FC<FilterProps> = ({
             </>
           )}
 
-          {/*TODO: Доделать выбор цен*/}
           <div className={'filter__options--price'}>
             <label
               className={'filter__options--price__label'}
@@ -177,7 +177,10 @@ const Filter: React.FC<FilterProps> = ({
             />
           </div>
 
-          <button className='filter__btn' type='submit'>
+          <button
+            className={selectedFilters.var === '' ? 'disabled' : 'filter__btn'}
+            type='submit'
+          >
             Применить фильтры
           </button>
         </form>

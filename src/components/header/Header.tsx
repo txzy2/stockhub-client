@@ -9,7 +9,6 @@ import {UseTg} from '../../hooks/useTg';
 import {UserReciveDto} from '../../types/types';
 import {userReq} from '../../hooks/fetchUser';
 
-
 const Header = () => {
   const {user} = UseTg();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,11 +22,11 @@ const Header = () => {
         return;
       }
 
-      // const fetchedUserData = await userReq('307777256');
-      // localStorage.setItem('307777256', JSON.stringify(fetchedUserData));
-
       const fetchedUserData = await userReq(user?.id.toString());
-      localStorage.setItem(user?.id.toString(), JSON.stringify(fetchedUserData));
+      localStorage.setItem(
+        user?.id.toString(),
+        JSON.stringify(fetchedUserData)
+      );
 
       console.log(fetchedUserData);
       setUserData(fetchedUserData);
@@ -54,15 +53,15 @@ const Header = () => {
     document.body.classList.toggle('modal-open', newModalState);
   };
   return (
-    <header className="header">
-      <div className="header__user">
+    <header className='header'>
+      <div className='header__user'>
         {userData ? (
           <motion.div
             whileHover={{scale: 1.1}}
             transition={{type: 'spring', stiffness: 400, damping: 10}}
-            id="main"
+            id='main'
           >
-            <button className="header__user--btn" onClick={toggleProfileModal}>
+            <button className='header__user--btn' onClick={toggleProfileModal}>
               <CircleUser strokeWidth={1} size={32} />
               <Typewriter
                 onInit={typewriter => {
@@ -81,26 +80,28 @@ const Header = () => {
             </button>
           </motion.div>
         ) : (
-          <div className="header__load">
-            <span className="header__load--emoji">💀</span>
-            <Loader className="animate-spin-slow spinner" size={30} />
+          <div className='header__load'>
+            <span className='header__load--emoji'>💀</span>
+            <Loader className='animate-spin-slow spinner' size={30} />
           </div>
         )}
 
         <motion.div
           whileHover={{scale: 1.1}}
           transition={{type: 'spring', stiffness: 400, damping: 10}}
-          id="main"
+          id='main'
         >
-          <button className="header__basket" disabled={!userData} onClick={toggleBasketModal}>
+          <button
+            className='header__basket'
+            disabled={!userData}
+            onClick={toggleBasketModal}
+          >
             <PackageOpen size={32} strokeWidth={1} />
-            <span className="header__basket--count">
+            <span className='header__basket--count'>
               {userData ? (
-                <div>
-                  {userData?.basket.length}
-                </div>
+                <div>{userData?.basket.length}</div>
               ) : (
-                <Loader className="animate-spin-slow spinner" size={20} />
+                <Loader className='animate-spin-slow spinner' size={20} />
               )}
             </span>
           </button>
@@ -114,7 +115,7 @@ const Header = () => {
             animate={{opacity: 1, x: 0}}
             exit={{opacity: 0, x: -1000}}
             transition={{duration: 0.5}}
-            className="modal-left"
+            className='modal-left'
           >
             <Profile closeModal={toggleProfileModal} />
           </motion.div>
@@ -128,7 +129,7 @@ const Header = () => {
             animate={{opacity: 1, y: 0}}
             exit={{opacity: 0, y: 1000}}
             transition={{duration: 0.5}}
-            className="modal"
+            className='modal'
           >
             <Basket closeModal={toggleBasketModal} />
           </motion.div>
